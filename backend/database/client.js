@@ -1,19 +1,29 @@
-// Get variables from .env file for database connection
-const { DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME } = process.env;
+// // Get variables from .env file for database connection
+// const { DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME } = process.env;
 
-// Create a connection pool to the database
-const mysql = require("mysql2/promise");
+// // Create a connection pool to the database
+// const mysql = require("mysql2/promise");
 
-const client = mysql.createPool({
-  host: DB_HOST,
-  port: DB_PORT,
-  user: DB_USER,
-  password: DB_PASSWORD,
-  database: DB_NAME,
-});
+// const client = mysql.createPool({
+//   host: DB_HOST,
+//   port: DB_PORT,
+//   user: DB_USER,
+//   password: DB_PASSWORD,
+//   database: DB_NAME,
+// });
+// require("dotenv").config();
+
+// const { DB_USER, DB_PASSWORD } = process.env;
+
+// const express = require("express");
+
+// const app = express();
+
+// app.use(express.json());
 
 // Try to get a connection to the database
-client
+
+/* client
   .getConnection()
   .then((connection) => {
     console.info(`Using database ${DB_NAME}`);
@@ -28,9 +38,10 @@ client
     );
     console.error("Error message:", error.message);
   });
-
+*/
 // Store database name into client for further uses
-client.databaseName = DB_NAME;
+// client.databaseName = DB_NAME;
 
 // Ready to export
-module.exports = client;
+
+// module.exports = client;
