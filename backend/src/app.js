@@ -1,8 +1,20 @@
 // Load the express module to create a web application
 
 const express = require("express");
+const router = require("./router");
 
 const app = express();
+
+app.use("/", router);
+app.use(express.json());
+
+module.exports = app;
+
+// Load the express module to create a web application
+
+// const express = require("express");
+
+// const app = express();
 
 // Configure it
 
@@ -26,17 +38,17 @@ const app = express();
 // For example: ["http://mysite.com", "http://another-domain.com"]
 
 /*
-const cors = require("cors");
+// const cors = require("cors");
 
-app.use(
-  cors({
-    origin: [
-      process.env.FRONTEND_URL, // keep this one, after checking the value in `backend/.env`
-      "http://mysite.com",
-      "http://another-domain.com",
-    ]
-  })
-);
+// app.use(
+//   cors({
+//     origin: [
+//       process.env.FRONTEND_URL, // keep this one, after checking the value in `backend/.env`
+//       "http://mysite.com",
+//       "http://another-domain.com",
+//     ]
+//   })
+// );
 */
 
 /* ************************************************************************* */
@@ -85,10 +97,10 @@ app.use(
 /* ************************************************************************* */
 
 // Import the API routes from the router module
-const router = require("./router");
+// const router = require("./router");
 
 // Mount the API routes under the "/api" endpoint
-app.use("/api", router);
+// app.use("/api", router);
 
 /* ************************************************************************* */
 
@@ -108,17 +120,17 @@ app.use("/api", router);
 // 2. Ensure that the `reactBuildPath` points to the correct directory where your frontend's build artifacts are located.
 
 /*
-const reactBuildPath = `${__dirname}/../../frontend/dist`;
+// const reactBuildPath = `${__dirname}/../../frontend/dist`;
 
 // Serve react resources
 
-app.use(express.static(reactBuildPath));
+// app.use(express.static(reactBuildPath));
 
 // Redirect unhandled requests to the react index file
 
-app.get("*", (req, res) => {
-  res.sendFile(`${reactBuildPath}/index.html`);
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(`${reactBuildPath}/index.html`);
+// });
 */
 
 /* ************************************************************************* */
@@ -128,19 +140,19 @@ app.get("*", (req, res) => {
 
 /*
 // Define a middleware function to log errors
-const logErrors = (err, req, res, next) => {
+// const logErrors = (err, req, res, next) => {
   // Log the error to the console for debugging purposes
-  console.error(err);
-  console.error("on req:", req.method, req.path);
+//   console.error(err);
+//   console.error("on req:", req.method, req.path);
 
   // Pass the error to the next middleware in the stack
-  next(err);
-};
+//   next(err);
+// };
 
 // Mount the logErrors middleware globally
-app.use(logErrors);
+// app.use(logErrors);
 */
 
 /* ************************************************************************* */
 
-module.exports = app;
+// module.exports = app;
