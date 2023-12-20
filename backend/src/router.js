@@ -7,7 +7,6 @@ const {
   getAllParent,
   updateParent,
 } = require("./controllers/parentController");
-// updateParent
 
 // Route to get a list of parent
 router.get("/parent", getAllParent);
