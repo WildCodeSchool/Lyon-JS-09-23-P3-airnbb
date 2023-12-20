@@ -29,7 +29,30 @@ const getParentById = async (req, res) => {
   }
 };
 
+/* Create New Parent */
+
+// const createParent = async (req, res) => {
+//   try {
+//     const newParent = await Parent.create(req.body);
+//     res.status(201).json(newParent);
+//   } catch (error) {
+//     res.status(400).json({ error: "Bad Request" });
+//   }
+// };
+
+/* create new Parent  */
+
+const createParent = async (req, res) => {
+  try {
+    const newParent = await Parent.create(req.body);
+    res.status(201).json(newParent);
+  } catch (error) {
+    res.status(400).json({ error: "Bad Request" });
+  }
+};
+
 module.exports = {
   getAllParent,
   getParentById,
+  createParent,
 };
