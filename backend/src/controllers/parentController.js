@@ -10,6 +10,7 @@ const getAllParent = async (req, res) => {
   }
 };
 
+// update
 const updateParent = async (req, res) => {
   const { id } = req.params;
   try {

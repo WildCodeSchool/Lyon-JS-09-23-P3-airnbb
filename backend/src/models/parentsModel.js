@@ -24,5 +24,6 @@ const parentPostSchema = new mongoose.Schema({
     required: true,
   },
 });
+
 const Parent = mongoose.model("parent", parentPostSchema, "parent");
 module.exports = Parent;
