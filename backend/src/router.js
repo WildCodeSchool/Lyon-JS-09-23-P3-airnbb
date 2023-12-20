@@ -3,10 +3,14 @@ const express = require("express");
 const router = express.Router();
 
 // Import itemControllers module for handling item-related operations
-const getAllParent = require("./controllers/parentController");
+const {
+  getAllParent,
+  getParentById,
+} = require("./controllers/parentController");
 
 // Route to get a list of parent
 router.get("/parent", getAllParent);
+router.get("/parent/:id", getParentById);
 
 module.exports = router;
 
