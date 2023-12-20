@@ -9,14 +9,6 @@ app.use("/", router);
 
 module.exports = app;
 
-// Load the express module to create a web application
-
-// const express = require("express");
-
-// const app = express();
-
-// Configure it
-
 /* ************************************************************************* */
 
 // CORS Handling: Why is the current code commented out and do I need to define specific allowed origins for my project?
