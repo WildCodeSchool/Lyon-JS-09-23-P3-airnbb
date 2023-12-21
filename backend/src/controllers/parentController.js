@@ -21,8 +21,9 @@ const updateParent = async (req, res) => {
     }
     return res.status(200).json(updatedParent);
   } catch (error) {
-    console.error("Error updating parent:", error);
-
+    return console.error("Error updating parent:", error);
+  }
+};
 /* get single parent  */
 
 const getParentById = async (req, res) => {
@@ -42,8 +43,20 @@ const getParentById = async (req, res) => {
   }
 };
 
+/* Create new Parent  */
+
+const createParent = async (req, res) => {
+  try {
+    const newParent = await Parent.create(req.body);
+    res.status(201).json(newParent);
+  } catch (error) {
+    res.status(400).json({ error: "Bad Request" });
+  }
+};
+
 module.exports = {
   getAllParent,
   getParentById,
-  updateParent
+  createParent,
+  updateParent,
 };

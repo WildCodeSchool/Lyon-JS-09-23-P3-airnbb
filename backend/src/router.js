@@ -7,13 +7,16 @@ const router = express.Router();
 const {
   getAllParent,
   getParentById,
-  updateParent
+  createParent,
+  updateParent,
 } = require("./controllers/parentController");
 
 // Route to get a list of parent
 router.get("/parent", getAllParent);
 router.get("/parent/:id", getParentById);
 
+// Route to Create New Parent
+router.post("/parent/", createParent);
 // Route to update a parent (with patch)
 router.patch("/parent/:id", updateParent);
 
