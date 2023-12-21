@@ -54,9 +54,24 @@ const createParent = async (req, res) => {
   }
 };
 
+/* Delete a parent */
+
+const deleteParent = async (req, res) => {
+  const { id } = req.params;
+
+  const parent = await Parent.findOneAndDelete({ _id: id });
+
+  if (!parent) {
+    return res.status(400).json({ error: "No such parent" });
+  }
+
+  return res.status(200).send("Parent deleted");
+};
+
 module.exports = {
   getAllParent,
   getParentById,
   createParent,
   updateParent,
+  deleteParent,
 };

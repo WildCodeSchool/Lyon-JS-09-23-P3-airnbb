@@ -9,6 +9,7 @@ const {
   getParentById,
   createParent,
   updateParent,
+  deleteParent,
 } = require("./controllers/parentController");
 
 // Route to get a list of parent
@@ -19,6 +20,9 @@ router.get("/parent/:id", getParentById);
 router.post("/parent/", createParent);
 // Route to update a parent (with patch)
 router.patch("/parent/:id", updateParent);
+
+// Route to delete a parent
+router.delete("/parent/:id", deleteParent);
 
 module.exports = router;
 
