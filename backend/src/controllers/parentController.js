@@ -21,8 +21,9 @@ const updateParent = async (req, res) => {
     }
     return res.status(200).json(updatedParent);
   } catch (error) {
-    console.error("Error updating parent:", error);
-
+    return console.error("Error updating parent:", error);
+  }
+};
 /* get single parent  */
 
 const getParentById = async (req, res) => {
@@ -57,5 +58,5 @@ module.exports = {
   getAllParent,
   getParentById,
   createParent,
-  updateParent
+  updateParent,
 };

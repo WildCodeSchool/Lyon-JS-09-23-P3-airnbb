@@ -8,13 +8,12 @@ const {
   getAllParent,
   getParentById,
   createParent,
-  updateParent
+  updateParent,
 } = require("./controllers/parentController");
 
 // Route to get a list of parent
 router.get("/parent", getAllParent);
 router.get("/parent/:id", getParentById);
-
 
 // Route to Create New Parent
 router.post("/parent/", createParent);
