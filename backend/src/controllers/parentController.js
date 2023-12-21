@@ -1,4 +1,4 @@
-const databaseConnection = require("../../database/database");
+/* const databaseConnection = require("../../database/database");
 
 const getAllParent = async (req, res) => {
   try {
@@ -14,4 +14,24 @@ const getAllParent = async (req, res) => {
   }
 };
 
-module.exports = getAllParent;
+const getSingleParent = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    if (!databaseConnection.Types.ObjectId.isValid(id)) {
+      return res.status(404).json({ error: "No such parent" });
+    }
+
+    const parent = await Parent.findById(id);
+    if (!parent) {
+      return res.status(404).json({ error: "No such parent" });
+    }
+
+    res.status(200).json(parent);
+  } catch (error) {
+    return res.status(404).json({ error: error.message });
+  }
+};
+
+module.exports = { getAllParent, getSingleParent };
+ */
