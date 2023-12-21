@@ -65,3 +65,96 @@
   text-align: center;
   margin-inline: 1rem;
 }
+
+/* Login && Signup*/
+
+.introLayout .connect {
+  width: 100%;
+}
+
+.introLayout .connect h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding: 5rem 0;
+}
+
+.connect header {
+  display: flex;
+  justify-content: flex-end;
+  width: 90%;
+}
+
+.connect header div {
+  border: 1px solid white;
+  border-radius: 15px;
+  width: max-content;
+  padding: 0.125rem 1.125rem;
+}
+
+.connect input {
+  border: 1px solid #ffffff;
+  background-color: transparent;
+  color: #ffffff50;
+  padding: 1rem;
+  margin: 0.75em 0;
+  border-radius: 5px;
+}
+
+.connect input:focus {
+  outline: none;
+  color: #ffffff;
+}
+
+.connect input:not(:last-child) {
+  width: 80%;
+}
+
+.connect .check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+input[type="checkbox"] {
+  margin-inline: 1em;
+}
+
+.connect button {
+  cursor: pointer;
+  width: 80%;
+  background-color: #882aff;
+  color: #ffffff;
+  opacity: 0.5;
+  border: none;
+  border-radius: 5px;
+  padding: 0.75em;
+  margin: 1em 0 5em 0;
+  font-size: 1.025rem;
+  font-weight: 700;
+  transition: all 0.2s;
+}
+
+.connect .submitButton {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.connect .deadButton {
+  pointer-events: none;
+}
+
+.connect .submitButton:hover {
+  transform: scale(1.0125);
+}
+
+.connect a {
+  font-size: 13px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.connect a span {
+  font-weight: 700;
+}
