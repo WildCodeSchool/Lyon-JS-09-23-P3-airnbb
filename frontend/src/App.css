@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700;800&display=swap");
+#root {
+  width: 100vw;
+  height: 100vh;
+  margin: 0 auto;
+  text-align: center;
+  font-family: "Nunito", sans-serif;
+  position: relative;
+  background: linear-gradient(
+    145deg,
+    rgba(71, 79, 255, 0.9) 0%,
+    rgba(89, 84, 249, 0.9) 10%,
+    rgba(227, 122, 204, 1) 100%
+  );
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.geoBar,
+.primary-navbar {
+  position: absolute;
+  height: 80px;
+  width: 375px;
+  border: 1px solid black;
+  z-index: 1;
+  background-color: white;
+}
+
+.geoBar {
+  top: 0;
+}
+
+.primary-navbar {
+  bottom: 0;
+}
+
+.homepage {
+  padding-top: 80px;
+}
+
+.nurseryCard {
+  display: flex;
+  flex-direction: column;
+  margin-inline: auto;
+  height: 290px;
+  width: 340px;
+  border: 1px solid red;
+}
+
+.nurseryCard div {
+  border: 1px solid green;
+  display: inherit;
+  flex: 1;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.nurseryCard div:first-child {
+  border-radius: 10px 10px 0 0;
+}
+
+.nurseryCard div:last-child {
+  border-radius: 0 0 10px 10px;
+}

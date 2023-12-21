@@ -1,0 +1,67 @@
+.container {
+  max-width: 1600px;
+  margin-inline: auto;
+  display: flex;
+  height: 100%;
+}
+
+.introLayout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  height: 100%;
+  color: white;
+  padding: 0.75rem;
+}
+
+/* Intro  */
+.introLayout .App-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.introLayout img {
+  margin-top: 2rem;
+}
+
+.introLayout > h1 {
+  font-size: 3.75rem;
+}
+
+.introLayout > h2 {
+  font-size: 1.55rem;
+  margin: 1rem 0;
+}
+
+.introLayout > p {
+  font-size: 1.25rem;
+}
+
+.introLayout footer {
+  position: absolute;
+  padding-inline: 2rem;
+  width: 100%;
+  bottom: 2rem;
+  text-align: end;
+}
+
+.introLayout footer a {
+  color: white;
+  text-decoration: none;
+  position: relative;
+}
+
+.introLayout footer span {
+  color: white;
+  background-color: #882aff;
+  height: 25px;
+  width: 25px;
+  display: inline-block;
+  border-radius: 50%;
+  text-align: center;
+  margin-inline: 1rem;
+}
