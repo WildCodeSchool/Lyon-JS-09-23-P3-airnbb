@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import logoIntro from "../../assets/logo_intro_1.svg";
 import doubleCoeur from "../../assets/Vector.svg";
+import useScreenSize from "../../hooks/useScreenSize";
 
 function Intro() {
+  const screenSize = useScreenSize();
+
   return (
     <>
       <header className="App-header">
@@ -17,11 +20,13 @@ function Intro() {
       <h1>Airnbb</h1>
       <h2>Garde d&apos;enfants à la demande</h2>
       <p>Trouver un.e professionel.le de la garde d’enfant</p>
-      <footer className="App-footer">
-        <Link to="/login">
-          Suivant<span>&gt;</span>
-        </Link>
-      </footer>
+      {screenSize.width < 705 && (
+        <footer className="App-footer">
+          <Link to="/login">
+            Suivant<span>&gt;</span>
+          </Link>
+        </footer>
+      )}
     </>
   );
 }
