@@ -20,6 +20,15 @@
   box-sizing: border-box;
 }
 
+/* Not Found page */
+.notFoundContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  color: white;
+}
+
 .geoBar,
 .primary-navbar {
   position: absolute;
