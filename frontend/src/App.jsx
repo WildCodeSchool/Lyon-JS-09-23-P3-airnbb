@@ -1,42 +1,51 @@
-import Counter from "./components/Counter";
-import logo from "./assets/logo.svg";
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+} from "react-router-dom";
 
+// layouts
+import IntroLayout from "./layouts/IntroLayout";
+
+// pages
+import Login from "./pages/intro/Login";
+import Signup from "./pages/intro/Signup";
+import Intro from "./pages/intro/Intro";
+
+// hooks
+import useScreenSize from "./hooks/useScreenSize";
+
+// style
 import "./App.css";
+import NotFound from "./pages/NotFound";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React !</p>
+  const screenSize = useScreenSize();
 
-        <Counter />
+  const routes = (
+    <>
+      {screenSize.width > 705 ? (
+        <Route path="/" element={<IntroLayout />}>
+          <Route path="/signup" element={<Signup />} />
+          <Route index element={<Login />} />
+          <Route path="/login" element={<Login />} />
+        </Route>
+      ) : (
+        <Route path="/" element={<IntroLayout />}>
+          <Route index element={<Intro />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+        </Route>
+      )}
 
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {" | "}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
+      <Route path="*" element={<NotFound />} />
+    </>
   );
+
+  const router = createBrowserRouter(createRoutesFromElements(routes));
+
+  return <RouterProvider router={router} />;
 }
 
 export default App;

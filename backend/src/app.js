@@ -5,18 +5,10 @@ const router = require("./router");
 
 const app = express();
 
-app.use("/", router);
 app.use(express.json());
+app.use("/", router);
 
 module.exports = app;
-
-// Load the express module to create a web application
-
-// const express = require("express");
-
-// const app = express();
-
-// Configure it
 
 /* ************************************************************************* */
 
@@ -154,5 +146,4 @@ module.exports = app;
 */
 
 /* ************************************************************************* */
-
 // module.exports = app;
