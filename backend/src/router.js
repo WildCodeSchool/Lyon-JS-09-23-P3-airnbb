@@ -24,6 +24,30 @@ router.patch("/parent/:id", updateParent);
 // Route to delete a parent
 router.delete("/parent/:id", deleteParent);
 
+// ROUTE FOR COLLECTION "child"
+const {
+  getAllChildren,
+  getChildById,
+  createChild,
+  updateChild,
+  deleteChild,
+} = require("./controllers/childController");
+
+// Route to get a list of children
+router.get("/child", getAllChildren);
+
+// Route to get one child
+router.get("/child/:id", getChildById);
+
+// Route to create new child
+router.post("/child/", createChild);
+
+// Route to update a child (with patch)
+router.patch("/child/:id", updateChild);
+
+// Route to delete a child
+router.delete("/child/:id", deleteChild);
+
 module.exports = router;
 
 /* ************************************************************************* */
