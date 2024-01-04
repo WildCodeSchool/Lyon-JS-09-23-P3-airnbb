@@ -20,7 +20,7 @@ const availabilitySchema = new mongoose.Schema(
         async validator(value) {
           // Vérifier si le nursery_id existe dans la collection "nursery"
           const nursery = await mongoose.model("nursery").findById(value);
-          return !!nursery;
+          return Boolean(nursery);
         },
         message: "Nursery with this ID does not exist.",
       },
