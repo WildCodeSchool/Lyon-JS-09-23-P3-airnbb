@@ -96,4 +96,28 @@ router.patch("/availability/:id", updateAvailability);
 // Route to delete an availability
 router.delete("/availability/:id", deleteAvailability);
 
+// ROUTE FOR COLLECTION "booking"
+const {
+  getAllBookings,
+  getBookingById,
+  createBooking,
+  updateBooking,
+  deleteBooking,
+} = require("./controllers/bookingController");
+
+// Route to get a list of bookings
+router.get("/booking", getAllBookings);
+
+// Route to get one booking
+router.get("/booking/:id", getBookingById);
+
+// Route to create new booking
+router.post("/booking/", createBooking);
+
+// Route to update a booking (with patch)
+router.patch("/booking/:id", updateBooking);
+
+// Route to delete a booking
+router.delete("/booking/:id", deleteBooking);
+
 module.exports = router;
