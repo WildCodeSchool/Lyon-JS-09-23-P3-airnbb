@@ -72,4 +72,28 @@ router.patch("/nursery/:id", updateNursery);
 // Route to delete a nursery
 router.delete("/nursery/:id", deleteNursery);
 
+// ROUTES FOR COLLECTION "availability"
+const {
+  getAllAvailabilities,
+  getAvailabilityById,
+  createAvailability,
+  updateAvailability,
+  deleteAvailability,
+} = require("./controllers/availabilityController");
+
+// Route to get a list of availabilities
+router.get("/availability", getAllAvailabilities);
+
+// Route to get one availability
+router.get("/availability/:id", getAvailabilityById);
+
+// Route to create new availability
+router.post("/availability/", createAvailability);
+
+// Route to update an availability (with patch)
+router.patch("/availability/:id", updateAvailability);
+
+// Route to delete an availability
+router.delete("/availability/:id", deleteAvailability);
+
 module.exports = router;

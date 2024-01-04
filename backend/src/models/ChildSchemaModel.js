@@ -10,7 +10,10 @@ const childSchema = new mongoose.Schema(
         async validator(value) {
           // Vérifier si le parent_id existe dans la collection "parent"
           const parent = await mongoose.model("parent").findById(value);
-          return !!parent;
+          if (parent === null) {
+            return false;
+          }
+          return true;
         },
         message: "Parent with this ID does not exist.",
       },
