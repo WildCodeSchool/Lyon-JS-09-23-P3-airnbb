@@ -1,9 +1,13 @@
 // Load the express module to create a web application
 
 const express = require("express");
+const cors = require("cors");
 const router = require("./router");
 
 const app = express();
+
+// middleware
+app.use(cors());
 
 app.use(express.json());
 app.use("/", router);
