@@ -12,6 +12,7 @@ import IntroLayout from "./layouts/IntroLayout";
 import Login from "./pages/intro/Login";
 import Signup from "./pages/intro/Signup";
 import Intro from "./pages/intro/Intro";
+import ParentsForm from "./pages/ParentsForm";
 
 // hooks
 import useScreenSize from "./hooks/useScreenSize";
@@ -38,7 +39,7 @@ function App() {
           <Route path="/login" element={<Login />} />
         </Route>
       )}
-
+      <Route path="/parents" element={<ParentsForm />} />
       <Route path="*" element={<NotFound />} />
     </>
   );
