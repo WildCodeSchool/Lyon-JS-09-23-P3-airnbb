@@ -29,7 +29,7 @@ export default function useLogin() {
       // save the user to local storage
       localStorage.setItem("user", JSON.stringify(json));
       setIsLoading(false);
-      navigate("/");
+      navigate("/home");
     }
   };
 
