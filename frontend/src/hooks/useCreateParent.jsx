@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function useCreateParent() {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
+  const navigate = useNavigate();
 
   const createParent = async (newParent) => {
     setIsLoading(true);
@@ -24,6 +26,7 @@ function useCreateParent() {
     if (response.ok) {
       setIsLoading(false);
       setError(null);
+      navigate("/addchild");
       console.info("New parent added", json);
     }
   };

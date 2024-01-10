@@ -19,23 +19,24 @@ parentPostSchema.statics.signup = async function sign({
   email,
   password,
 }) {
-  console.info(firstname, lastname, address, phone, email, password);
-  // Valider toutes les entrées
   if (!email || !password) {
     throw Error("Remplir email et password correctement");
   }
+
   if (!validator.isEmail(email)) {
     throw Error("Email n'est pas valide");
   }
+
   if (!validator.isStrongPassword(password)) {
     throw Error("Password n'est pas valide");
   }
+
   const exist = await this.findOne({ email });
+
   if (exist) {
     throw Error("Email déjà utilisé");
   }
 
-  // Crypter (le salt génère un hash)
   const salt = await bcrypt.genSalt(10);
   const hash = await bcrypt.hash(password, salt);
 
@@ -48,6 +49,27 @@ parentPostSchema.statics.signup = async function sign({
     password: hash,
   });
   console.info(parent);
+  return parent;
+};
+
+// statis login method
+parentPostSchema.statics.login = async function log(email, password) {
+  if (!email || !password) {
+    throw Error("All fields must be filled");
+  }
+
+  const parent = await this.findOne({ email });
+
+  if (!parent) {
+    throw Error("Incorrect email");
+  }
+
+  const match = await bcrypt.compare(password, parent.password);
+
+  if (!match) {
+    throw Error("Incorrect password");
+  }
+
   return parent;
 };
 
