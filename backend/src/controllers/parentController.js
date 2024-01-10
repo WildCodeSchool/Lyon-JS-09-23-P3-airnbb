@@ -46,11 +46,20 @@ const getParentById = async (req, res) => {
 /* Create new Parent  */
 
 const createParent = async (req, res) => {
+  const { firstname, lastname, address, phone, email, password } = req.body;
+
   try {
-    const newParent = await Parent.create(req.body);
-    res.status(201).json(newParent);
+    const parent = await Parent.signup({
+      firstname,
+      lastname,
+      address,
+      phone,
+      email,
+      password,
+    });
+    res.status(200).json(parent);
   } catch (error) {
-    res.status(400).json({ error: "Bad Request" });
+    res.status(400).json({ error: error.message });
   }
 };
 
