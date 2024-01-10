@@ -1,19 +1,23 @@
+// react
 import { useState } from "react";
+
+// react-router
 import { Link } from "react-router-dom";
+
+// functions
+import useLogin from "../../hooks/useLogin";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [form, setForm] = useState(false);
 
-  // regex match email syntax
-  const validEmail = /^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]$/;
+  const { login, error, isLoading } = useLogin();
 
-  function handleEmail(e) {
-    setEmail(e);
-    if (validEmail.test(email)) {
-      setForm(true);
-    }
+  async function handleSubmit(e) {
+    e.preventDefault();
+    await login(email, password);
+    setEmail("");
+    setPassword("");
   }
 
   return (
@@ -22,13 +26,13 @@ function Login() {
         <div>pro</div>
       </header>
       <h3>Je me connecte</h3>
-      <form action="">
+      <form onSubmit={handleSubmit}>
         <input
           type="email"
           placeholder="Email"
           value={email}
           required
-          onChange={(e) => handleEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="password"
@@ -42,12 +46,13 @@ function Login() {
           Se souvenir de moi
         </div>
         <button
-          type="button"
-          disabled={password && form}
-          className={password && form ? "submitButton" : "deadButton"}
+          type="submit"
+          disabled={isLoading}
+          className={password ? "submitButton" : "deadButton"}
         >
           Se connecter
         </button>
+        {error && <h4>{error.message}</h4>}
       </form>
       <Link to="/signup">
         Pas de compte ? <span>S&apos;inscrire</span>

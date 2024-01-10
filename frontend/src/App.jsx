@@ -12,14 +12,15 @@ import IntroLayout from "./layouts/IntroLayout";
 import Login from "./pages/intro/Login";
 import Signup from "./pages/intro/Signup";
 import Intro from "./pages/intro/Intro";
-import ParentsForm from "./pages/ParentsForm";
+import NotFound from "./pages/NotFound";
+import MainLayout from "./layouts/MainLayout";
+import MainPage from "./pages/main/MainPage";
 
 // hooks
 import useScreenSize from "./hooks/useScreenSize";
 
 // style
 import "./App.css";
-import NotFound from "./pages/NotFound";
 
 function App() {
   const screenSize = useScreenSize();
@@ -39,7 +40,11 @@ function App() {
           <Route path="/login" element={<Login />} />
         </Route>
       )}
-      <Route path="/parents" element={<ParentsForm />} />
+
+      <Route path="/home" element={<MainLayout />}>
+        <Route index element={<MainPage />} />
+      </Route>
+
       <Route path="*" element={<NotFound />} />
     </>
   );
