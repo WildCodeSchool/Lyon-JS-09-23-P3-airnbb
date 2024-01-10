@@ -33,7 +33,6 @@ function Signup() {
       phone,
       password: secondPassword,
     };
-    console.info(newParent);
     await createParent(newParent);
     setLastname("");
     setFirstname("");

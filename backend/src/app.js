@@ -14,7 +14,7 @@ app.use("/", router);
 
 module.exports = app;
 
-/* ************************************************************************* */
+/* ************************************************************************ */
 
 // CORS Handling: Why is the current code commented out and do I need to define specific allowed origins for my project?
 
