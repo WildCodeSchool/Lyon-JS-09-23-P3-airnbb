@@ -11,6 +11,7 @@ const parentPostSchema = new mongoose.Schema({
   password: { type: String, require: true },
 });
 
+// extends parentPostSchema
 parentPostSchema.statics.signup = async function sign({
   firstname,
   lastname,
@@ -26,11 +27,12 @@ parentPostSchema.statics.signup = async function sign({
   if (!validator.isEmail(email)) {
     throw Error("Email n'est pas valide");
   }
-
+  // check if : 8 char + 1 lowercase + 1 uppercase + 1 special char
   if (!validator.isStrongPassword(password)) {
     throw Error("Password n'est pas valide");
   }
 
+  // check if email is in db
   const exist = await this.findOne({ email });
 
   if (exist) {
@@ -48,11 +50,11 @@ parentPostSchema.statics.signup = async function sign({
     email,
     password: hash,
   });
-  console.info(parent);
+
   return parent;
 };
 
-// statis login method
+// extends parentPostSchema
 parentPostSchema.statics.login = async function log(email, password) {
   if (!email || !password) {
     throw Error("All fields must be filled");
@@ -61,13 +63,14 @@ parentPostSchema.statics.login = async function log(email, password) {
   const parent = await this.findOne({ email });
 
   if (!parent) {
-    throw Error("Incorrect email");
+    throw Error("échec d'authentification");
   }
 
+  // compare input password with stored password using stored salt
   const match = await bcrypt.compare(password, parent.password);
 
   if (!match) {
-    throw Error("Incorrect password");
+    throw Error("échec d'authentification");
   }
 
   return parent;
