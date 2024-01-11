@@ -12,9 +12,11 @@ function MainPage() {
   console.info(nurseries);
   return (
     <main className="mainPage">
-      {nurseries.map((nursery) => (
-        <Nursery nursery={nursery} />
-      ))}
+      {nurseries &&
+        nurseries.map((nursery) => {
+          const { _id: id } = nursery;
+          return <Nursery key={id} nursery={nursery} />;
+        })}
     </main>
   );
 }

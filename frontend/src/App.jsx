@@ -47,12 +47,11 @@ function App() {
       )}
 
       <Route path="/home" element={<MainLayout />}>
-        <Route index element={<MainPage />} />
+        <Route index element={<MainPage />} loader={loaderNursery} />
         <Route path="search" element={<Search />} />
         <Route path="account" element={<Account />} />
         <Route path="notification" element={<Notification />} />
         <Route path="chat" element={<Chat />} />
-        <Route index element={<MainPage />} loader={loaderNursery} />
       </Route>
 
       <Route path="/child" element={<ChildForm />} />
