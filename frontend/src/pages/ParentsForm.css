@@ -1,4 +1,4 @@
-.createChild {
+.createParents {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,23 +8,23 @@
   background-color: #fefefe;
 }
 
-.createChild input {
+.createParents input {
   display: flex;
   border: 1px solid #fefefe;
   background-color: #f2f2f2;
-  color: #8c8c8c;
+  color: #a6a6a6;
   padding: 0.75rem;
   margin: 0.75em 0;
   border-radius: 5px;
   width: 100%;
 }
 
-.createChild input:focus {
+.createParents input:focus {
   outline: 1px solid #020202;
   color: #020202;
 }
 
-.createChild button {
+.createParents button {
   cursor: pointer;
   width: 100%;
   background-color: #882aff;
@@ -39,66 +39,25 @@
   transition: all 0.2s;
 }
 
-.createChild .submitButton {
+.createParents .submitButton {
   cursor: pointer;
   opacity: 1;
 }
 
-.createChild .deadButton {
+.createParents .deadButton {
   pointer-events: none;
 }
 
-.createChild .submitButton:hover {
+.createParents .submitButton:hover {
   transform: scale(1.0125);
 }
 
-.createChild h3 {
+.createParents h3 {
   color: #020202;
   font-size: 1.5rem;
   font-weight: 900;
 }
 
-.createChild form {
+.createParents form {
   width: 90%;
-}
-
-.check {
-  text-align: left;
-  margin: 0.5em 0;
-}
-
-.isWalking {
-  fill: #50d3c4;
-}
-
-.isNotWalking {
-  fill: #fefefe;
-  filter: drop-shadow(0 1px 1px hsl(215, 41%, 21%, 0.35));
-}
-
-.isDisabled {
-  fill: #50d3c4;
-}
-
-.isNotDisabled {
-  fill: #fefefe;
-  filter: drop-shadow(0 1px 1px hsl(215, 41%, 21%, 0.35));
-}
-
-.isAllergic {
-  fill: #50d3c4;
-}
-
-.isNotAllergic {
-  fill: #fefefe;
-  filter: drop-shadow(0 1px 1px hsl(215, 41%, 21%, 0.35));
-}
-
-svg {
-  vertical-align: middle;
-  margin-right: 0.75em;
-}
-
-.headerChildForm {
-  display: flex;
 }

@@ -1,5 +1,3 @@
-require("dotenv").config();
-const jwt = require("jsonwebtoken");
 const Parent = require("../models/ParentSchemaModel");
 
 /* get all parent  */
@@ -48,41 +46,11 @@ const getParentById = async (req, res) => {
 /* Create new Parent  */
 
 const createParent = async (req, res) => {
-  const { firstname, lastname, address, phone, email, password } = req.body;
-
   try {
-    const parent = await Parent.signup({
-      firstname,
-      lastname,
-      address,
-      phone,
-      email,
-      password,
-    });
-    res.status(200).json(parent);
+    const newParent = await Parent.create(req.body);
+    res.status(201).json(newParent);
   } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-};
-
-/* Login Parent */
-
-const createToken = (_id) => {
-  return jwt.sign({ id: _id }, process.env.SECRET_KEY, { expiresIn: "3d" });
-};
-
-const loginParent = async (req, res) => {
-  const { email, password } = req.body;
-
-  try {
-    const parent = await Parent.login(email, password);
-
-    // create a token
-    const token = createToken(parent.id);
-
-    res.status(200).json({ email, token });
-  } catch (error) {
-    res.status(400).json({ error: error.message });
+    res.status(400).json({ error: "Bad Request" });
   }
 };
 
@@ -104,7 +72,6 @@ module.exports = {
   getAllParent,
   getParentById,
   createParent,
-  loginParent,
   updateParent,
   deleteParent,
 };

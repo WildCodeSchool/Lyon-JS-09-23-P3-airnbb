@@ -8,7 +8,6 @@ const {
   getAllParent,
   getParentById,
   createParent,
-  loginParent,
   updateParent,
   deleteParent,
 } = require("./controllers/parentController");
@@ -19,8 +18,6 @@ router.get("/parent/:id", getParentById);
 
 // Route to Create New Parent
 router.post("/parent/", createParent);
-// Route to Log in Parent
-router.post("/parent/login", loginParent);
 // Route to update a parent (with patch)
 router.patch("/parent/:id", updateParent);
 

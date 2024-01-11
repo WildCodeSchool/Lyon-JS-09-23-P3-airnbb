@@ -1,51 +1,27 @@
-// react
 import { useState } from "react";
-
-// react-router
 import { Link } from "react-router-dom";
 
-// function
-import { handlePasswords } from "../../helpers";
-
-// hooks
-import useCreateParent from "../../hooks/useCreateParent";
-
 function Signup() {
-  const [lastname, setLastname] = useState("");
-  const [firstname, setFirstname] = useState("");
   const [email, setEmail] = useState("");
-  const [address, setAddress] = useState("");
-  const [phone, setPhone] = useState("");
   const [firstPassword, setFirstPassword] = useState("");
   const [secondPassword, setSecondPassword] = useState("");
   const [form, setForm] = useState(false);
   const [message, setMessage] = useState("");
 
-  const { createParent } = useCreateParent();
+  // regex match email syntax
+  const validEmail = /^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]$/;
 
-  async function handleParent(e) {
-    e.preventDefault();
-    const newParent = {
-      lastname,
-      firstname,
-      email,
-      address,
-      phone,
-      password: secondPassword,
-    };
-    await createParent(newParent);
-    setLastname("");
-    setFirstname("");
-    setEmail("");
-    setAddress("");
-    setPhone("");
-    setFirstPassword("");
-    setSecondPassword("");
+  function handleEmail(e) {
+    setEmail(e);
+    if (validEmail.test(email)) {
+      setForm(true);
+    }
   }
+
   // regex match password syntax
   const validPassword = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/; // (?= ) pour regarder en avant si présence du motif et .* veut dire n'importe où dans la chaîne
 
-  function checkPasswordFormat(e) {
+  function handlePassword(e) {
     const newPassword = e.target.value; // déclarer nouvelle variable car mise à jour d'état asynchrone dans react
     setFirstPassword(newPassword);
 
@@ -69,45 +45,31 @@ function Signup() {
     }
   }
 
+  function handlePasswords(passwordOne, passwordTwo) {
+    if (
+      (passwordOne !== "" || passwordTwo !== "") &&
+      passwordOne === passwordTwo
+    ) {
+      return true;
+    }
+    return false;
+  }
+
   return (
     <main className="connect">
       <h3>Je m&apos;inscris</h3>
-      <form action="" onSubmit={handleParent}>
-        <input
-          type="text"
-          placeholder="Prénom"
-          value={firstname}
-          onChange={(e) => setFirstname(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Nom"
-          value={lastname}
-          onChange={(e) => setLastname(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Adresse"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Téléphone"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-        />
+      <form action="">
         <input
           type="email"
           placeholder="Email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => handleEmail(e.target.value)}
         />
         <input
           type="password"
           placeholder="Mot de passe"
           value={firstPassword}
-          onChange={checkPasswordFormat}
+          onChange={handlePassword}
         />
         <br />
         <small>{message}</small>
@@ -127,7 +89,7 @@ function Signup() {
           J&apos;accepte les conditions
         </div>
         <button
-          type="submit"
+          type="button"
           className={
             form && handlePasswords(firstPassword, secondPassword)
               ? "submitButton"
