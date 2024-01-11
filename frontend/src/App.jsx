@@ -16,6 +16,10 @@ import NotFound from "./pages/NotFound";
 import MainLayout from "./layouts/MainLayout";
 import MainPage from "./pages/main/MainPage";
 import ChildForm from "./pages/childForm/ChildForm";
+import Search from "./pages/main/Search";
+import Account from "./pages/main/Account";
+import Notification from "./pages/main/Notification";
+import Chat from "./pages/main/Chat";
 
 // hooks
 import useScreenSize from "./hooks/useScreenSize";
@@ -30,21 +34,26 @@ function App() {
     <>
       {screenSize.width > 705 ? (
         <Route path="/" element={<IntroLayout />}>
-          <Route path="/signup" element={<Signup />} />
+          <Route path="signup" element={<Signup />} />
           <Route index element={<Login />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="login" element={<Login />} />
         </Route>
       ) : (
         <Route path="/" element={<IntroLayout />}>
           <Route index element={<Intro />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="signup" element={<Signup />} />
+          <Route path="login" element={<Login />} />
         </Route>
       )}
 
       <Route path="/home" element={<MainLayout />}>
         <Route index element={<MainPage />} />
+        <Route path="search" element={<Search />} />
+        <Route path="account" element={<Account />} />
+        <Route path="notification" element={<Notification />} />
+        <Route path="chat" element={<Chat />} />
       </Route>
+
       <Route path="/child" element={<ChildForm />} />
       <Route path="*" element={<NotFound />} />
     </>
