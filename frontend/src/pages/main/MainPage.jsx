@@ -8,13 +8,14 @@ export async function loader() {
 }
 
 function MainPage() {
-  const data = useLoaderData();
-  console.info(data);
+  const nurseries = useLoaderData();
+  console.info(nurseries);
   return (
-    <>
-      <h1>MainPage</h1>
-      <Nursery />
-    </>
+    <main className="mainPage">
+      {nurseries.map((nursery) => (
+        <Nursery nursery={nursery} />
+      ))}
+    </main>
   );
 }
 
