@@ -1,13 +1,21 @@
-function MainPage() {
-  const item = localStorage.getItem("user");
-  const user = JSON.parse(item);
-  console.info(user);
+import { useLoaderData } from "react-router-dom";
+import Nursery from "../../components/Nursery";
 
+export async function loader() {
+  const response = await fetch("http://localhost:3310/nursery");
+  const json = await response.json();
+  return json;
+}
+
+function MainPage() {
+  const nurseries = useLoaderData();
+  console.info(nurseries);
   return (
-    <>
-      <h1>MainPage</h1>
-      <i>{user.email}</i>
-    </>
+    <main className="mainPage">
+      {nurseries.map((nursery) => (
+        <Nursery nursery={nursery} />
+      ))}
+    </main>
   );
 }
 

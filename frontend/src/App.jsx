@@ -14,7 +14,7 @@ import Signup from "./pages/intro/Signup";
 import Intro from "./pages/intro/Intro";
 import NotFound from "./pages/NotFound";
 import MainLayout from "./layouts/MainLayout";
-import MainPage from "./pages/main/MainPage";
+import MainPage, { loader as loaderNursery } from "./pages/main/MainPage";
 import ChildForm from "./pages/childForm/ChildForm";
 
 // hooks
@@ -43,7 +43,7 @@ function App() {
       )}
 
       <Route path="/home" element={<MainLayout />}>
-        <Route index element={<MainPage />} />
+        <Route index element={<MainPage />} loader={loaderNursery} />
       </Route>
       <Route path="/child" element={<ChildForm />} />
       <Route path="*" element={<NotFound />} />
