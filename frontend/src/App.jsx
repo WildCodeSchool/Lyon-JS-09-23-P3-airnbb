@@ -14,7 +14,7 @@ import Signup from "./pages/intro/Signup";
 import Intro from "./pages/intro/Intro";
 import NotFound from "./pages/NotFound";
 import MainLayout from "./layouts/MainLayout";
-import MainPage from "./pages/main/MainPage";
+import MainPage, { loader as loaderNursery } from "./pages/main/MainPage";
 import ChildForm from "./pages/childForm/ChildForm";
 import Search from "./pages/main/Search";
 import Account from "./pages/main/Account";
@@ -52,6 +52,7 @@ function App() {
         <Route path="account" element={<Account />} />
         <Route path="notification" element={<Notification />} />
         <Route path="chat" element={<Chat />} />
+        <Route index element={<MainPage />} loader={loaderNursery} />
       </Route>
 
       <Route path="/child" element={<ChildForm />} />
