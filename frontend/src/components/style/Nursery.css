@@ -25,6 +25,7 @@
   background-image: url("../../assets/nursery.jpeg");
   border-radius: 10px 10px 0 0;
   background-size: cover;
+  background-position: center;
 }
 .nurseryCard .top .favorite {
   cursor: pointer;
