@@ -1,0 +1,49 @@
+.parentAccount {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #fefefe;
+}
+
+header > h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #020202;
+}
+
+.textOptions {
+  font-size: 1.5rem;
+  color: #020202;
+}
+
+.option {
+  display: flex;
+  padding: 1em;
+}
+
+.optionLogOut {
+  display: flex;
+  padding: 1em;
+  margin-bottom: 7rem;
+}
+
+.accountHeader {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+.optionContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.parentAccount > svg {
+  color: #882bff;
+  filter: drop-shadow(0 2px 4px hsla(0, 0%, 0%, 0.1));
+}

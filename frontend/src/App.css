@@ -6,6 +6,7 @@
   text-align: center;
   font-family: "Nunito", sans-serif;
   position: relative;
+  overflow: hidden;
   background: linear-gradient(
     145deg,
     rgba(71, 79, 255, 0.9) 0%,
@@ -18,6 +19,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+/* input */
+input::placeholder {
+  color: white;
 }
 
 /* Not Found page */
@@ -51,27 +57,12 @@
   padding-top: 80px;
 }
 
-.nurseryCard {
-  display: flex;
-  flex-direction: column;
-  margin-inline: auto;
-  height: 290px;
-  width: 340px;
-  border: 1px solid red;
-}
-
-.nurseryCard div {
-  border: 1px solid green;
-  display: inherit;
-  flex: 1;
-  align-items: flex-end;
-  justify-content: space-between;
-}
-
-.nurseryCard div:first-child {
-  border-radius: 10px 10px 0 0;
-}
-
-.nurseryCard div:last-child {
-  border-radius: 0 0 10px 10px;
+/* Main page */
+.mainPage {
+  height: 100vh;
+  overflow-y: scroll;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
+  gap: 2rem;
+  padding-inline: 2rem;
 }

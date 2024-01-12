@@ -1,0 +1,102 @@
+.nurseryCard {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 290px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05));
+}
+.nurseryCard .top,
+.nurseryCard .bottom {
+  display: inherit;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex: 1;
+  padding: 1rem;
+}
+.nurseryCard .top {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 1rem;
+  color: white;
+  background: no-repeat;
+  background-image: url("../../assets/nursery.jpeg");
+  border-radius: 10px 10px 0 0;
+  background-size: cover;
+  background-position: center;
+}
+.nurseryCard .top .favorite {
+  cursor: pointer;
+  width: max-content;
+  text-align: end;
+  background-color: transparent;
+  border: none;
+}
+.nurseryCard .top .favorite .isNotFavorite {
+  fill: white;
+}
+.nurseryCard .top .favorite .isFavorite {
+  fill: red;
+}
+.nurseryCard .top .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.nurseryCard .top .grade {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.25em 0.65em;
+  font-size: 0.75rem;
+  background-color: #f53f62;
+  border-radius: 15px;
+}
+.nurseryCard .top .grade::after {
+  content: url("/src/assets/star.svg");
+  width: 13px;
+  height: 15px;
+  margin-left: 5px;
+  color: #fff1dc;
+}
+.nurseryCard .bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: white;
+  border-radius: 0 0 10px 10px;
+}
+.nurseryCard .bottom .nurseryInfo {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  text-align: left;
+}
+.nurseryCard .bottom .nurseryInfo p {
+  margin-bottom: 1em;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #999;
+}
+.nurseryCard .bottom .disponibilities {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  width: 100%;
+}
+.nurseryCard .bottom .disponibilities > div {
+  color: white;
+  background-color: #32c766;
+  border-radius: 5px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+.nurseryCard .bottom .disponibilities .tuesday,
+.nurseryCard .bottom .disponibilities .saturday {
+  background-color: #d6d6d6;
+}

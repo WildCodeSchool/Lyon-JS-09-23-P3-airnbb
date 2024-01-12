@@ -12,14 +12,20 @@ import IntroLayout from "./layouts/IntroLayout";
 import Login from "./pages/intro/Login";
 import Signup from "./pages/intro/Signup";
 import Intro from "./pages/intro/Intro";
-import ParentsForm from "./pages/ParentsForm";
+import NotFound from "./pages/NotFound";
+import MainLayout from "./layouts/MainLayout";
+import MainPage, { loader as loaderNursery } from "./pages/main/MainPage";
+import ChildForm from "./pages/childForm/ChildForm";
+import Search from "./pages/main/Search";
+import Account, { loader as loaderAccount } from "./pages/main/Account";
+import Notification from "./pages/main/Notification";
+import Chat from "./pages/main/Chat";
 
 // hooks
 import useScreenSize from "./hooks/useScreenSize";
 
 // style
 import "./App.css";
-import NotFound from "./pages/NotFound";
 
 function App() {
   const screenSize = useScreenSize();
@@ -28,18 +34,27 @@ function App() {
     <>
       {screenSize.width > 705 ? (
         <Route path="/" element={<IntroLayout />}>
-          <Route path="/signup" element={<Signup />} />
+          <Route path="signup" element={<Signup />} />
           <Route index element={<Login />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="login" element={<Login />} />
         </Route>
       ) : (
         <Route path="/" element={<IntroLayout />}>
           <Route index element={<Intro />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="signup" element={<Signup />} />
+          <Route path="login" element={<Login />} />
         </Route>
       )}
-      <Route path="/parents" element={<ParentsForm />} />
+
+      <Route path="/home" element={<MainLayout />}>
+        <Route index element={<MainPage />} loader={loaderNursery} />
+        <Route path="search" element={<Search />} />
+        <Route path="account" element={<Account />} loader={loaderAccount} />
+        <Route path="notification" element={<Notification />} />
+        <Route path="chat" element={<Chat />} />
+      </Route>
+
+      <Route path="/child" element={<ChildForm />} />
       <Route path="*" element={<NotFound />} />
     </>
   );
