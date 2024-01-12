@@ -43,7 +43,7 @@ header > h3 {
   height: 100%;
 }
 
-/* .parentAccount svg {
-  fill: #882bff;
+.parentAccount > svg {
+  color: #882bff;
   filter: drop-shadow(0 2px 4px hsla(0, 0%, 0%, 0.1));
-} */
+}
