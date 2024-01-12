@@ -21,6 +21,11 @@
   box-sizing: border-box;
 }
 
+/* input */
+input::placeholder {
+  color: white;
+}
+
 /* Not Found page */
 .notFoundContainer {
   display: flex;

@@ -10,7 +10,7 @@ import {
 
 function Navbar() {
   return (
-    <footer>
+    <footer className="navbarFooter">
       <NavLink
         to="."
         className={({ isActive }) => (isActive ? "active" : null)}
