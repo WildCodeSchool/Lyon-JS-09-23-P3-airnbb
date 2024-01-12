@@ -84,16 +84,15 @@
 }
 
 .connect header div {
-  border: 1px solid white;
+  border: 2px solid white;
   border-radius: 15px;
   width: max-content;
   padding: 0.125rem 1.125rem;
 }
 
 .connect input {
-  border: 1px solid #ffffff;
+  border: 2px solid #ffffff;
   background-color: transparent;
-  color: #ffffff50;
   padding: 1rem;
   margin: 0.75em 0;
   border-radius: 5px;
