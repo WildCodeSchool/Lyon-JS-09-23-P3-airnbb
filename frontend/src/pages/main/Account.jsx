@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import "./Account.css";
 
 // library
@@ -8,6 +8,9 @@ import {
   UsersIcon,
   CalendarDaysIcon,
 } from "@heroicons/react/24/solid";
+
+import useLogout from "../../hooks/useLogout";
+import useParentContext from "../../hooks/useParentContext";
 
 export async function loader() {
   const response = await fetch(
@@ -19,12 +22,19 @@ export async function loader() {
 
 function Account() {
   const user = useLoaderData();
+  const { logout } = useLogout();
+  const { parentContext } = useParentContext();
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
   console.info(user);
   return (
     <div className="parentAccount">
       <header className="accountHeader">
         <h3>
-          {user.firstname} {user.lastname}
+          {parentContext.firstname} {parentContext.lastname}
         </h3>
       </header>
       <div className="optionContainer">
@@ -44,7 +54,9 @@ function Account() {
         </div>
         <div className="optionLogOut">
           <ArrowRightEndOnRectangleIcon width={40} />
-          <p className="textOptions">Me déconnecter</p>
+          <button type="button" onClick={handleLogout} className="buttonLogout">
+            Me déconnecter
+          </button>
         </div>
       </div>
     </div>
