@@ -4,10 +4,13 @@ import { useState } from "react";
 // react-router
 import { useNavigate } from "react-router-dom";
 
+import useParentContext from "./useParentContext";
+
 export default function useLogin() {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
   const navigate = useNavigate();
+  const { dispatch } = useParentContext();
 
   const login = async (email, password) => {
     setIsLoading(true);
@@ -28,6 +31,7 @@ export default function useLogin() {
     if (response.ok) {
       // save the user to local storage
       localStorage.setItem("user", JSON.stringify(json));
+      dispatch({ type: "LOGIN", payload: json });
       setIsLoading(false);
       navigate("/home");
     }
