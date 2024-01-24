@@ -19,6 +19,7 @@ export function ParentProvider({ children }) {
     parentContext: null,
   });
   const contextValue = useMemo(() => ({ ...state, dispatch }), [state]);
+  console.info("commentparentContext", state);
   return (
     <ParentAuthContext.Provider value={contextValue}>
       {children}
