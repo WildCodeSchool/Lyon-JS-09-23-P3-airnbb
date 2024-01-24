@@ -45,6 +45,10 @@ const getParentById = async (req, res) => {
   }
 };
 
+const createToken = (_id) => {
+  return jwt.sign({ id: _id }, process.env.SECRET_KEY, { expiresIn: "3d" });
+};
+
 /* Create new Parent  */
 
 const createParent = async (req, res) => {
@@ -59,17 +63,14 @@ const createParent = async (req, res) => {
       email,
       password,
     });
-    res.status(200).json(parent);
+    const token = createToken(parent.id);
+    res.status(200).json({ parent, token });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
 };
 
 /* Login Parent */
-
-const createToken = (_id) => {
-  return jwt.sign({ id: _id }, process.env.SECRET_KEY, { expiresIn: "3d" });
-};
 
 const loginParent = async (req, res) => {
   const { email, password } = req.body;
