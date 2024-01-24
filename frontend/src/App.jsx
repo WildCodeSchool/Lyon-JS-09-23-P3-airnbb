@@ -21,6 +21,7 @@ import Account, { loader as loaderAccount } from "./pages/main/Account";
 import Notification from "./pages/main/Notification";
 import Chat from "./pages/main/Chat";
 import NurseryLogin from "./pages/intro/NurseryLogin";
+import NurserySignup from "./pages/intro/NurserySignup";
 
 // hooks
 import useScreenSize from "./hooks/useScreenSize";
@@ -39,6 +40,7 @@ function App() {
           <Route index element={<Login />} />
           <Route path="login" element={<Login />} />
           <Route path="nurserylogin" element={<NurseryLogin />} />
+          <Route path="nurserysignup" element={<NurserySignup />} />
         </Route>
       ) : (
         <Route path="/" element={<IntroLayout />}>
@@ -46,6 +48,7 @@ function App() {
           <Route path="signup" element={<Signup />} />
           <Route path="login" element={<Login />} />
           <Route path="nurserylogin" element={<NurseryLogin />} />
+          <Route path="nurserysignup" element={<NurserySignup />} />
         </Route>
       )}
 
