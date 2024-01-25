@@ -1,4 +1,4 @@
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Account.css";
 
 // library
@@ -12,16 +12,7 @@ import {
 import useLogout from "../../hooks/useLogout";
 import useParentContext from "../../hooks/useParentContext";
 
-export async function loader() {
-  const response = await fetch(
-    "http://localhost:3310/parent/65798b54f9784d836b35622e"
-  );
-  const json = await response.json();
-  return json;
-}
-
 function Account() {
-  const user = useLoaderData();
   const { logout } = useLogout();
   const { parentContext } = useParentContext();
   const navigate = useNavigate();
@@ -29,12 +20,11 @@ function Account() {
     logout();
     navigate("/login");
   };
-  console.info(user);
   return (
     <div className="parentAccount">
       <header className="accountHeader">
         <h3>
-          {parentContext.firstname} {parentContext.lastname}
+          {parentContext?.firstname} {parentContext?.lastname}
         </h3>
       </header>
       <div className="optionContainer">
