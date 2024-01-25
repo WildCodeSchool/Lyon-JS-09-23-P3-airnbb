@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const Parent = require("../models/ParentSchemaModel");
 
-async function RequireAuth(req, res, next) {
+async function requireAuth(req, res, next) {
   // verify authentication
 
   const { authorization } = req.headers;
@@ -19,8 +19,9 @@ async function RequireAuth(req, res, next) {
     next();
   } catch (error) {
     console.info(error);
-    res.status(401).json({ error: "Request is not authorized" });
+    return res.status(401).json({ error: "Request is not authorized" });
   }
+  return null;
 }
 
-module.exports = RequireAuth;
+module.exports = requireAuth;

@@ -46,7 +46,7 @@ const getParentById = async (req, res) => {
 };
 
 const createToken = (_id) => {
-  return jwt.sign({ id: _id }, process.env.SECRET_KEY, { expiresIn: "3d" });
+  return jwt.sign({ _id }, process.env.SECRET_KEY, { expiresIn: "3d" });
 };
 
 /* Create new Parent  */

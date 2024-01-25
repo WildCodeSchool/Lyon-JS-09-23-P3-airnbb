@@ -3,6 +3,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   RouterProvider,
+  Navigate,
 } from "react-router-dom";
 
 // layouts
@@ -14,7 +15,7 @@ import Signup from "./pages/intro/Signup";
 import Intro from "./pages/intro/Intro";
 import NotFound from "./pages/NotFound";
 import MainLayout from "./layouts/MainLayout";
-import MainPage, { loader as loaderNursery } from "./pages/main/MainPage";
+import MainPage from "./pages/main/MainPage";
 import ChildForm from "./pages/childForm/ChildForm";
 import Search from "./pages/main/Search";
 import Account from "./pages/main/Account";
@@ -25,43 +26,92 @@ import NurserySignup from "./pages/intro/NurserySignup";
 
 // hooks
 import useScreenSize from "./hooks/useScreenSize";
+import useParentContext from "./hooks/useParentContext";
 
 // style
 import "./App.css";
 
 function App() {
   const screenSize = useScreenSize();
-
+  const { parentContext } = useParentContext();
   const routes = (
     <>
       {screenSize.width > 705 ? (
-        <Route path="/" element={<IntroLayout />}>
-          <Route path="signup" element={<Signup />} />
-          <Route index element={<Login />} />
-          <Route path="login" element={<Login />} />
+        <Route
+          path="/"
+          element={parentContext ? <Navigate to="/home" /> : <IntroLayout />}
+        >
+          <Route
+            path="signup"
+            element={parentContext ? <Navigate to="/home" /> : <Signup />}
+          />
+          <Route
+            index
+            element={parentContext ? <Navigate to="/home" /> : <Login />}
+          />
+          <Route
+            path="login"
+            element={parentContext ? <Navigate to="/home" /> : <Login />}
+          />
           <Route path="nurserylogin" element={<NurseryLogin />} />
           <Route path="nurserysignup" element={<NurserySignup />} />
         </Route>
       ) : (
-        <Route path="/" element={<IntroLayout />}>
-          <Route index element={<Intro />} />
-          <Route path="signup" element={<Signup />} />
-          <Route path="login" element={<Login />} />
+        <Route
+          path="/"
+          element={parentContext ? <Navigate to="/home" /> : <IntroLayout />}
+        >
+          <Route
+            index
+            element={parentContext ? <Navigate to="/home" /> : <Intro />}
+          />
+          <Route
+            path="signup"
+            element={parentContext ? <Navigate to="/home" /> : <Signup />}
+          />
+          <Route
+            path="login"
+            element={parentContext ? <Navigate to="/home" /> : <Login />}
+          />
           <Route path="nurserylogin" element={<NurseryLogin />} />
           <Route path="nurserysignup" element={<NurserySignup />} />
         </Route>
       )}
 
-      <Route path="/home" element={<MainLayout />}>
-        <Route index element={<MainPage />} loader={loaderNursery} />
-        <Route path="search" element={<Search />} />
-        <Route path="account" element={<Account />} />
-        <Route path="notification" element={<Notification />} />
-        <Route path="chat" element={<Chat />} />
+      <Route
+        path="/home"
+        element={!parentContext ? <Navigate to="/login" /> : <MainLayout />}
+      >
+        <Route
+          index
+          element={!parentContext ? <Navigate to="/login" /> : <MainPage />}
+        />
+        <Route
+          path="search"
+          element={!parentContext ? <Navigate to="/login" /> : <Search />}
+        />
+        <Route
+          path="account"
+          element={!parentContext ? <Navigate to="/login" /> : <Account />}
+        />
+        <Route
+          path="notification"
+          element={!parentContext ? <Navigate to="/login" /> : <Notification />}
+        />
+        <Route
+          path="chat"
+          element={!parentContext ? <Navigate to="/login" /> : <Chat />}
+        />
       </Route>
 
-      <Route path="/child" element={<ChildForm />} />
-      <Route path="*" element={<NotFound />} />
+      <Route
+        path="/child"
+        element={!parentContext ? <Navigate to="/login" /> : <ChildForm />}
+      />
+      <Route
+        path="*"
+        element={!parentContext ? <Navigate to="/login" /> : <NotFound />}
+      />
     </>
   );
 
