@@ -1,22 +1,16 @@
-// react
 import { useState } from "react";
-
-// react-router
 import { useNavigate } from "react-router-dom";
 
-import useParentContext from "./useParentContext";
-
-export default function useLogin() {
+export default function useNurseryLogin() {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
   const navigate = useNavigate();
-  const { dispatch } = useParentContext();
 
-  const login = async (email, password) => {
+  const nurseryLogin = async (email, password) => {
     setIsLoading(true);
     setError(null);
 
-    const response = await fetch("http://localhost:3310/parent/login", {
+    const response = await fetch("http://localhost:3310/nursery/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
@@ -28,14 +22,12 @@ export default function useLogin() {
       setIsLoading(false);
       setError(json.error);
     }
+
     if (response.ok) {
-      // save the user to local storage
-      localStorage.setItem("user", JSON.stringify(json));
-      dispatch({ type: "LOGIN", payload: json });
+      localStorage.setItem("pro", JSON.stringify(json));
       setIsLoading(false);
-      navigate("/home");
+      navigate("/home"); // à modifier
     }
   };
-
-  return { login, isLoading, error };
+  return { nurseryLogin, isLoading, error };
 }

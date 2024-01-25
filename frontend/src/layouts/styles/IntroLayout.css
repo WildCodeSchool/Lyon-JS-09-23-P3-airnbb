@@ -74,7 +74,7 @@
 .introLayout .connect h3 {
   font-size: 1.5rem;
   font-weight: 500;
-  padding: 5rem 0;
+  padding: 2.5rem 0;
 }
 
 .connect header {
@@ -83,11 +83,12 @@
   width: 90%;
 }
 
-.connect header div {
+.connect header button {
   border: 2px solid white;
   border-radius: 15px;
   width: max-content;
   padding: 0.125rem 1.125rem;
+  background: none;
 }
 
 .connect input {
@@ -128,7 +129,7 @@ input[type="checkbox"] {
   border: none;
   border-radius: 5px;
   padding: 0.75em;
-  margin: 1em 0 5em 0;
+  margin: 1em 0 2em 0;
   font-size: 1.025rem;
   font-weight: 700;
   transition: all 0.2s;
