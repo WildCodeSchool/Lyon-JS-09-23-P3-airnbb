@@ -17,7 +17,7 @@ import MainLayout from "./layouts/MainLayout";
 import MainPage, { loader as loaderNursery } from "./pages/main/MainPage";
 import ChildForm from "./pages/childForm/ChildForm";
 import Search from "./pages/main/Search";
-import Account, { loader as loaderAccount } from "./pages/main/Account";
+import Account from "./pages/main/Account";
 import Notification from "./pages/main/Notification";
 import Chat from "./pages/main/Chat";
 import NurseryLogin from "./pages/intro/NurseryLogin";
@@ -55,7 +55,7 @@ function App() {
       <Route path="/home" element={<MainLayout />}>
         <Route index element={<MainPage />} loader={loaderNursery} />
         <Route path="search" element={<Search />} />
-        <Route path="account" element={<Account />} loader={loaderAccount} />
+        <Route path="account" element={<Account />} />
         <Route path="notification" element={<Notification />} />
         <Route path="chat" element={<Chat />} />
       </Route>
