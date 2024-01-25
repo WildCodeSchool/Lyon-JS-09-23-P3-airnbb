@@ -1,4 +1,4 @@
-import { createContext, useReducer, useMemo } from "react";
+import { createContext, useReducer, useMemo, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 export const ParentAuthContext = createContext();
@@ -18,8 +18,28 @@ export function ParentProvider({ children }) {
   const [state, dispatch] = useReducer(AuthReducer, {
     parentContext: null,
   });
+  const [loading, setLoading] = useState(true);
   const contextValue = useMemo(() => ({ ...state, dispatch }), [state]);
-  console.info("commentparentContext", state);
+  // checking if the parent is logged in or not
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const parentLoggedIn = JSON.parse(localStorage.getItem("user"));
+        if (parentLoggedIn) {
+          dispatch({ type: "LOGIN", payload: parentLoggedIn });
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return null;
+  }
+  console.info("comment parentContext", state);
   return (
     <ParentAuthContext.Provider value={contextValue}>
       {children}
