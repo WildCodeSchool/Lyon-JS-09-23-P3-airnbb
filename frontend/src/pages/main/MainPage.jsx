@@ -4,7 +4,6 @@ import Nursery from "../../components/Nursery";
 import useParentContext from "../../hooks/useParentContext";
 
 function MainPage() {
-  const nurseries = useLoaderData();
   const [nurseries, setNurseries] = useState(null);
   const navigate = useNavigate();
   const { parentContext } = useParentContext();
