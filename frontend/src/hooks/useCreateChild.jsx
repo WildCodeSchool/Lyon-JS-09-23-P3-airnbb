@@ -28,7 +28,6 @@ function useCreateChild() {
     if (!response.ok) {
       setIsLoading(false);
       setError(child.error);
-      console.error(child.error);
     }
 
     if (response.ok) {

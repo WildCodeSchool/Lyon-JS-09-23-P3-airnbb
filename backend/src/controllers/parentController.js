@@ -80,8 +80,8 @@ const loginParent = async (req, res) => {
 
     // create a token
     const token = createToken(parent.id);
-    const { firstname, lastname } = parent;
-    res.status(200).json({ firstname, lastname, token });
+    const { firstname, lastname, _id } = parent;
+    res.status(200).json({ firstname, lastname, _id, token });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

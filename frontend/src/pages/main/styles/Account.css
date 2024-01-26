@@ -54,3 +54,19 @@ header > h3 {
   border: none;
   background: none;
 }
+
+button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin: 1em 0;
+  font-size: 1.125rem;
+  background-color: transparent;
+  border: none;
+}
+
+svg {
+  margin-right: 1em;
+  fill: #882bff;
+  filter: drop-shadow(0 2px 4px hsla(0, 0%, 0%, 0.1));
+}

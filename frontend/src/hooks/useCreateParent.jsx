@@ -27,7 +27,6 @@ function useCreateParent() {
       setIsLoading(false);
       setError(null);
       navigate("/home");
-      console.info("New parent added", json);
     }
   };
   return { createParent, isLoading, error };
