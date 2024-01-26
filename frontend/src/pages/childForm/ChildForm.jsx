@@ -53,7 +53,6 @@ function ChildForm() {
     setDisabled(false);
     setAllergy(false);
   }
-  // console.info(parentId);
   return (
     <main className="createChild">
       <div className="headerChildForm">

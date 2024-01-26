@@ -18,7 +18,6 @@ async function requireAuth(req, res, next) {
     req.parentVerified = await Parent.findOne({ _id }).select("_id");
     next();
   } catch (error) {
-    console.info(error);
     return res.status(401).json({ error: "Request is not authorized" });
   }
   return null;

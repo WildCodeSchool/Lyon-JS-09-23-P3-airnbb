@@ -34,7 +34,6 @@ function useCreateChild() {
     if (response.ok) {
       setIsLoading(false);
       setError(null);
-      console.info("New child added", child);
     }
   };
   return { createChild, isLoading, error };
