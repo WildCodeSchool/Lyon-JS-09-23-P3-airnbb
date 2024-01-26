@@ -4,9 +4,11 @@ import { CheckCircleIcon, ChevronLeftIcon } from "@heroicons/react/24/solid";
 import logoChild from "../../assets/childForm.svg";
 import "./ChildForm.css";
 import useCreateChild from "../../hooks/useCreateChild";
+import useParentContext from "../../hooks/useParentContext";
 
 function ChildForm() {
-  const [parentId, setParentId] = useState("65798b54f9784d836b35622e");
+  const { parentContext } = useParentContext();
+  const [parentId, setParentId] = useState(parentContext);
   const [lastname, setLastname] = useState("");
   const [firstname, setFirstname] = useState("");
   const [birthday, setBirthday] = useState("");
@@ -15,14 +17,6 @@ function ChildForm() {
   const [allergy, setAllergy] = useState(false);
 
   const navigate = useNavigate();
-
-  const navigateToPrevious = () => {
-    navigate("/");
-  };
-
-  const handleClickChevron = () => {
-    navigateToPrevious();
-  };
 
   const handleClickWalking = () => {
     setWalking(!walking);
@@ -50,7 +44,7 @@ function ChildForm() {
       allergy,
     };
     await createChild(newChild);
-    setParentId("65798b54f9784d836b35622e");
+    setParentId(parentContext);
     setLastname("");
     setFirstname("");
     setBirthday("");
@@ -58,14 +52,13 @@ function ChildForm() {
     setDisabled(false);
     setAllergy(false);
   }
-
   return (
     <main className="createChild">
       <div className="headerChildForm">
         <ChevronLeftIcon
           width={30}
           className="leftChevron"
-          onClick={handleClickChevron}
+          onClick={() => navigate("/")}
         />
         <h3>Ajouter un enfant</h3>
       </div>
