@@ -2,8 +2,9 @@ const Child = require("../models/ChildSchemaModel");
 
 /* Get all children */
 const getAllChildren = async (req, res) => {
+  const parentVerifiedId = req.parentVerified.id;
   try {
-    const documents = await Child.find().exec();
+    const documents = await Child.find({ parent_id: parentVerifiedId }).exec();
     res.status(200).json(documents);
   } catch (error) {
     console.error("Error fetching data:", error);
@@ -45,15 +46,9 @@ const updateChild = async (req, res) => {
 
 /* Create new child */
 const createChild = async (req, res) => {
-  const {
-    parent_id: parentId,
-    firstname,
-    lastname,
-    birthday,
-    walking,
-    disabled,
-    allergy,
-  } = req.body;
+  const parentId = req.parentVerified.id;
+  const { firstname, lastname, birthday, walking, disabled, allergy } =
+    req.body;
 
   try {
     const child = await Child.create({
