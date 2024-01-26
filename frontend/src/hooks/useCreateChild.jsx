@@ -27,7 +27,7 @@ function useCreateChild() {
 
     if (!response.ok) {
       setIsLoading(false);
-      setError(json.error);
+      setError(child.error);
     }
 
     if (response.ok) {
