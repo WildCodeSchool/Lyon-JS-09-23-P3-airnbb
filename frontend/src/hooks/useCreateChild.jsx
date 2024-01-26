@@ -1,11 +1,16 @@
+// react
 import { useState } from "react";
+
+// context
 import useParentContext from "./useParentContext";
+import useChildContext from "./useChildContext";
 
 function useCreateChild() {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
 
   const { parentContext } = useParentContext();
+  const { dispatch } = useChildContext();
 
   const createChild = async (newChild) => {
     if (!parentContext || !parentContext.token) {
@@ -33,6 +38,7 @@ function useCreateChild() {
     if (response.ok) {
       setIsLoading(false);
       setError(null);
+      dispatch({ type: "CREATE_CHILDREN", payload: child });
     }
   };
   return { createChild, isLoading, error };

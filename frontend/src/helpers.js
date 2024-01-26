@@ -17,3 +17,19 @@ export function handleEmail(email) {
   }
   return false;
 }
+
+// reload child list
+export const childrenReducer = (state, action) => {
+  switch (action.type) {
+    case "SET_CHILDREN":
+      return {
+        children: action.payload,
+      };
+    case "CREATE_CHILDREN":
+      return {
+        children: [action.payload, ...state.children],
+      };
+    default:
+      return state;
+  }
+};

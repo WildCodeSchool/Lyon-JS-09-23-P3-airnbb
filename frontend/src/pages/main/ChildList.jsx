@@ -2,36 +2,43 @@
 import { PropTypes } from "prop-types";
 
 // react
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // library
 import { ChevronLeftIcon, UserPlusIcon } from "@heroicons/react/24/solid";
 
+// pages & components
+import ChildForm from "./ChildForm";
+import ChildCard from "../../components/ChildCard";
+
+// hooks
+import useChildContext from "../../hooks/useChildContext";
+
 // style
 import "./styles/ChildList.css";
-import ChildForm from "./ChildForm";
 
 function ChildList({
   sectionChildrenHidden,
   setSectionChildrenHidden,
-  parentId,
+  parentContext,
 }) {
-  /* const { children, dispatch } = useChildContext(); */
+  const { children, dispatch } = useChildContext();
   const [addChildSectionHidden, setAddChildSectionHidden] = useState(true);
 
-  /* useEffect(() => {
+  useEffect(() => {
     const fetchChild = async () => {
-      const response = await fetch("http://localhost:3310/child");
-      const json = await response.json();
-      const userChild = await json.filter(
-        (child) => child.parent_id === parentId
-      );
+      const response = await fetch("http://localhost:3310/child", {
+        headers: {
+          Authorization: `Bearer ${parentContext.token}`,
+        },
+      });
+      const userChildren = await response.json();
       if (response.ok) {
-        dispatch({ type: "SET_CHILDREN", payload: userChild });
+        dispatch({ type: "SET_CHILDREN", payload: userChildren });
       }
     };
     fetchChild();
-  }, []); */
+  }, [dispatch]);
 
   const handleSection = () => {
     setSectionChildrenHidden(!sectionChildrenHidden);
@@ -61,14 +68,16 @@ function ChildList({
             <UserPlusIcon width={40} />
           </button>
         </div>
-
-        {/*  {children &&
-          children.map((child) => <ChildCard key={child._id} child={child} />)} */}
+        {children &&
+          children.map((child) => {
+            const { _id: id } = child;
+            return <ChildCard key={id} child={child} />;
+          })}
       </div>
       <ChildForm
         setAddChildSectionHidden={setAddChildSectionHidden}
         addChildSectionHidden={addChildSectionHidden}
-        parentId={parentId}
+        parentContext={parentContext}
       />
     </div>
   );
@@ -77,7 +86,12 @@ function ChildList({
 ChildList.propTypes = {
   sectionChildrenHidden: PropTypes.bool.isRequired,
   setSectionChildrenHidden: PropTypes.func.isRequired,
-  parentId: PropTypes.string.isRequired,
+  parentContext: PropTypes.shape({
+    firstname: PropTypes.string.isRequired,
+    lastname: PropTypes.string.isRequired,
+    token: PropTypes.string.isRequired,
+    _id: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default ChildList;

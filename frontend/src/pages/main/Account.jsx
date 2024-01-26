@@ -26,7 +26,6 @@ function Account() {
   const [sectionChildrenHidden, setSectionChildrenHidden] = useState(true);
   const { logout } = useLogout();
   const { parentContext } = useParentContext();
-  const { _id: parentId } = parentContext;
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -71,7 +70,7 @@ function Account() {
       <ChildList
         sectionChildrenHidden={sectionChildrenHidden}
         setSectionChildrenHidden={setSectionChildrenHidden}
-        parentId={parentId}
+        parentContext={parentContext}
       />
     </div>
   );

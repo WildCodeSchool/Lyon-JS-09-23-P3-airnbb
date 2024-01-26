@@ -67,6 +67,5 @@ button {
 
 svg {
   margin-right: 1em;
-  fill: #882bff;
   filter: drop-shadow(0 2px 4px hsla(0, 0%, 0%, 0.1));
 }
