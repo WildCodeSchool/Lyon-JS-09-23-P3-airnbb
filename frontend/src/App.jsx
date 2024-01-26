@@ -46,6 +46,10 @@ function App() {
             element={parentContext ? <Navigate to="/home" /> : <Signup />}
           />
           <Route
+            index
+            element={parentContext ? <Navigate to="/home" /> : <Login />}
+          />
+          <Route
             path="login"
             element={parentContext ? <Navigate to="/home" /> : <Login />}
           />
