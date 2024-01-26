@@ -41,7 +41,6 @@ function ChildForm({
       disabled,
       allergy,
     };
-    console.info(newChild);
     await createChild(newChild);
     setlastname("");
     setfirstname("");

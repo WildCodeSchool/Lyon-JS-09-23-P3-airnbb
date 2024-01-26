@@ -9,7 +9,6 @@ export async function loader() {
 
 function MainPage() {
   const nurseries = useLoaderData();
-  console.info(nurseries);
   return (
     <main className="mainPage">
       {nurseries &&

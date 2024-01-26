@@ -19,13 +19,11 @@ function useCreateChild() {
     if (!response.ok) {
       setIsLoading(false);
       setError(json.error);
-      console.error(json.error);
     }
 
     if (response.ok) {
       setIsLoading(false);
       setError(null);
-      console.info("New child added", json);
     }
   };
   return { createChild, isLoading, error };

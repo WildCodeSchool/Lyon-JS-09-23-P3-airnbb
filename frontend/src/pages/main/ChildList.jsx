@@ -2,7 +2,7 @@
 import { PropTypes } from "prop-types";
 
 // react
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 // library
 import { ChevronLeftIcon, UserPlusIcon } from "@heroicons/react/24/solid";
@@ -19,20 +19,19 @@ function ChildList({
   /* const { children, dispatch } = useChildContext(); */
   const [addChildSectionHidden, setAddChildSectionHidden] = useState(true);
 
-  useEffect(() => {
+  /* useEffect(() => {
     const fetchChild = async () => {
       const response = await fetch("http://localhost:3310/child");
       const json = await response.json();
       const userChild = await json.filter(
         (child) => child.parent_id === parentId
       );
-      console.info(userChild);
-      /* if (response.ok) {
+      if (response.ok) {
         dispatch({ type: "SET_CHILDREN", payload: userChild });
-      } */
+      }
     };
     fetchChild();
-  }, []);
+  }, []); */
 
   const handleSection = () => {
     setSectionChildrenHidden(!sectionChildrenHidden);

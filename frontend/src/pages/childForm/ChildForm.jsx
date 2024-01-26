@@ -49,7 +49,6 @@ function ChildForm() {
       disabled,
       allergy,
     };
-    console.info(newChild);
     await createChild(newChild);
     setParentId("65798b54f9784d836b35622e");
     setLastname("");
