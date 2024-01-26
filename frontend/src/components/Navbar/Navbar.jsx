@@ -1,4 +1,7 @@
+// react-router
 import { NavLink } from "react-router-dom";
+
+// styles
 import "./Navbar.css";
 // library
 import { UserIcon, BellIcon } from "@heroicons/react/24/solid";

@@ -18,6 +18,7 @@
 }
 .childrenSectionContainer .childList {
   overflow-y: scroll;
+  z-index: 1;
 }
 .childrenSectionContainer a {
   display: flex;

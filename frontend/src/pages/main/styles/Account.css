@@ -21,6 +21,11 @@ header > h3 {
   padding: 1em;
 }
 
+.option p,
+.option button {
+  font-size: 1.25rem;
+}
+
 .optionLogOut {
   display: flex;
   padding: 1em;
