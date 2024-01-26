@@ -1,5 +1,8 @@
+// react
+import { useState } from "react";
+
+// react-router
 import { useNavigate } from "react-router-dom";
-import "./Account.css";
 
 // library
 import {
@@ -9,16 +12,30 @@ import {
   CalendarDaysIcon,
 } from "@heroicons/react/24/solid";
 
+// pages & components
 import useLogout from "../../hooks/useLogout";
+import ChildList from "./ChildList";
+
+// hooks
 import useParentContext from "../../hooks/useParentContext";
 
+// styles
+import "./styles/Account.css";
+
 function Account() {
+  const [sectionChildrenHidden, setSectionChildrenHidden] = useState(true);
   const { logout } = useLogout();
   const { parentContext } = useParentContext();
+  const { _id: parentId } = parentContext;
   const navigate = useNavigate();
+
   const handleLogout = () => {
     logout();
     navigate("/login");
+  };
+
+  const handleChildrenSection = () => {
+    setSectionChildrenHidden(!sectionChildrenHidden);
   };
   return (
     <div className="parentAccount">
@@ -34,8 +51,10 @@ function Account() {
             <p className="textOptions">Mes favoris</p>
           </div>
           <div className="option">
-            <UsersIcon width={40} />
-            <p className="textOptions">Mon/Mes enfant(s)</p>
+            <button type="button" onClick={handleChildrenSection}>
+              <UsersIcon width={40} />
+              Mon/Mes enfants
+            </button>
           </div>
           <div className="option">
             <CalendarDaysIcon width={40} />
@@ -49,6 +68,11 @@ function Account() {
           </button>
         </div>
       </div>
+      <ChildList
+        sectionChildrenHidden={sectionChildrenHidden}
+        setSectionChildrenHidden={setSectionChildrenHidden}
+        parentId={parentId}
+      />
     </div>
   );
 }
