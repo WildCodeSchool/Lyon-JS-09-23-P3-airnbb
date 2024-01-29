@@ -1,0 +1,88 @@
+.nurseryPage {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #fefefe;
+}
+
+.buttonFilterContainer {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.buttonFilterContainer button {
+  background-color: #c5c2e6;
+  border: none;
+  display: block;
+  border-radius: 5px;
+  color: #fefefe;
+  text-align: center;
+  text-align: center;
+  width: 20%;
+  height: 2.4rem;
+}
+
+.buttonFilterContainer button:focus {
+  background-color: #9489fb;
+}
+
+.bookingCardPro {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  background-color: #f0f3fd;
+  height: 12vh;
+  border-radius: 10px;
+}
+
+.childAndparentsIcons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.childName {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.parentsName {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.bookingIcon {
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (min-width: 705px) {
+  .childAndparentsIcons {
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    justify-content: space-evenly;
+  }
+
+  .bookingCardPro {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .bookingIcon {
+    width: 30%;
+  }
+
+  .bookingDate {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+}
