@@ -65,7 +65,7 @@ function ChildList({
             onClick={handleAddChild}
             aria-label="add a child"
           >
-            <UserPlusIcon width={40} />
+            <UserPlusIcon width={40} fill="#882bff" />
           </button>
         </div>
 
