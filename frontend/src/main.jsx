@@ -3,13 +3,16 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import { ParentProvider } from "./contexts/ParentContext";
 import { ChildContextProvider } from "./contexts/ChildContext";
+import { NurseryProvider } from "./contexts/NurseryContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <ParentProvider>
-      <ChildContextProvider>
-        <App />
-      </ChildContextProvider>
-    </ParentProvider>
+    <NurseryProvider>
+      <ParentProvider>
+        <ChildContextProvider>
+          <App />
+        </ChildContextProvider>
+      </ParentProvider>
+    </NurseryProvider>
   </React.StrictMode>
 );

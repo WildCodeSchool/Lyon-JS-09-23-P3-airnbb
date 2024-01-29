@@ -1,5 +1,12 @@
-// function useNurseryContext() {
-//     return
-// }
+import { useContext } from "react";
+import { NurseryAuthContext } from "../contexts/NurseryContext";
 
-// export default useNurseryContext;
+const useNurseryContext = () => {
+  const useNursery = useContext(NurseryAuthContext);
+  if (!useNursery) {
+    throw Error("useNursery must be used in useNurseryContext");
+  }
+  return useNursery;
+};
+
+export default useNurseryContext;

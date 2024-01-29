@@ -13,12 +13,11 @@ function NurseryMainPage() {
   const { availability } = useFetchAvailability();
   const { parentContext } = useParentContext();
   const [nursery, setNursery] = useState("");
+
   useEffect(() => {
     const fetchNurseries = async () => {
       try {
-        const response = await fetch(
-          "http://localhost:3310/nursery/65798afff9784d836b35433b"
-        );
+        const response = await fetch("http://localhost:3310/nursery");
         const data = await response.json();
         setNursery(data);
       } catch (error) {
@@ -31,6 +30,7 @@ function NurseryMainPage() {
   const availabilityDate = new Date(
     availability && availability.date
   ).toLocaleDateString();
+
   return (
     <div className="nurseryPage">
       <header className="accountHeader">
