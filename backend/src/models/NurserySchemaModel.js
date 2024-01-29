@@ -37,7 +37,7 @@ nurserySchema.statics.signup = async function sign({
   password,
   place_max: placeMax,
 }) {
-  if (!email || !password) {
+  if (email === null || password === null) {
     throw Error("Remplir email et password correctement");
   }
 
