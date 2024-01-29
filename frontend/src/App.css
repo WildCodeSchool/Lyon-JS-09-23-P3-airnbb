@@ -34,3 +34,11 @@ input::placeholder {
   height: 100%;
   color: white;
 }
+
+@media screen and (min-width: 705px) {
+  .mainPage {
+    width: 235vh;
+    padding-inline: 17rem;
+    background-color: white;
+  }
+}
