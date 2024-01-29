@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 // react-router
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // functions
 import useLogin from "../../hooks/useLogin";
@@ -10,6 +10,8 @@ import useLogin from "../../hooks/useLogin";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
 
   const { login, error, isLoading } = useLogin();
 
@@ -23,7 +25,9 @@ function Login() {
   return (
     <main className="connect">
       <header>
-        <div>pro</div>
+        <button type="button" onClick={() => navigate("/nurseryLogin")}>
+          pro
+        </button>
       </header>
       <h3>Je me connecte</h3>
       <form onSubmit={handleSubmit}>

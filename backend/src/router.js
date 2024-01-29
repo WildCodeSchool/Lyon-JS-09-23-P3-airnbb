@@ -1,8 +1,7 @@
 const express = require("express");
 
 const router = express.Router();
-
-// Import itemControllers module for handling item-related operations
+const requireAuth = require("./middlewares/RequireAuth");
 
 const {
   getAllParent,
@@ -13,21 +12,6 @@ const {
   deleteParent,
 } = require("./controllers/parentController");
 
-// Route to get a list of parent
-router.get("/parent", getAllParent);
-router.get("/parent/:id", getParentById);
-
-// Route to Create New Parent
-router.post("/parent/", createParent);
-// Route to Log in Parent
-router.post("/parent/login", loginParent);
-// Route to update a parent (with patch)
-router.patch("/parent/:id", updateParent);
-
-// Route to delete a parent
-router.delete("/parent/:id", deleteParent);
-
-// ROUTE FOR COLLECTION "child"
 const {
   getAllChildren,
   getChildById,
@@ -35,6 +19,52 @@ const {
   updateChild,
   deleteChild,
 } = require("./controllers/childController");
+
+const {
+  getAllNurseries,
+  getNurseryById,
+  createNursery,
+  updateNursery,
+  deleteNursery,
+} = require("./controllers/nurseryController");
+
+const {
+  getAllAvailabilities,
+  getAvailabilityById,
+  createAvailability,
+  updateAvailability,
+  deleteAvailability,
+} = require("./controllers/availabilityController");
+
+const {
+  getAllBookings,
+  getBookingById,
+  createBooking,
+  updateBooking,
+  deleteBooking,
+} = require("./controllers/bookingController");
+
+// Route to Create New Parent
+router.post("/parent/", createParent);
+// Route to Log in Parent
+router.post("/parent/login", loginParent);
+
+router.use(requireAuth);
+
+// ROUTE FOR COLLECTION "parent"
+
+// Route to get a list of parent
+router.get("/parent", getAllParent);
+// Route to get one parent
+router.get("/parent/:id", getParentById);
+
+// Route to update a parent (with patch)
+router.patch("/parent/:id", updateParent);
+
+// Route to delete a parent
+router.delete("/parent/:id", deleteParent);
+
+// ROUTE FOR COLLECTION "child"
 
 // Route to get a list of children
 router.get("/child", getAllChildren);
@@ -52,13 +82,6 @@ router.patch("/child/:id", updateChild);
 router.delete("/child/:id", deleteChild);
 
 // ROUTES FOR COLLECTION "nursery"
-const {
-  getAllNurseries,
-  getNurseryById,
-  createNursery,
-  updateNursery,
-  deleteNursery,
-} = require("./controllers/nurseryController");
 
 // Route to get a list of nurseries
 router.get("/nursery", getAllNurseries);
@@ -76,13 +99,6 @@ router.patch("/nursery/:id", updateNursery);
 router.delete("/nursery/:id", deleteNursery);
 
 // ROUTES FOR COLLECTION "availability"
-const {
-  getAllAvailabilities,
-  getAvailabilityById,
-  createAvailability,
-  updateAvailability,
-  deleteAvailability,
-} = require("./controllers/availabilityController");
 
 // Route to get a list of availabilities
 router.get("/availability", getAllAvailabilities);
@@ -100,13 +116,6 @@ router.patch("/availability/:id", updateAvailability);
 router.delete("/availability/:id", deleteAvailability);
 
 // ROUTE FOR COLLECTION "booking"
-const {
-  getAllBookings,
-  getBookingById,
-  createBooking,
-  updateBooking,
-  deleteBooking,
-} = require("./controllers/bookingController");
 
 // Route to get a list of bookings
 router.get("/booking", getAllBookings);
