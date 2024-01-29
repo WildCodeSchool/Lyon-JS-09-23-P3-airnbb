@@ -66,3 +66,11 @@ input::placeholder {
   gap: 2rem;
   padding-inline: 2rem;
 }
+
+@media screen and (min-width: 705px) {
+  .mainPage {
+    width: 235vh;
+    padding-inline: 17rem;
+    background-color: white;
+  }
+}
