@@ -41,11 +41,11 @@ nurserySchema.statics.signup = async function sign({
     throw Error("Remplir email et password correctement");
   }
 
-  if (!validator.isEmail(email)) {
+  if (validator.isEmail(email) === false) {
     throw Error("Email n'est pas valide");
   }
   // check if : 8 char + 1 lowercase + 1 uppercase + 1 special char
-  if (!validator.isStrongPassword(password)) {
+  if (validator.isStrongPassword(password) === false) {
     throw Error("Password n'est pas valide");
   }
 
