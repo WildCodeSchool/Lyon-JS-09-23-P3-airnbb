@@ -24,7 +24,6 @@ function useCreateNursery() {
       setIsLoading(false);
       setError(null);
       navigate("/promainpage"); // à modifier
-      console.info("New nursery added", json);
     }
   };
   return { createNursery, isLoading, error };

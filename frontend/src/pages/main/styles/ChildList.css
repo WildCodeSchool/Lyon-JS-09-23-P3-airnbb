@@ -1,0 +1,35 @@
+.childrenSectionContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  padding: 2em;
+  background-color: white;
+  top: 0;
+  left: 100%;
+  transition: transform 0.3s;
+}
+.childrenSectionContainer .buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.childrenSectionContainer .childList {
+  overflow-y: scroll;
+  z-index: 1;
+}
+.childrenSectionContainer a {
+  display: flex;
+  align-items: center;
+}
+.childrenSectionContainer svg {
+  fill: #882bff;
+  filter: drop-shadow(0 2px 4px hsla(0, 0%, 0%, 0.1));
+}
+
+.childrenSectionNotHidden {
+  transform: translateX(-100%);
+  filter: drop-shadow(0 2px 4px hsla(0, 0%, 0%, 0.5));
+}

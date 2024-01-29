@@ -16,7 +16,6 @@ import Intro from "./pages/intro/Intro";
 import NotFound from "./pages/NotFound";
 import MainLayout from "./layouts/MainLayout";
 import MainPage from "./pages/main/MainPage";
-import ChildForm from "./pages/childForm/ChildForm";
 import Search from "./pages/main/Search";
 import Account from "./pages/main/Account";
 import Notification from "./pages/main/Notification";
@@ -24,6 +23,7 @@ import Chat from "./pages/main/Chat";
 import NurseryLogin from "./pages/intro/NurseryLogin";
 import NurserySignup from "./pages/intro/NurserySignup";
 import NurseryMainPage from "./pages/main/NurseryMainPage";
+import ChildForm from "./pages/main/ChildForm";
 // hooks
 import useScreenSize from "./hooks/useScreenSize";
 import useParentContext from "./hooks/useParentContext";
