@@ -19,7 +19,7 @@ import "./styles/ChildForm.css";
 function ChildForm({
   addChildSectionHidden,
   setAddChildSectionHidden,
-  parentId,
+  parentContext,
 }) {
   const [lastname, setlastname] = useState("");
   const [firstname, setfirstname] = useState("");
@@ -29,11 +29,12 @@ function ChildForm({
   const [allergy, setAllergy] = useState(false);
 
   const { createChild, isLoading, error } = useCreateChild();
+  const { _id: id } = parentContext;
 
   async function handleSubmit(event) {
     event.preventDefault();
     const newChild = {
-      parent_id: parentId,
+      parent_id: id,
       lastname,
       firstname,
       birthday,
@@ -157,7 +158,12 @@ function ChildForm({
 ChildForm.propTypes = {
   addChildSectionHidden: PropTypes.bool.isRequired,
   setAddChildSectionHidden: PropTypes.func.isRequired,
-  parentId: PropTypes.string.isRequired,
+  parentContext: PropTypes.shape({
+    firstname: PropTypes.string.isRequired,
+    lastname: PropTypes.string.isRequired,
+    token: PropTypes.string.isRequired,
+    _id: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default ChildForm;
