@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import "./Account.css";
+import "./styles/Account.css";
 
 // library
 import {

@@ -23,7 +23,7 @@ import Notification from "./pages/main/Notification";
 import Chat from "./pages/main/Chat";
 import NurseryLogin from "./pages/intro/NurseryLogin";
 import NurserySignup from "./pages/intro/NurserySignup";
-
+import NurseryMainPage from "./pages/main/NurseryMainPage";
 // hooks
 import useScreenSize from "./hooks/useScreenSize";
 import useParentContext from "./hooks/useParentContext";
@@ -108,6 +108,8 @@ function App() {
         path="/child"
         element={!parentContext ? <Navigate to="/login" /> : <ChildForm />}
       />
+      <Route path="nurserypage" element={<NurseryMainPage />} />
+
       <Route
         path="*"
         element={!parentContext ? <Navigate to="/login" /> : <NotFound />}

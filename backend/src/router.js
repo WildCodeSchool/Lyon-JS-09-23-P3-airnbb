@@ -49,6 +49,9 @@ router.post("/parent/", createParent);
 // Route to Log in Parent
 router.post("/parent/login", loginParent);
 
+// Route to get one nursery
+router.get("/nursery/:id", getNurseryById);
+
 router.use(requireAuth);
 
 // ROUTE FOR COLLECTION "parent"
@@ -85,9 +88,6 @@ router.delete("/child/:id", deleteChild);
 
 // Route to get a list of nurseries
 router.get("/nursery", getAllNurseries);
-
-// Route to get one nursery
-router.get("/nursery/:id", getNurseryById);
 
 // Route to create a nursery
 router.post("/nursery/", createNursery);
