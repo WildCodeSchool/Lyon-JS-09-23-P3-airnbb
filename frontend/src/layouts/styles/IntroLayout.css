@@ -138,10 +138,12 @@ input[type="checkbox"] {
 .connect .submitButton {
   cursor: pointer;
   opacity: 1;
+  margin-inline: auto;
 }
 
 .connect .deadButton {
   pointer-events: none;
+  margin-inline: auto;
 }
 
 .connect .submitButton:hover {

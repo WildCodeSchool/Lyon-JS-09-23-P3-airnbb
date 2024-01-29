@@ -35,38 +35,6 @@ input::placeholder {
   color: white;
 }
 
-.geoBar,
-.primary-navbar {
-  position: absolute;
-  height: 80px;
-  width: 375px;
-  border: 1px solid black;
-  z-index: 1;
-  background-color: white;
-}
-
-.geoBar {
-  top: 0;
-}
-
-.primary-navbar {
-  bottom: 0;
-}
-
-.homepage {
-  padding-top: 80px;
-}
-
-/* Main page */
-.mainPage {
-  height: 100vh;
-  overflow-y: scroll;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
-  gap: 2rem;
-  padding-inline: 2rem;
-}
-
 @media screen and (min-width: 705px) {
   .mainPage {
     width: 235vh;

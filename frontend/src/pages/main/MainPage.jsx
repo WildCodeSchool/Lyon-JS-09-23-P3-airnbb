@@ -1,7 +1,17 @@
-import { useNavigate } from "react-router-dom";
+// react
 import { useState, useEffect } from "react";
+
+// react-router
+import { useNavigate } from "react-router-dom";
+
+// pages & components
 import Nursery from "../../components/Nursery";
+
+// context
 import useParentContext from "../../hooks/useParentContext";
+
+// styles
+import "./styles/MainPage.css";
 
 function MainPage() {
   const [nurseries, setNurseries] = useState(null);

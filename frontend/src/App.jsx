@@ -16,7 +16,6 @@ import Intro from "./pages/intro/Intro";
 import NotFound from "./pages/NotFound";
 import MainLayout from "./layouts/MainLayout";
 import MainPage from "./pages/main/MainPage";
-import ChildForm from "./pages/childForm/ChildForm";
 import Search from "./pages/main/Search";
 import Account from "./pages/main/Account";
 import Notification from "./pages/main/Notification";
@@ -104,10 +103,6 @@ function App() {
         />
       </Route>
 
-      <Route
-        path="/child"
-        element={!parentContext ? <Navigate to="/login" /> : <ChildForm />}
-      />
       <Route
         path="*"
         element={!parentContext ? <Navigate to="/login" /> : <NotFound />}
