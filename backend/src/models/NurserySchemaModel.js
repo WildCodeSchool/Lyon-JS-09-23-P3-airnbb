@@ -72,7 +72,7 @@ nurserySchema.statics.signup = async function sign({
 
 // extends parentPostSchema
 nurserySchema.statics.login = async function log(email, password) {
-  if (!email || !password) {
+  if (email === null || password === null) {
     throw Error("All fields must be filled");
   }
 
