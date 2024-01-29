@@ -1,9 +1,5 @@
-// react-router
 import { NavLink } from "react-router-dom";
-
-// styles
-import "./Navbar.css";
-
+import "../style/NavbarDesktop.css";
 // library
 import { UserIcon, BellIcon } from "@heroicons/react/24/solid";
 import {
@@ -12,42 +8,46 @@ import {
   ChatBubbleOvalLeftEllipsisIcon,
 } from "@heroicons/react/24/outline";
 
-function Navbar() {
+function NavbarDesktop() {
   return (
-    <footer className="navbarFooter">
+    <div className="sidebarLeft">
       <NavLink
         to="."
         className={({ isActive }) => (isActive ? "active" : null)}
       >
         <Squares2X2Icon width={30} />
+        <p> Home </p>
       </NavLink>
       <NavLink
         to="search"
         className={({ isActive }) => (isActive ? "active" : null)}
       >
         <MagnifyingGlassIcon width={30} />
+        <p> Reherche </p>
       </NavLink>
       <NavLink
         to="account"
         className={({ isActive }) => (isActive ? "active" : null)}
       >
         <UserIcon width={30} />
+        <p> Mon Compte </p>
       </NavLink>
       <NavLink
         to="notification"
         className={({ isActive }) => (isActive ? "active" : null)}
       >
         <BellIcon width={30} />
+        <p> Notifications </p>
       </NavLink>
       <NavLink
         to="chat"
         className={({ isActive }) => (isActive ? "active" : null)}
       >
         <ChatBubbleOvalLeftEllipsisIcon width={30} />
+        <p> Chat </p>
       </NavLink>
-      <div className="underline" />
-    </footer>
+    </div>
   );
 }
 
-export default Navbar;
+export default NavbarDesktop;

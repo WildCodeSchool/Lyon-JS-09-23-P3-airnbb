@@ -39,7 +39,6 @@ export function ParentProvider({ children }) {
   if (loading) {
     return null;
   }
-  console.info("comment parentContext", state);
   return (
     <ParentAuthContext.Provider value={contextValue}>
       {children}

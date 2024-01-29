@@ -2,7 +2,8 @@ const express = require("express");
 
 const router = express.Router();
 // const RequireAuthPro = require("./middlewares/RequireAuthPro");
-// Import itemControllers module for handling item-related operations
+
+const requireAuth = require("./middlewares/RequireAuth");
 
 const {
   getAllParent,
@@ -46,14 +47,23 @@ const {
   deleteBooking,
 } = require("./controllers/bookingController");
 
-// Route to get a list of parent
-router.get("/parent", getAllParent);
-router.get("/parent/:id", getParentById);
-
 // Route to Create New Parent
 router.post("/parent/", createParent);
 // Route to Log in Parent
 router.post("/parent/login", loginParent);
+
+// Route to get one nursery
+router.get("/nursery/:id", getNurseryById);
+
+router.use(requireAuth);
+
+// ROUTE FOR COLLECTION "parent"
+
+// Route to get a list of parent
+router.get("/parent", getAllParent);
+// Route to get one parent
+router.get("/parent/:id", getParentById);
+
 // Route to update a parent (with patch)
 router.patch("/parent/:id", updateParent);
 
@@ -81,9 +91,6 @@ router.delete("/child/:id", deleteChild);
 
 // Route to get a list of nurseries
 router.get("/nursery", getAllNurseries);
-
-// Route to get one nursery
-router.get("/nursery/:id", getNurseryById);
 
 // Route to create a nursery
 router.post("/nursery/", createNursery);
