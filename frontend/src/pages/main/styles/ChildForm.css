@@ -75,6 +75,7 @@
   transform: translateX(-100%);
   filter: drop-shadow(0 2px 4px hsla(0, 0%, 0%, 0.5));
   z-index: 2;
+  margin-left: 30vh;
 }
 
 .addChildrenContainer .submitButton {
