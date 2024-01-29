@@ -5,7 +5,7 @@
   position: absolute;
   height: 100%;
   width: 100%;
-  padding: 2em;
+  padding: 0.5em;
   background-color: white;
   top: 0;
   left: 100%;
@@ -26,7 +26,6 @@
   align-items: center;
 }
 .childrenSectionContainer svg {
-  fill: #882bff;
   filter: drop-shadow(0 2px 4px hsla(0, 0%, 0%, 0.1));
 }
 
