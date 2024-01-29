@@ -122,7 +122,7 @@ function ChildForm({
               width={30}
               className={disabled ? "svgIsClicked" : "svgIsNotClicked"}
             />
-            Mon enfant à un handicap.
+            Mon enfant a un handicap.
           </label>
         </div>
 
@@ -137,7 +137,7 @@ function ChildForm({
               width={30}
               className={allergy ? "svgIsClicked" : "svgIsNotClicked"}
             />
-            Mon enfant à un handicap.
+            Mon enfant a des allergies.
           </label>
         </div>
         {error && <p>{error}</p>}
