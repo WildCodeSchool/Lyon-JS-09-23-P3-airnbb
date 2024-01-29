@@ -34,3 +34,7 @@
 .heightnav {
   height: 50%;
 }
+
+.sidebarLeft a {
+  text-decoration: none;
+}
