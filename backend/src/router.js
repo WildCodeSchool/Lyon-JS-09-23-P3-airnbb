@@ -1,6 +1,8 @@
 const express = require("express");
 
 const router = express.Router();
+// const RequireAuthPro = require("./middlewares/RequireAuthPro");
+
 const requireAuth = require("./middlewares/RequireAuth");
 
 const {
@@ -26,6 +28,7 @@ const {
   createNursery,
   updateNursery,
   deleteNursery,
+  loginNursery,
 } = require("./controllers/nurseryController");
 
 const {
@@ -91,6 +94,7 @@ router.get("/nursery", getAllNurseries);
 
 // Route to create a nursery
 router.post("/nursery/", createNursery);
+router.post("/nurserylogin/", loginNursery);
 
 // Route to update a nursery (with patch)
 router.patch("/nursery/:id", updateNursery);

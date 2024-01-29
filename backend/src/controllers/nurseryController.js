@@ -1,3 +1,4 @@
+const jwt = require("jsonwebtoken");
 const Nursery = require("../models/NurserySchemaModel");
 
 /* Get all nurseries */
@@ -43,19 +44,36 @@ const updateNursery = async (req, res) => {
   }
 };
 
+// Preparation token
+const createToken = (_id) => {
+  return jwt.sign({ _id }, process.env.SECRET_KEY, { expiresIn: "3d" });
+};
+
 /* Create new nursery */
 const createNursery = async (req, res) => {
   const { name, address, email, password, place_max: placeMax } = req.body;
 
   try {
-    const nursery = await Nursery.create({
+    const nursery = await Nursery.signup({
       name,
       address,
       email,
       password,
       place_max: placeMax,
     });
-    res.status(200).json(nursery);
+    const token = createToken(nursery.id);
+    res.status(200).json({ nursery, token });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+const loginNursery = async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const nursery = await Nursery.login(email, password);
+    const token = createToken(nursery.id); // Creation token
+    res.status(200).json({ message: "Nursery connected", token });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -80,4 +98,5 @@ module.exports = {
   createNursery,
   updateNursery,
   deleteNursery,
+  loginNursery,
 };
