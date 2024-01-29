@@ -78,14 +78,14 @@ nurserySchema.statics.login = async function log(email, password) {
 
   const nursery = await this.findOne({ email });
 
-  if (!nursery) {
+  if (nursery === null) {
     throw Error("Echec d'authentification");
   }
 
   // compare input password with stored password using stored salt
   const match = await bcrypt.compare(password, nursery.password);
 
-  if (!match) {
+  if (match === null) {
     throw Error("Echec d'authentification");
   }
 
