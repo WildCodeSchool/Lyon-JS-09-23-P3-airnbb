@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+// import hooks
 import useFetchBooking from "../../hooks/useFetchBooking";
 import useFetchAvailability from "../../hooks/useFetchAvailibility";
-import useParentContext from "../../hooks/useParentContext";
+import useNurseryContext from "../../hooks/useNurseryContext";
 
+// import css and icons
 import "./styles/NurseryMainPage.css";
 import childrenIcone from "../../assets/enfants.png";
 import parentsIcone from "../../assets/parents.png";
@@ -11,21 +12,7 @@ import bookingIcone from "../../assets/reservation.png";
 function NurseryMainPage() {
   const { booking } = useFetchBooking();
   const { availability } = useFetchAvailability();
-  const { parentContext } = useParentContext();
-  const [nursery, setNursery] = useState("");
-
-  useEffect(() => {
-    const fetchNurseries = async () => {
-      try {
-        const response = await fetch("http://localhost:3310/nursery");
-        const data = await response.json();
-        setNursery(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchNurseries();
-  }, []);
+  const { nurseryContext } = useNurseryContext();
 
   const availabilityDate = new Date(
     availability && availability.date
@@ -34,7 +21,7 @@ function NurseryMainPage() {
   return (
     <div className="nurseryPage">
       <header className="accountHeader">
-        <h3>{nursery.name} </h3>
+        <h3>{nurseryContext.name} </h3>
       </header>
       <div className="buttonFilterContainer">
         <button type="button">Toutes les réservations</button>
@@ -63,9 +50,7 @@ function NurseryMainPage() {
               width={35}
               height={35}
             />
-            <p>
-              {parentContext.firstname} {parentContext.lastname}
-            </p>
+            <p>Nom du parent</p>
           </div>
         </div>
         <div className="bookingIcon">

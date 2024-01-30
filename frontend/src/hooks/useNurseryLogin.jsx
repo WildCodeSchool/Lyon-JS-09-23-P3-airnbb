@@ -1,32 +1,36 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import useNurseryContext from "./useNurseryContext";
+
 export default function useNurseryLogin() {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
   const navigate = useNavigate();
+  const { dispatch } = useNurseryContext();
 
   const nurseryLogin = async (email, password) => {
     setIsLoading(true);
     setError(null);
 
-    const response = await fetch("http://localhost:3310/nursery/login", {
+    const response = await fetch("http://localhost:3310/nurserylogin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
     });
 
-    const json = await response.json();
+    const data = await response.json();
 
     if (!response.ok) {
       setIsLoading(false);
-      setError(json.error);
+      setError(data.error);
     }
 
     if (response.ok) {
-      localStorage.setItem("pro", JSON.stringify(json));
+      localStorage.setItem("pro", JSON.stringify(data));
+      dispatch({ type: "LOGIN", payload: data });
       setIsLoading(false);
-      navigate("/home"); // à modifier
+      navigate("/nurserypage");
     }
   };
   return { nurseryLogin, isLoading, error };

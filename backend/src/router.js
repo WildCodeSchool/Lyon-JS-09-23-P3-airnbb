@@ -1,8 +1,8 @@
 const express = require("express");
 
 const router = express.Router();
-// const RequireAuthPro = require("./middlewares/RequireAuthPro");
 
+const RequireAuthPro = require("./middlewares/RequireAuthPro");
 const requireAuth = require("./middlewares/RequireAuth");
 
 const {
@@ -55,10 +55,16 @@ router.post("/parent/login", loginParent);
 // Route to get one nursery
 router.get("/nursery/:id", getNurseryById);
 
+// Route to create a nursery
+router.post("/nursery/", createNursery);
+
+// Route to Log in Nursery
+router.post("/nurserylogin/", loginNursery);
+
 router.use(requireAuth);
+router.use(RequireAuthPro);
 
 // ROUTE FOR COLLECTION "parent"
-
 // Route to get a list of parent
 router.get("/parent", getAllParent);
 // Route to get one parent
@@ -71,7 +77,6 @@ router.patch("/parent/:id", updateParent);
 router.delete("/parent/:id", deleteParent);
 
 // ROUTE FOR COLLECTION "child"
-
 // Route to get a list of children
 router.get("/child", getAllChildren);
 
@@ -88,13 +93,8 @@ router.patch("/child/:id", updateChild);
 router.delete("/child/:id", deleteChild);
 
 // ROUTES FOR COLLECTION "nursery"
-
 // Route to get a list of nurseries
 router.get("/nursery", getAllNurseries);
-
-// Route to create a nursery
-router.post("/nursery/", createNursery);
-router.post("/nurserylogin/", loginNursery);
 
 // Route to update a nursery (with patch)
 router.patch("/nursery/:id", updateNursery);
@@ -103,7 +103,6 @@ router.patch("/nursery/:id", updateNursery);
 router.delete("/nursery/:id", deleteNursery);
 
 // ROUTES FOR COLLECTION "availability"
-
 // Route to get a list of availabilities
 router.get("/availability", getAllAvailabilities);
 
@@ -120,7 +119,6 @@ router.patch("/availability/:id", updateAvailability);
 router.delete("/availability/:id", deleteAvailability);
 
 // ROUTE FOR COLLECTION "booking"
-
 // Route to get a list of bookings
 router.get("/booking", getAllBookings);
 
