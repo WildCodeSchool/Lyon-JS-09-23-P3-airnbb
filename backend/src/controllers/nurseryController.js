@@ -70,10 +70,13 @@ const createNursery = async (req, res) => {
 
 const loginNursery = async (req, res) => {
   const { email, password } = req.body;
+
   try {
     const nursery = await Nursery.login(email, password);
     const token = createToken(nursery.id); // Creation token
-    res.status(200).json({ message: "Nursery connected", token });
+    const { name } = nursery;
+
+    res.status(200).json({ message: "Nursery connected", name, token });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
