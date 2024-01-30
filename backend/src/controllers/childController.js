@@ -35,10 +35,12 @@ const updateChild = async (req, res) => {
   const { id } = req.params;
   try {
     const updatedChild = await Child.findByIdAndUpdate(id, { ...req.body });
+
     if (!updatedChild) {
       return res.status(404).json({ error: "No such child" });
     }
-    return res.status(200).json(updatedChild);
+    const newChild = await Child.findById(id);
+    return res.status(200).json(newChild);
   } catch (error) {
     return console.error("Error updating child:", error);
   }
@@ -76,7 +78,7 @@ const deleteChild = async (req, res) => {
     return res.status(400).json({ error: "No such child" });
   }
 
-  return res.status(200).send("Child deleted");
+  return res.status(200).json(child);
 };
 
 module.exports = {

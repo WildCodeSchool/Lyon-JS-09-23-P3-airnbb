@@ -29,7 +29,27 @@ export const childrenReducer = (state, action) => {
       return {
         children: [action.payload, ...state.children],
       };
+    case "UPDATE_CHILDREN":
+      return {
+        children: [
+          action.payload,
+          // eslint-disable-next-line no-underscore-dangle
+          ...state.children.filter((child) => child._id !== action.payload._id),
+        ],
+      };
+    case "DELETE_CHILDREN":
+      return {
+        children: state.children.filter(
+          // eslint-disable-next-line no-underscore-dangle
+          (child) => child._id !== action.payload._id
+        ),
+      };
     default:
       return state;
   }
+};
+
+// format date for <input type="date">
+export const formatDate = (date) => {
+  return new Date(date).toISOString().substring(0, 10);
 };

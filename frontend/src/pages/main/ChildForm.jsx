@@ -2,13 +2,17 @@
 import { PropTypes } from "prop-types";
 
 // react
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // library
 import { CheckCircleIcon, ChevronLeftIcon } from "@heroicons/react/24/solid";
 
 // hooks
 import useCreateChild from "../../hooks/useCreateChild";
+import useUpdateChild from "../../hooks/useUpdateChild";
+
+// helpers
+import { formatDate } from "../../helpers";
 
 // assets
 import logoChild from "../../assets/childForm.svg";
@@ -20,6 +24,8 @@ function ChildForm({
   addChildSectionHidden,
   setAddChildSectionHidden,
   parentContext,
+  updateChild,
+  setUpdateChild,
 }) {
   const [lastname, setlastname] = useState("");
   const [firstname, setfirstname] = useState("");
@@ -29,7 +35,30 @@ function ChildForm({
   const [allergy, setAllergy] = useState(false);
 
   const { createChild, isLoading, error } = useCreateChild();
+  const { updateChildren } = useUpdateChild();
   const { _id: id } = parentContext;
+
+  useEffect(() => {
+    if (Object.values(updateChild).length !== 0) {
+      setlastname(updateChild.lastname);
+      setfirstname(updateChild.firstname);
+      setBirthday(updateChild.birthday);
+      setWalking(updateChild.walking);
+      setDisable(updateChild.disabled);
+      setAllergy(updateChild.allergy);
+    }
+  }, [addChildSectionHidden]);
+
+  function handleReset() {
+    setUpdateChild({});
+    setlastname("");
+    setfirstname("");
+    setBirthday("");
+    setWalking(false);
+    setDisable(false);
+    setAllergy(false);
+    setAddChildSectionHidden(true);
+  }
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -42,14 +71,14 @@ function ChildForm({
       disabled,
       allergy,
     };
-    await createChild(newChild);
-    setlastname("");
-    setfirstname("");
-    setBirthday("");
-    setWalking(false);
-    setDisable(false);
-    setAllergy(false);
-    setAddChildSectionHidden(true);
+    if (Object.values(updateChild).length !== 0) {
+      // eslint-disable-next-line no-underscore-dangle
+      await updateChildren(newChild, updateChild._id);
+      handleReset();
+    } else {
+      await createChild(newChild);
+      handleReset();
+    }
   }
 
   return (
@@ -64,7 +93,7 @@ function ChildForm({
         <button
           type="button"
           className="createTitle"
-          onClick={() => setAddChildSectionHidden(!addChildSectionHidden)}
+          onClick={() => handleReset()}
           aria-label="go back"
         >
           <ChevronLeftIcon width={35} />
@@ -73,7 +102,7 @@ function ChildForm({
         <img src={logoChild} alt="" />
       </div>
 
-      <form action="" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Nom"
@@ -92,7 +121,9 @@ function ChildForm({
           type="date"
           placeholder="Date de naissance"
           required
-          value={birthday}
+          value={
+            updateChild.birthday ? formatDate(updateChild.birthday) : birthday
+          }
           onChange={(e) => setBirthday(e.target.value)}
         />
 
@@ -164,6 +195,20 @@ ChildForm.propTypes = {
     token: PropTypes.string.isRequired,
     _id: PropTypes.string.isRequired,
   }).isRequired,
+  updateChild: PropTypes.shape({
+    _id: PropTypes.string,
+    firstname: PropTypes.string,
+    lastname: PropTypes.string,
+    birthday: PropTypes.string,
+    walking: PropTypes.bool,
+    disabled: PropTypes.bool,
+    allergy: PropTypes.bool,
+  }),
+  setUpdateChild: PropTypes.func.isRequired,
+};
+
+ChildForm.defaultProps = {
+  updateChild: undefined,
 };
 
 export default ChildForm;
