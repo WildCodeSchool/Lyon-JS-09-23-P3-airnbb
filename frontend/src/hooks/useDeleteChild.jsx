@@ -5,29 +5,30 @@ import { useState } from "react";
 import useParentContext from "./useParentContext";
 import useChildContext from "./useChildContext";
 
-function useCreateChild() {
+function useDeleteChild() {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
 
   const { parentContext } = useParentContext();
   const { dispatch } = useChildContext();
 
-  const createChild = async (newChild) => {
+  const deleteChild = async (childId) => {
     if (!parentContext || !parentContext.token) {
       return;
     }
     setIsLoading(true);
     setError(null);
 
-    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/child`, {
-      method: "POST",
-      body: JSON.stringify(newChild),
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${parentContext.token}`,
-      },
-    });
-
+    const response = await fetch(
+      `${import.meta.env.VITE_BACKEND_URL}/child/${childId}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${parentContext.token}`,
+        },
+      }
+    );
     const child = await response.json();
 
     if (!response.ok) {
@@ -38,10 +39,10 @@ function useCreateChild() {
     if (response.ok) {
       setIsLoading(false);
       setError(null);
-      dispatch({ type: "CREATE_CHILDREN", payload: child });
+      dispatch({ type: "DELETE_CHILDREN", payload: child });
     }
   };
-  return { createChild, isLoading, error };
+  return { deleteChild, isLoading, error };
 }
 
-export default useCreateChild;
+export default useDeleteChild;

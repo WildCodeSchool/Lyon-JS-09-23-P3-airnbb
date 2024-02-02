@@ -24,14 +24,18 @@ function ChildList({
 }) {
   const { children, dispatch } = useChildContext();
   const [addChildSectionHidden, setAddChildSectionHidden] = useState(true);
+  const [updateChild, setUpdateChild] = useState({});
 
   useEffect(() => {
     const fetchChild = async () => {
-      const response = await fetch("http://localhost:3310/child", {
-        headers: {
-          Authorization: `Bearer ${parentContext.token}`,
-        },
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/child`,
+        {
+          headers: {
+            Authorization: `Bearer ${parentContext.token}`,
+          },
+        }
+      );
       const userChildren = await response.json();
       if (response.ok) {
         dispatch({ type: "SET_CHILDREN", payload: userChildren });
@@ -47,6 +51,7 @@ function ChildList({
   const handleAddChild = () => {
     setAddChildSectionHidden(!addChildSectionHidden);
   };
+
   return (
     <div
       className={
@@ -72,13 +77,22 @@ function ChildList({
         {children &&
           children.map((child) => {
             const { _id: id } = child;
-            return <ChildCard key={id} child={child} />;
+            return (
+              <ChildCard
+                key={id}
+                child={child}
+                setAddChildSectionHidden={setAddChildSectionHidden}
+                setUpdateChild={setUpdateChild}
+              />
+            );
           })}
       </div>
       <ChildForm
         setAddChildSectionHidden={setAddChildSectionHidden}
         addChildSectionHidden={addChildSectionHidden}
         parentContext={parentContext}
+        updateChild={updateChild}
+        setUpdateChild={setUpdateChild}
       />
     </div>
   );

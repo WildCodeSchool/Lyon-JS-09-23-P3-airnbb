@@ -9,11 +9,14 @@ function useCreateNursery() {
   const createNursery = async (newNursery) => {
     setIsLoading(true);
     setError(null);
-    const response = await fetch("http://localhost:3310/nursery", {
-      method: "POST",
-      body: JSON.stringify(newNursery),
-      headers: { "Content-Type": "application/json" },
-    });
+    const response = await fetch(
+      `${import.meta.env.VITE_BACKEND_URL}/nursery`,
+      {
+        method: "POST",
+        body: JSON.stringify(newNursery),
+        headers: { "Content-Type": "application/json" },
+      }
+    );
     const json = await response.json();
 
     if (!response.ok) {

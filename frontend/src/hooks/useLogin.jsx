@@ -16,11 +16,14 @@ export default function useLogin() {
     setIsLoading(true);
     setError(null);
 
-    const response = await fetch("http://localhost:3310/parent/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
-    });
+    const response = await fetch(
+      `${import.meta.env.VITE_BACKEND_URL}/parent/login`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      }
+    );
 
     const json = await response.json();
 
