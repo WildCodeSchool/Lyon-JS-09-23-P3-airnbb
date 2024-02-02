@@ -22,6 +22,9 @@ import Notification from "./pages/main/Notification";
 import Chat from "./pages/main/Chat";
 import NurseryLogin from "./pages/intro/NurseryLogin";
 import NurserySignup from "./pages/intro/NurserySignup";
+import NurseryMainPage from "./pages/main/NurseryMainPage";
+import ChildForm from "./pages/main/ChildForm";
+import BookingForm from "./components/Booking/Booking";
 
 // hooks
 import useScreenSize from "./hooks/useScreenSize";
@@ -103,6 +106,12 @@ function App() {
         />
       </Route>
 
+      <Route
+        path="/child"
+        element={!parentContext ? <Navigate to="/login" /> : <ChildForm />}
+      />
+      <Route path="nurserypage" element={<NurseryMainPage />} />
+      <Route path="/home/booking/:availability_id" element={<BookingForm />} />
       <Route
         path="*"
         element={!parentContext ? <Navigate to="/login" /> : <NotFound />}
