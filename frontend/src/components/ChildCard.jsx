@@ -36,7 +36,7 @@ function ChildCard({ child, setAddChildSectionHidden, setUpdateChild }) {
 
   return (
     <div className="childCard">
-      {error && <p>{error}</p>}
+      {error ? <p>{error}</p> : null}
       <div className="childCard__child">
         <img src={ChildFace} alt="child profil pic" width={50} id="childFace" />
       </div>

@@ -18,14 +18,17 @@ function useUpdateChild() {
     }
     setIsLoading(true);
     setError(null);
-    const response = await fetch(`http://localhost:3310/child/${id}`, {
-      method: "PATCH",
-      body: JSON.stringify(childToUpdate),
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${parentContext.token}`,
-      },
-    });
+    const response = await fetch(
+      `${import.meta.env.VITE_BACKEND_URL}/child/${id}`,
+      {
+        method: "PATCH",
+        body: JSON.stringify(childToUpdate),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${parentContext.token}`,
+        },
+      }
+    );
     const child = await response.json();
 
     if (!response.ok) {

@@ -74,11 +74,11 @@ function ChildForm({
     if (Object.values(updateChild).length !== 0) {
       // eslint-disable-next-line no-underscore-dangle
       await updateChildren(newChild, updateChild._id);
-      handleReset();
     } else {
       await createChild(newChild);
-      handleReset();
     }
+
+    handleReset();
   }
 
   return (

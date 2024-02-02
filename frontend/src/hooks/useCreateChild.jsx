@@ -19,7 +19,7 @@ function useCreateChild() {
     setIsLoading(true);
     setError(null);
 
-    const response = await fetch("http://localhost:3310/child", {
+    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/child`, {
       method: "POST",
       body: JSON.stringify(newChild),
       headers: {

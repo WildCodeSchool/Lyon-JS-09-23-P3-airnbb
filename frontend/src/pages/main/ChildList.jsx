@@ -28,11 +28,14 @@ function ChildList({
 
   useEffect(() => {
     const fetchChild = async () => {
-      const response = await fetch("http://localhost:3310/child", {
-        headers: {
-          Authorization: `Bearer ${parentContext.token}`,
-        },
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/child`,
+        {
+          headers: {
+            Authorization: `Bearer ${parentContext.token}`,
+          },
+        }
+      );
       const userChildren = await response.json();
       if (response.ok) {
         dispatch({ type: "SET_CHILDREN", payload: userChildren });

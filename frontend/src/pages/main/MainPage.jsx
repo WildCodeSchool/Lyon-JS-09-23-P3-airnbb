@@ -23,11 +23,14 @@ function MainPage() {
         if (!parentContext || !parentContext.token) {
           throw new Error("Authentication token not available.");
         }
-        const response = await fetch("http://localhost:3310/nursery", {
-          headers: {
-            Authorization: `Bearer ${parentContext.token}`,
-          },
-        });
+        const response = await fetch(
+          `${import.meta.env.VITE_BACKEND_URL}/nursery`,
+          {
+            headers: {
+              Authorization: `Bearer ${parentContext.token}`,
+            },
+          }
+        );
         if (!response.ok) {
           throw new Error("Failed to fetch nursery data.");
         }
