@@ -8,6 +8,13 @@ const availabilitySchema = new mongoose.Schema(
     date: {
       type: Date,
       required: true,
+      validate: {
+        //  La fonction vérifie si la date est dans le futur.
+        validator(value) {
+          return value.getTime() > Date.now();
+        },
+        message: "Availability date must be in the future.",
+      },
     },
     place: {
       type: Number,
@@ -31,9 +38,6 @@ const availabilitySchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-
-/* 3 parametres: 1er = nom choisi du model créé par le schéma (obligatoirement le même que le param 3); 2eme = nom du schéma; 3eme = nom de la collection existante */
-
 const Availability = mongoose.model(
   "availability",
   availabilitySchema,

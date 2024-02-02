@@ -84,18 +84,22 @@
 }
 .nurseryCard .bottom .disponibilities {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 10px;
   grid-row-gap: 10px;
   width: 100%;
 }
-.nurseryCard .bottom .disponibilities > div {
+
+.nurseryCard .bottom .disponibilities > button {
   color: white;
   background-color: #32c766;
   border-radius: 5px;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  margin: 0;
+  max-width: 20rem;
 }
+
 .nurseryCard .bottom .disponibilities .tuesday,
 .nurseryCard .bottom .disponibilities .saturday {
   background-color: #d6d6d6;
