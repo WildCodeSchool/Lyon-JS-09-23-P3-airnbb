@@ -12,7 +12,7 @@ function Nursery({ nursery }) {
   const { parentContext } = useParentContext();
   const { name, address, place_max: placeMax } = nursery;
   const [favorite, setFavorite] = useState(false);
-  const [availability, setAvailability] = useState();
+  const [availability, setAvailability] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,18 +20,13 @@ function Nursery({ nursery }) {
       try {
         const response = await fetch(
           // eslint-disable-next-line no-underscore-dangle
-          `http://localhost:3310/availability?nursery_id=${nursery._id}`,
+          `http://localhost:3310/availabilitybynursery?nurseryId=${nursery._id}`,
           {
             headers: { Authorization: `Bearer ${parentContext.token}` },
           }
         );
         const avData = await response.json();
-        // filtre availability based on nursery id
-        const filteredAvailabilities = avData.filter(
-          // eslint-disable-next-line no-underscore-dangle
-          (av) => av.nursery_id === nursery._id
-        );
-        setAvailability(filteredAvailabilities);
+        setAvailability(avData);
       } catch (error) {
         console.error(error);
       }
@@ -45,6 +40,7 @@ function Nursery({ nursery }) {
   const handleDayClick = (availabilityId) => {
     navigate(`booking/${availabilityId}`);
   };
+
   return (
     <div className="nurseryCard">
       <div className="top">

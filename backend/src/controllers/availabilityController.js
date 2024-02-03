@@ -11,25 +11,37 @@ const getAllAvailabilities = async (req, res) => {
   }
 };
 
-/* Get single availability */
-const getAvailabilityById = async (req, res) => {
-  const { id } = req.params;
-  try {
-    const availability = await Availability.findById(id);
+/* Get all availability by id nursery *********************************************** */
 
-    if (!availability) {
-      return res.status(404).json({ error: "Availability not found" });
+// eslint-disable-next-line consistent-return
+const getAvailabilityById = async (req, res) => {
+  try {
+    const { nurseryId } = req.query;
+
+    if (!nurseryId) {
+      return res.status(400).json({ error: "Nursery ID is required " });
     }
 
-    return res.status(200).json(availability);
-  } catch (error) {
-    console.error("Error getting availability:", error);
+    // check if availabilities for the nursery id
+    const availabilityNursery = await Availability.find({
+      nursery_id: nurseryId,
+    }).exec();
 
+    // If no availabilities found
+    if (availabilityNursery.length === 0) {
+      return res.status(200).json([]);
+    }
+
+    // If availabilities found, return them
+    res.status(200).json(availabilityNursery);
+  } catch (error) {
+    console.error("Error fetching data:", error);
     return res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
-/* Create a new availability */
+/* Create a new availability********************************************************************* */
+
 const createAvailability = async (req, res) => {
   const { nursery_id: nurseryId, is_booked: isBooked, date, place } = req.body;
 

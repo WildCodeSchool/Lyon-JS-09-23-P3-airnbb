@@ -1,5 +1,4 @@
 // import hooks
-import useFetchBooking from "../../hooks/useFetchBooking";
 import useFetchAvailability from "../../hooks/useFetchAvailibility";
 import useNurseryContext from "../../hooks/useNurseryContext";
 
@@ -10,14 +9,12 @@ import parentsIcone from "../../assets/parents.png";
 import bookingIcone from "../../assets/reservation.png";
 
 function NurseryMainPage() {
-  const { booking } = useFetchBooking();
   const { availability } = useFetchAvailability();
   const { nurseryContext } = useNurseryContext();
 
   const availabilityDate = new Date(
     availability && availability.date
   ).toLocaleDateString();
-
   return (
     <div className="nurseryPage">
       <header className="accountHeader">
@@ -38,10 +35,7 @@ function NurseryMainPage() {
               width={35}
               height={35}
             />
-            <p>
-              {booking && booking.child_id.firstname}{" "}
-              {booking && booking.child_id.lastname}
-            </p>
+            <p>test</p>
           </div>
           <div className="parentsName">
             <img
@@ -50,7 +44,8 @@ function NurseryMainPage() {
               width={35}
               height={35}
             />
-            <p>Nom du parent</p>
+            {/* {booking &&
+              booking.map((child) => <p>{child.child_id.firstname}</p>)} */}
           </div>
         </div>
         <div className="bookingIcon">
