@@ -3,9 +3,7 @@ const Booking = require("../models/BookingSchemaModel");
 /* Get all bookings  */
 const getAllBookings = async (req, res) => {
   try {
-    const documents = await Booking.find()
-      .populate("child_id", "firstname lastname")
-      .exec();
+    const documents = await Booking.find().exec();
     res.status(200).json(documents);
   } catch (error) {
     console.error("Error fetching data:", error);
@@ -17,10 +15,8 @@ const getAllBookings = async (req, res) => {
 const getBookingById = async (req, res) => {
   const { id } = req.params;
   try {
-    const booking = await Booking.findById(id).populate(
-      "child_id",
-      "firstname lastname"
-    );
+    const booking = await Booking.findById(id);
+
     if (!booking) {
       return res.status(404).json({ error: "Booking not found" });
     }
