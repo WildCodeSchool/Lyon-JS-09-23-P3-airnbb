@@ -70,7 +70,7 @@ function ChildForm({
           <ChevronLeftIcon width={35} />
         </button>
 
-        <img src={logoChild} alt="" />
+        <img src={logoChild} alt="logo enfant" />
       </div>
 
       <form action="" onSubmit={handleSubmit}>

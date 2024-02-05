@@ -1,5 +1,5 @@
 // import hooks
-import useFetchBooking from "../../hooks/useFetchBooking";
+// import useFetchBooking from "../../hooks/useFetchBooking";
 import useFetchAvailability from "../../hooks/useFetchAvailibility";
 import useNurseryContext from "../../hooks/useNurseryContext";
 
@@ -10,7 +10,7 @@ import parentsIcone from "../../assets/parents.png";
 import bookingIcone from "../../assets/reservation.png";
 
 function NurseryMainPage() {
-  const { booking } = useFetchBooking();
+  // const { booking } = useFetchBooking();
   const { availability } = useFetchAvailability();
   const { nurseryContext } = useNurseryContext();
 
@@ -38,10 +38,11 @@ function NurseryMainPage() {
               width={35}
               height={35}
             />
-            <p>
+            <p>Nom de l'enfant</p>
+            {/* <p>
               {booking && booking.child_id.firstname}{" "}
               {booking && booking.child_id.lastname}
-            </p>
+            </p> */}
           </div>
           <div className="parentsName">
             <img

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import "./Booking.css";
+import "./styles/BookingForm.css";
 import useParentContext from "../../hooks/useParentContext";
+import logoChild from "../../assets/childForm.svg";
 
 function BookingForm() {
   const [availabilityId, setAvailabilityId] = useState("");
@@ -63,7 +64,10 @@ function BookingForm() {
   };
   return (
     <div className="bookingContainer">
-      <h2 className="bookingHeading">Booking Form</h2>
+      <header className="bookingHeader">
+        <h3>Réservation</h3>
+      </header>
+      <img className="logoBooking" src={logoChild} alt="logo enfant" />
       <form className="bookingForm" onSubmit={submitBooking}>
         <select
           className="bookingInput"
@@ -82,7 +86,7 @@ function BookingForm() {
           required
         >
           <option value="" disabled>
-            Select the kid
+            Selectionner l'enfant
           </option>
           {parentChildren.map((child) => (
             // eslint-disable-next-line no-underscore-dangle
@@ -92,7 +96,7 @@ function BookingForm() {
           ))}
         </select>
         <input
-          className="bookingInput"
+          className="bookingInputHidden"
           type="text"
           id="availabilityId"
           value={availabilityId}
@@ -103,18 +107,9 @@ function BookingForm() {
         <input
           className="bookingInput"
           type="text"
-          id="childId"
-          value={childId}
-          placeholder="Child ID"
-          readOnly
-          onChange={(e) => setChildId(e.target.value)}
-        />
-        <input
-          className="bookingInput"
-          type="text"
           id="childFirstname"
           value={childFirstname}
-          placeholder=" Child Firstname"
+          placeholder=" Prénom de l'enfant"
           readOnly
           onChange={(e) => setChildFirstname(e.target.value)}
         />
@@ -123,7 +118,7 @@ function BookingForm() {
           type="text"
           id="childLastname"
           value={childLastname}
-          placeholder=" Child lastname"
+          placeholder=" Nom de l'enfant"
           readOnly
           onChange={(e) => setChildLastname(e.target.value)}
         />
@@ -132,7 +127,7 @@ function BookingForm() {
           type="submit"
           onClick={handleRedirect}
         >
-          Submit Booking
+          Enregistrer
         </button>
       </form>
     </div>

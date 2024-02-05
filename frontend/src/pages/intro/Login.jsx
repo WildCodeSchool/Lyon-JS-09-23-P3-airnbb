@@ -25,7 +25,11 @@ function Login() {
   return (
     <main className="connect">
       <header>
-        <button type="button" onClick={() => navigate("/nurseryLogin")}>
+        <button
+          className="switchMode"
+          type="button"
+          onClick={() => navigate("/nurseryLogin")}
+        >
           pro
         </button>
       </header>
@@ -45,10 +49,10 @@ function Login() {
           required
           onChange={(e) => setPassword(e.target.value)}
         />
-        <div className="check">
-          <input type="checkbox" />
-          Se souvenir de moi
-        </div>
+        <Link to="/signup" className="inscriptionLink">
+          Pas de compte ?&nbsp;<span> S&apos;inscrire</span>
+        </Link>
+
         <button
           type="submit"
           disabled={isLoading}
@@ -58,9 +62,6 @@ function Login() {
         </button>
         {error && <h4>{error.message}</h4>}
       </form>
-      <Link to="/signup">
-        Pas de compte ? <span>S&apos;inscrire</span>
-      </Link>
     </main>
   );
 }

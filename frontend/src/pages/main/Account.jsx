@@ -52,7 +52,7 @@ function Account() {
           <div className="option">
             <button type="button" onClick={handleChildrenSection}>
               <UsersIcon width={40} />
-              Mon/Mes enfants
+              <p className="textOptions">Mon/Mes enfants</p>
             </button>
           </div>
           <div className="option">

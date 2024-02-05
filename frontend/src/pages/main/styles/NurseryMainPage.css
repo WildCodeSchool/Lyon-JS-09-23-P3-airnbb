@@ -20,8 +20,9 @@
   color: #fefefe;
   text-align: center;
   text-align: center;
-  width: 20%;
-  height: 2.4rem;
+  width: 21%;
+  height: 2.8rem;
+  font-size: 0.9rem;
 }
 
 .buttonFilterContainer button:focus {

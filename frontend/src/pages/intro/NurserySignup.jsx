@@ -113,10 +113,9 @@ function NurserySignup() {
             Les mots de passe ne correspondent pas.
           </p>
         )}
-        <div>
-          <input type="checkbox" />
-          J&apos;accepte les conditions
-        </div>
+        <Link to="/nurserylogin" className="inscriptionLink">
+          Vous avez déjà un compte ? <span>Se connecter</span>
+        </Link>
         <button
           type="submit"
           className={
@@ -128,9 +127,6 @@ function NurserySignup() {
           S&apos;inscrire
         </button>
       </form>
-      <Link to="/nurserylogin">
-        Vous avez déjà un compte ? <span>Se connecter</span>
-      </Link>
     </main>
   );
 }

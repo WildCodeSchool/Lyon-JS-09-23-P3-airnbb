@@ -19,7 +19,11 @@ function NurseryLogin() {
   return (
     <main className="connect">
       <header>
-        <button type="button" onClick={() => navigate("/login")}>
+        <button
+          className="switchMode"
+          type="button"
+          onClick={() => navigate("/login")}
+        >
           parents
         </button>
       </header>
@@ -39,10 +43,9 @@ function NurseryLogin() {
           required
           onChange={(e) => setPassword(e.target.value)}
         />
-        <div className="check">
-          <input type="checkbox" />
-          Se souvenir de moi
-        </div>
+        <Link to="/nurserysignup" className="inscriptionLink">
+          Pas de compte ? <span>S&apos;inscrire</span>
+        </Link>
         <button
           type="submit"
           disabled={isLoading}
@@ -52,9 +55,6 @@ function NurseryLogin() {
         </button>
         {error && <h4>{error.message}</h4>}
       </form>
-      <Link to="/nurserysignup">
-        Pas de compte ? <span>S&apos;inscrire</span>
-      </Link>
     </main>
   );
 }

@@ -24,20 +24,21 @@
 }
 
 .introLayout img {
-  margin-top: 2rem;
+  width: 80%;
+  aspect-ratio: 1;
 }
 
 .introLayout > h1 {
-  font-size: 3.75rem;
+  font-size: 2.75rem;
 }
 
 .introLayout > h2 {
-  font-size: 1.55rem;
+  font-size: 1.3rem;
   margin: 1rem 0;
 }
 
 .introLayout > p {
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 .introLayout footer {
@@ -74,7 +75,8 @@
 .introLayout .connect h3 {
   font-size: 1.5rem;
   font-weight: 500;
-  padding: 2.5rem 0;
+  padding: 1rem 0;
+  margin-top: 2rem;
 }
 
 .connect header {
@@ -94,7 +96,7 @@
 .connect input {
   border: 2px solid #ffffff;
   background-color: transparent;
-  padding: 1rem;
+  padding: 0.7rem;
   margin: 0.75em 0;
   border-radius: 5px;
 }
@@ -108,7 +110,7 @@
   width: 80%;
 }
 
-.connect .check {
+.connect .inscriptionLink {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -116,13 +118,14 @@
   font-weight: 400;
 }
 
-input[type="checkbox"] {
-  margin-inline: 1em;
+.connect .switchMode {
+  opacity: 1;
 }
 
 .connect button {
   cursor: pointer;
   width: 80%;
+  height: 2.4em;
   background-color: #882aff;
   color: #ffffff;
   opacity: 0.5;
@@ -133,6 +136,7 @@ input[type="checkbox"] {
   font-size: 1.025rem;
   font-weight: 700;
   transition: all 0.2s;
+  line-height: 0.8em;
 }
 
 .connect .submitButton {
