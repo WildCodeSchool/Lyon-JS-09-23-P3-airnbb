@@ -32,6 +32,17 @@ Airnbb is a peer-to-peer platform designed to facilitate the connection between 
 
 - **Visibility**: Nurseries can showcase their facilities and services to attract potential clients.
 
+# Launch project 🚀🚀
+
+- Clone the repo, and enter it.
+- `git checkout dev`.
+- `npm i` in the root directory.
+
+- create `.env` files following the `.env.sample` files patern.
+- ask the Airnbb dev team for the credentials needed to access MongoDB collections.
+
+- `npm run dev` in the root directory. Enjoy.
+
 # Getting Started 🏃‍♂️🏃‍♀️
 
 ![AirnbbLogin](./frontend/src/assets/signupLoginBanner.png)
