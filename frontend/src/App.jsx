@@ -59,13 +59,17 @@ function App() {
           <Route
             path="nurserylogin"
             element={
-              nurseryContext ? <Navigate to="/nurserypage" /> : <NurseryLogin />
+              nurseryContext !== null ? (
+                <Navigate to="/nurserypage" />
+              ) : (
+                <NurseryLogin />
+              )
             }
           />
           <Route
             path="nurserysignup"
             element={
-              nurseryContext ? (
+              nurseryContext !== null ? (
                 <Navigate to="/nurserypage" />
               ) : (
                 <NurserySignup />
@@ -93,13 +97,17 @@ function App() {
           <Route
             path="nurserylogin"
             element={
-              nurseryContext ? <Navigate to="/nurserypage" /> : <NurseryLogin />
+              nurseryContext !== null ? (
+                <Navigate to="/nurserypage" />
+              ) : (
+                <NurseryLogin />
+              )
             }
           />
           <Route
             path="nurserysignup"
             element={
-              nurseryContext ? (
+              nurseryContext !== null ? (
                 <Navigate to="/nurserypage" />
               ) : (
                 <NurserySignup />

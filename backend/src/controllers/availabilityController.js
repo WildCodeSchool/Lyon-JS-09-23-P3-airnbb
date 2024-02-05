@@ -13,7 +13,6 @@ const getAllAvailabilities = async (req, res) => {
 
 /* Get all availability by id nursery *********************************************** */
 
-// eslint-disable-next-line consistent-return
 const getAvailabilityById = async (req, res) => {
   try {
     const { nurseryId } = req.query;
@@ -33,7 +32,7 @@ const getAvailabilityById = async (req, res) => {
     }
 
     // If availabilities found, return them
-    res.status(200).json(availabilityNursery);
+    return res.status(200).json(availabilityNursery);
   } catch (error) {
     console.error("Error fetching data:", error);
     return res.status(500).json({ error: "Internal Server Error" });

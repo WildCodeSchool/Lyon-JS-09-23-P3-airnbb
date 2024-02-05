@@ -44,8 +44,6 @@ function NurseryMainPage() {
               width={35}
               height={35}
             />
-            {/* {booking &&
-              booking.map((child) => <p>{child.child_id.firstname}</p>)} */}
           </div>
         </div>
         <div className="bookingIcon">
