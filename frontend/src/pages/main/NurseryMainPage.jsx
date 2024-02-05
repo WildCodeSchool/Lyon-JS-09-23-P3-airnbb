@@ -1,6 +1,10 @@
+import { useNavigate } from "react-router-dom";
+import { ArrowRightEndOnRectangleIcon } from "@heroicons/react/24/solid";
+
 // import hooks
 import useFetchAvailability from "../../hooks/useFetchAvailibility";
 import useNurseryContext from "../../hooks/useNurseryContext";
+import useNurseryLogout from "../../hooks/useNurseryLogout";
 
 // import css and icons
 import "./styles/NurseryMainPage.css";
@@ -12,6 +16,14 @@ function NurseryMainPage() {
   const { availability } = useFetchAvailability();
   const { nurseryContext } = useNurseryContext();
 
+  const navigate = useNavigate();
+  const { logout } = useNurseryLogout();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/nurserylogin");
+  };
+
   const availabilityDate = new Date(
     availability && availability.date
   ).toLocaleDateString();
@@ -19,6 +31,16 @@ function NurseryMainPage() {
     <div className="nurseryPage">
       <header className="accountHeader">
         <h3>{nurseryContext.name} </h3>
+        <div className="nurseryLogout">
+          <ArrowRightEndOnRectangleIcon width={20} />
+          <button
+            type="button"
+            onClick={handleLogout}
+            className="btnNurseryogout"
+          >
+            Me déconnecter
+          </button>
+        </div>
       </header>
       <div className="buttonFilterContainer">
         <button type="button">Toutes les réservations</button>
@@ -35,7 +57,7 @@ function NurseryMainPage() {
               width={35}
               height={35}
             />
-            <p>Nom de l'enfant</p>
+            <p>Nom de l&apos;enfant</p>
           </div>
           <div className="parentsName">
             <img
@@ -44,6 +66,7 @@ function NurseryMainPage() {
               width={35}
               height={35}
             />
+            <p>Nom du parent</p>
           </div>
         </div>
         <div className="bookingIcon">
