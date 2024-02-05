@@ -26,7 +26,7 @@ function useCreateNursery() {
     if (response.ok) {
       setIsLoading(false);
       setError(null);
-      navigate("/promainpage"); // à modifier
+      navigate("/nurserylogin");
     }
   };
   return { createNursery, isLoading, error };
