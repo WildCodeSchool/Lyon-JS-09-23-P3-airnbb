@@ -14,7 +14,7 @@ export default function useNurseryLogin() {
     setError(null);
 
     const response = await fetch(
-      `${import.meta.env.VITE_BACKEND_URL}/nursery/login`,
+      `${import.meta.env.VITE_BACKEND_URL}/nurserylogin`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

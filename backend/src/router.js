@@ -106,8 +106,8 @@ router.delete("/nursery/:id", deleteNursery);
 // Route to get a list of availabilities
 router.get("/availability", getAllAvailabilities);
 
-// Route to get one availability
-router.get("/availability/:id", getAvailabilityById);
+// Route to get  availability by nursery id
+router.get("/availabilitybynursery", getAvailabilityById);
 
 // Route to create new availability
 router.post("/availability/", createAvailability);

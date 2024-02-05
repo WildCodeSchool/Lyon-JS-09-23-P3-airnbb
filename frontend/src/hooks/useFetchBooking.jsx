@@ -1,27 +1,27 @@
 import { useEffect, useState } from "react";
-import useParentContext from "./useParentContext";
+import useNurseryContext from "./useNurseryContext";
 
 function useFetchBooking() {
   const [booking, setBooking] = useState(null);
-  const { parentContext } = useParentContext();
+  const { nurseryContext } = useNurseryContext();
 
   useEffect(() => {
     const fetchBooking = async () => {
       try {
-        const response = await fetch(
-          "http://localhost:3310/booking/6596d0654ef2092432ae5093",
-          {
-            headers: { Authorization: `Bearer ${parentContext.token}` },
-          }
-        );
-        const json = await response.json();
-        setBooking(json);
+        if (!nurseryContext || !nurseryContext.token) {
+          throw new Error("Authentication token not available.");
+        }
+        const response = await fetch("http://localhost:3310/booking", {
+          headers: { Authorization: `Bearer ${nurseryContext.token}` },
+        });
+        const bookingData = await response.json();
+        setBooking(bookingData);
       } catch (error) {
         console.error(error);
       }
     };
     fetchBooking();
-  }, []);
+  }, [nurseryContext]);
   return { booking };
 }
 
