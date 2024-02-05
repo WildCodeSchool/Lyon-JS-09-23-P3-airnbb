@@ -15,8 +15,8 @@
   align-items: start;
 }
 .addChildrenContainer .header img {
-  width: 10rem;
-  margin-left: 1.3rem;
+  width: 13rem;
+  margin-left: 1.5rem;
 }
 .addChildrenContainer form {
   display: flex;
@@ -25,6 +25,7 @@
 }
 .addChildrenContainer form label {
   cursor: pointer;
+  font-size: 1rem;
 }
 .addChildrenContainer form input,
 .addChildrenContainer form button {
@@ -34,10 +35,15 @@
   border: none;
   border-radius: 10px;
   outline: none;
+  height: 3rem;
 }
 .addChildrenContainer form input {
-  color: #999;
+  color: #181717;
   background-color: #eee;
+  font-size: 1rem;
+}
+.addChildrenContainer form input::placeholder {
+  color: #181717;
 }
 .addChildrenContainer form input:focus {
   color: black;
@@ -45,13 +51,14 @@
 .addChildrenContainer form button {
   cursor: pointer;
   display: inline;
-  margin-top: 2rem;
-  font-size: 1.25rem;
+  margin-top: 1rem;
+  font-size: 1rem;
   font-weight: 800;
   color: white;
+  line-height: 1rem;
 }
 .addChildrenContainer .check {
-  margin: 0.25em 0;
+  margin: 0.3em 0;
   text-align: left;
 }
 .addChildrenContainer .check svg {
@@ -75,7 +82,6 @@
   transform: translateX(-100%);
   filter: drop-shadow(0 2px 4px hsla(0, 0%, 0%, 0.5));
   z-index: 2;
-  margin-left: 30vh;
 }
 
 .addChildrenContainer .submitButton {
@@ -87,4 +93,43 @@
 .addChildrenContainer .deadButton {
   background-color: #872bff45;
   cursor: not-allowed;
+}
+
+@media screen and (min-width: 705px) {
+  .addChildrenContainerNotHidden {
+    margin-left: 30vh;
+    padding-right: 16%;
+    margin-right: 30vw;
+  }
+
+  .addChildrenContainer .header img {
+    margin-inline: auto;
+  }
+
+  .addChildrenContainer form {
+    width: 70%;
+    margin-inline: auto;
+  }
+  .addChildrenContainer form input,
+  .addChildrenContainer form button {
+    width: 100%;
+    height: 2.8rem;
+    margin-top: 1em;
+    font-size: 1rem;
+  }
+  .addChildrenContainer form button {
+    margin: auto;
+    width: 40%;
+    height: 2.5rem;
+    line-height: 0.4rem;
+  }
+  .addChildrenContainer form .check {
+    font-size: 1rem;
+  }
+  .addChildrenContainer .header img {
+    width: 15%;
+  }
+  .addChildrenContainer form label {
+    font-size: 1rem;
+  }
 }
