@@ -29,13 +29,14 @@ import BookingForm from "./pages/main/BookingForm";
 // hooks
 import useScreenSize from "./hooks/useScreenSize";
 import useParentContext from "./hooks/useParentContext";
-
+import useNurseryContext from "./hooks/useNurseryContext";
 // style
 import "./App.css";
 
 function App() {
   const screenSize = useScreenSize();
   const { parentContext } = useParentContext();
+  const { nurseryContext } = useNurseryContext();
   const routes = (
     <>
       {screenSize.width > 705 ? (
@@ -55,8 +56,26 @@ function App() {
             path="login"
             element={parentContext ? <Navigate to="/home" /> : <Login />}
           />
-          <Route path="nurserylogin" element={<NurseryLogin />} />
-          <Route path="nurserysignup" element={<NurserySignup />} />
+          <Route
+            path="nurserylogin"
+            element={
+              nurseryContext !== null ? (
+                <Navigate to="/nurserypage" />
+              ) : (
+                <NurseryLogin />
+              )
+            }
+          />
+          <Route
+            path="nurserysignup"
+            element={
+              nurseryContext !== null ? (
+                <Navigate to="/nurserypage" />
+              ) : (
+                <NurserySignup />
+              )
+            }
+          />
         </Route>
       ) : (
         <Route
@@ -75,8 +94,26 @@ function App() {
             path="login"
             element={parentContext ? <Navigate to="/home" /> : <Login />}
           />
-          <Route path="nurserylogin" element={<NurseryLogin />} />
-          <Route path="nurserysignup" element={<NurserySignup />} />
+          <Route
+            path="nurserylogin"
+            element={
+              nurseryContext !== null ? (
+                <Navigate to="/nurserypage" />
+              ) : (
+                <NurseryLogin />
+              )
+            }
+          />
+          <Route
+            path="nurserysignup"
+            element={
+              nurseryContext !== null ? (
+                <Navigate to="/nurserypage" />
+              ) : (
+                <NurserySignup />
+              )
+            }
+          />
         </Route>
       )}
 

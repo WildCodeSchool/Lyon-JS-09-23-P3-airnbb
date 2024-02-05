@@ -21,7 +21,7 @@ const getBookingById = async (req, res) => {
       "child_id",
       "firstname lastname"
     );
-    if (!booking) {
+    if (booking === null) {
       return res.status(404).json({ error: "Booking not found" });
     }
 
