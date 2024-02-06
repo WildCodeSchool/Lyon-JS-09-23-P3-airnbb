@@ -26,6 +26,8 @@
   border-radius: 10px 10px 0 0;
   background-size: cover;
   background-position: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-blend-mode: hue;
 }
 .nurseryCard .top .favorite {
   cursor: pointer;
