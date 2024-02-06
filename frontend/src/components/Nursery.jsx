@@ -51,7 +51,6 @@ function Nursery({ nursery }) {
         />
         <div className="title">
           <h3>{name}</h3>
-          <div className="grade">3.9</div>
         </div>
       </div>
       <div className="bottom">
