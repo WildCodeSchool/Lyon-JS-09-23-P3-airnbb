@@ -2,10 +2,9 @@ import { useNavigate } from "react-router-dom";
 import { ArrowRightEndOnRectangleIcon } from "@heroicons/react/24/solid";
 
 // import hooks
-import useFetchAvailability from "../../hooks/useFetchAvailibility";
 import useNurseryContext from "../../hooks/useNurseryContext";
 import useNurseryLogout from "../../hooks/useNurseryLogout";
-
+import useFetchBooking from "../../hooks/useFetchBooking";
 // import css and icons
 import "./styles/NurseryMainPage.css";
 import childrenIcone from "../../assets/enfants.png";
@@ -13,9 +12,8 @@ import parentsIcone from "../../assets/parents.png";
 import bookingIcone from "../../assets/reservation.png";
 
 function NurseryMainPage() {
-  const { availability } = useFetchAvailability();
   const { nurseryContext } = useNurseryContext();
-
+  const { booking } = useFetchBooking();
   const navigate = useNavigate();
   const { logout } = useNurseryLogout();
 
@@ -24,9 +22,6 @@ function NurseryMainPage() {
     navigate("/nurserylogin");
   };
 
-  const availabilityDate = new Date(
-    availability && availability.date
-  ).toLocaleDateString();
   return (
     <div className="nurseryPage">
       <header className="accountHeader">
@@ -49,37 +44,48 @@ function NurseryMainPage() {
         <button type="button">Trier par mois</button>
       </div>
       <div className="bookingCardPro">
-        <div className="childAndparentsIcons">
-          <div className="childName">
-            <img
-              src={childrenIcone}
-              alt="icone enfants"
-              width={35}
-              height={35}
-            />
-            <p>Nom de l&apos;enfant</p>
-          </div>
-          <div className="parentsName">
-            <img
-              src={parentsIcone}
-              alt="icone parents"
-              width={35}
-              height={35}
-            />
-            <p>Nom du parent</p>
-          </div>
-        </div>
-        <div className="bookingIcon">
-          <div className="bookingDate">
-            <img
-              src={bookingIcone}
-              alt="icone reservation"
-              width={35}
-              height={35}
-            />
-            <p>{availabilityDate}</p>
-          </div>
-        </div>
+        {booking !== null &&
+          booking.map((booked) => (
+            <>
+              <div className="childAndparentsIcons">
+                <div className="childName">
+                  <img
+                    src={childrenIcone}
+                    alt="icone enfants"
+                    width={35}
+                    height={35}
+                  />
+                  <p>
+                    {booked.child_id.firstname} {booked.child_id.lastname}{" "}
+                  </p>
+                </div>
+                <div className="parentsName">
+                  <img
+                    src={parentsIcone}
+                    alt="icone parents"
+                    width={35}
+                    height={35}
+                  />
+                  <p>
+                    {" "}
+                    {booked.child_id.parent_id.firstname}{" "}
+                    {booked.child_id.parent_id.lastname}{" "}
+                  </p>
+                </div>
+              </div>
+              <div className="bookingIcon">
+                <div className="bookingDate">
+                  <img
+                    src={bookingIcone}
+                    alt="icone reservation"
+                    width={35}
+                    height={35}
+                  />
+                  <p>{booked.availability_id.date}</p>
+                </div>
+              </div>
+            </>
+          ))}
       </div>
     </div>
   );
