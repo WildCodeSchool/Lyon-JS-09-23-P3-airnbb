@@ -5,6 +5,18 @@
   background-color: #fefefe;
 }
 
+.card {
+  display: flex;
+  flex-direction: row;
+  background-color: #f0f3fd;
+  justify-content: space-between;
+  margin-top: 2rem;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  height: 12vh;
+  border-radius: 10px;
+}
+
 .buttonFilterContainer {
   display: flex;
   justify-content: center;
@@ -28,30 +40,15 @@
   background-color: #9489fb;
 }
 
-.bookingCardPro {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 2rem;
-  margin-left: 2.5%;
-  margin-right: 2.5%;
-  background-color: #f0f3fd;
-  height: 12vh;
-  border-radius: 10px;
-}
-
 .childAndparentsIcons {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-left: 1rem;
 }
 
-.childName {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
+.childName,
 .parentsName {
   display: flex;
   align-items: center;
@@ -66,16 +63,16 @@
 .accountHeader h3 {
   margin-inline: auto;
 }
+
 .btnNurseryogout {
-  font-size: 0.8rem;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  padding-right: 0.4rem;
+  font-size: 0.85rem;
   cursor: pointer;
   background-color: transparent;
   border: none;
-}
-.nurseryLogout {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 @media screen and (min-width: 705px) {
@@ -84,11 +81,6 @@
     flex-direction: row;
     width: 70%;
     justify-content: space-evenly;
-  }
-
-  .bookingCardPro {
-    flex-direction: row;
-    justify-content: space-around;
   }
 
   .bookingIcon {
