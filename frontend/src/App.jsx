@@ -25,7 +25,7 @@ import NurserySignup from "./pages/intro/NurserySignup";
 import NurseryMainPage from "./pages/main/NurseryMainPage";
 import ChildForm from "./pages/main/ChildForm";
 import BookingForm from "./pages/main/BookingForm";
-
+import BookingList from "./pages/main/BookingList";
 // hooks
 import useScreenSize from "./hooks/useScreenSize";
 import useParentContext from "./hooks/useParentContext";
@@ -140,6 +140,10 @@ function App() {
         <Route
           path="chat"
           element={!parentContext ? <Navigate to="/login" /> : <Chat />}
+        />{" "}
+        <Route
+          path="booking"
+          element={!parentContext ? <Navigate to="/login" /> : <BookingList />}
         />
         <Route
           path="/home/booking/:availability_id"

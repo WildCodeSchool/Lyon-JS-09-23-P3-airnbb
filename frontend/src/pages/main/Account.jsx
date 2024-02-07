@@ -36,6 +36,9 @@ function Account() {
   const handleChildrenSection = () => {
     setSectionChildrenHidden(!sectionChildrenHidden);
   };
+  const handleClickreservationSection = () => {
+    navigate("/home/booking");
+  };
   return (
     <div className="parentAccount">
       <header className="accountHeader">
@@ -57,7 +60,13 @@ function Account() {
           </div>
           <div className="option">
             <CalendarDaysIcon width={40} />
-            <p className="textOptions">Mes réservations</p>
+            <button
+              type="button"
+              className="textOptions"
+              onClick={handleClickreservationSection}
+            >
+              Mes réservations
+            </button>
           </div>
         </div>
         <div className="optionLogOut">

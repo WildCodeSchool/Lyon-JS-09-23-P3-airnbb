@@ -45,47 +45,52 @@ function NurseryMainPage() {
       </div>
       <div className="bookingCardPro">
         {booking !== null &&
-          booking.map((booked) => (
-            <>
-              <div className="childAndparentsIcons">
-                <div className="childName">
-                  <img
-                    src={childrenIcone}
-                    alt="icone enfants"
-                    width={35}
-                    height={35}
-                  />
-                  <p>
-                    {booked.child_id.firstname} {booked.child_id.lastname}{" "}
-                  </p>
+          booking.map((booked) => {
+            const formattedBirthday = new Date(
+              booked.availability_id.date
+            ).toLocaleDateString();
+            return (
+              <>
+                <div className="childAndparentsIcons">
+                  <div className="childName">
+                    <img
+                      src={childrenIcone}
+                      alt="icone enfants"
+                      width={35}
+                      height={35}
+                    />
+                    <p>
+                      {booked.child_id.firstname} {booked.child_id.lastname}{" "}
+                    </p>
+                  </div>
+                  <div className="parentsName">
+                    <img
+                      src={parentsIcone}
+                      alt="icone parents"
+                      width={35}
+                      height={35}
+                    />
+                    <p>
+                      {" "}
+                      {booked.child_id.parent_id.firstname}{" "}
+                      {booked.child_id.parent_id.lastname}{" "}
+                    </p>
+                  </div>
                 </div>
-                <div className="parentsName">
-                  <img
-                    src={parentsIcone}
-                    alt="icone parents"
-                    width={35}
-                    height={35}
-                  />
-                  <p>
-                    {" "}
-                    {booked.child_id.parent_id.firstname}{" "}
-                    {booked.child_id.parent_id.lastname}{" "}
-                  </p>
+                <div className="bookingIcon">
+                  <div className="bookingDate">
+                    <img
+                      src={bookingIcone}
+                      alt="icone reservation"
+                      width={35}
+                      height={35}
+                    />
+                    <p>{formattedBirthday}</p>
+                  </div>
                 </div>
-              </div>
-              <div className="bookingIcon">
-                <div className="bookingDate">
-                  <img
-                    src={bookingIcone}
-                    alt="icone reservation"
-                    width={35}
-                    height={35}
-                  />
-                  <p>{booked.availability_id.date}</p>
-                </div>
-              </div>
-            </>
-          ))}
+              </>
+            );
+          })}
       </div>
     </div>
   );
