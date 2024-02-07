@@ -17,7 +17,7 @@ const getAllBookings = async (req, res) => {
 const getBookingById = async (req, res) => {
   try {
     const { nurseryId } = req.query;
-    if (!nurseryId) {
+    if (nurseryId === null) {
       return res.status(400).json({ error: " ID is required " });
     }
 
@@ -107,26 +107,3 @@ module.exports = {
   updateBooking,
   deleteBooking,
 };
-// async (req, res) => {
-//   try {
-//     const { avId } = req.query;
-//     if (!avId) {
-//       return res.status(400).json({ error: "Availability ID is required " });
-//     }
-
-//     // Find Booking documents where availability_id matches the provided avId
-//     const bookings = await Booking.find({})
-//       .populate({
-//         path: "availability_id",
-//         match: { nursery_id: { $eq: avId } },
-//         select: "_id", // Selecting only the _id field of availability document
-//       })
-//       .exec();
-
-//     // Filter out the bookings where availability_id is not found
-//     const filteredBookings = bookings.filter(
-//       (booking) => booking.availability_id !== null
-//     );
-
-//     // Return the filtered bookings
-//     return res.status(200).json(filteredBookings);
