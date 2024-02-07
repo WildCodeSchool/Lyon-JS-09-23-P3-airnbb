@@ -26,7 +26,7 @@
 }
 
 .childCard__name {
-  font-size: 0.75rem;
+  font-size: 1rem;
   text-align: start;
 }
 
@@ -37,8 +37,8 @@
 .childCard__spec {
   display: flex;
   flex-direction: column;
-  gap: 0.75em;
-  font-size: 0.5rem;
+  gap: 1rem;
+  font-size: 1rem;
 }
 
 .details {
@@ -53,7 +53,7 @@
 }
 
 .childCard__buttons {
-  font-size: 0.5rem;
+  font-size: 1rem;
 }
 
 #childFace {
