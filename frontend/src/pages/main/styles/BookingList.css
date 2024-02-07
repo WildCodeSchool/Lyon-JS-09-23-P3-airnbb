@@ -1,0 +1,16 @@
+.bookingContainer {
+  background-color: white;
+}
+.btnReturnContainer {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+.btnReturn {
+  background-color: transparent;
+  border: none;
+  margin-top: 2rem;
+  padding: 0.5em;
+}
+/* @media screen and (min-width: 705px) {
+} */

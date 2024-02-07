@@ -25,6 +25,7 @@ import NurserySignup from "./pages/intro/NurserySignup";
 import NurseryMainPage from "./pages/main/NurseryMainPage";
 import ChildForm from "./pages/main/ChildForm";
 import BookingForm from "./pages/main/BookingForm";
+import BookingList from "./pages/main/BookingList";
 
 // hooks
 import useScreenSize from "./hooks/useScreenSize";
@@ -151,6 +152,7 @@ function App() {
         path="/child"
         element={!parentContext ? <Navigate to="/login" /> : <ChildForm />}
       />
+      <Route path="/booking" element={<BookingList />} />
       <Route path="nurserypage" element={<NurseryMainPage />} />
       <Route
         path="*"
