@@ -27,12 +27,12 @@ function NurseryMainPage() {
       <header className="accountHeader">
         <h3>{nurseryContext.name} </h3>
         <div className="nurseryLogout">
-          <ArrowRightEndOnRectangleIcon width={20} />
           <button
             type="button"
             onClick={handleLogout}
             className="btnNurseryogout"
           >
+            <ArrowRightEndOnRectangleIcon width={20} />
             Me déconnecter
           </button>
         </div>
@@ -43,10 +43,13 @@ function NurseryMainPage() {
         <button type="button">Trier par semaine</button>
         <button type="button">Trier par mois</button>
       </div>
-      <div className="bookingCardPro">
-        {booking !== null &&
-          booking.map((booked) => (
-            <>
+      {booking !== null &&
+        booking.map((booked) => {
+          const formattedDate = new Date(
+            booked.availability_id.date
+          ).toLocaleDateString();
+          return (
+            <div className="card">
               <div className="childAndparentsIcons">
                 <div className="childName">
                   <img
@@ -56,7 +59,7 @@ function NurseryMainPage() {
                     height={35}
                   />
                   <p>
-                    {booked.child_id.firstname} {booked.child_id.lastname}{" "}
+                    {booked.child_id.firstname} {booked.child_id.lastname}
                   </p>
                 </div>
                 <div className="parentsName">
@@ -67,9 +70,8 @@ function NurseryMainPage() {
                     height={35}
                   />
                   <p>
-                    {" "}
                     {booked.child_id.parent_id.firstname}{" "}
-                    {booked.child_id.parent_id.lastname}{" "}
+                    {booked.child_id.parent_id.lastname}
                   </p>
                 </div>
               </div>
@@ -81,12 +83,12 @@ function NurseryMainPage() {
                     width={35}
                     height={35}
                   />
-                  <p>{booked.availability_id.date}</p>
+                  <p>{formattedDate}</p>
                 </div>
               </div>
-            </>
-          ))}
-      </div>
+            </div>
+          );
+        })}
     </div>
   );
 }
