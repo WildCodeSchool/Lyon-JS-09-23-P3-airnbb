@@ -2,18 +2,19 @@ import { useNavigate } from "react-router-dom";
 // library
 import { ChevronLeftIcon } from "@heroicons/react/24/solid";
 // hooks
-import useFetchBooking from "../../hooks/useFetchBooking";
+import useFetchBookingByParentId from "../../hooks/useFetchBookingByParentId";
 
 // style
 import "./styles/BookingList.css";
+import logoChild from "../../assets/childForm.svg";
 
 function BookingList() {
   const navigate = useNavigate();
-  const { booking } = useFetchBooking();
+  const { booking } = useFetchBookingByParentId();
 
   return (
-    <div className="bookingContainer">
-      <header className="btnReturnContainer">
+    <div className="bookingListContainer">
+      <header className="headerBooking">
         <button
           className="btnReturn"
           type="button"
@@ -22,24 +23,29 @@ function BookingList() {
         >
           <ChevronLeftIcon width={35} />
         </button>
+        <img
+          className="logoParentBooking"
+          src={logoChild}
+          alt="logo parent and baby"
+        />
       </header>
-      <div className="bookingCardPro">
-        {booking !== null &&
-          booking.map((booked) => (
-            <div className="childAndparentsIcons">
-              <div className="childName">
-                <p>
-                  {booked.child_id.firstname} {booked.child_id.lastname}
-                </p>
-              </div>
+
+      {booking !== null &&
+        booking.map((booked) => {
+          const formattedDate = new Date(
+            booked.availability_id.date
+          ).toLocaleDateString();
+          return (
+            <div className="bookingCard">
               <p>
-                {booked.child_id.parent_id.firstname}
-                {booked.child_id.parent_id.lastname}
+                {booked.child_id.firstname} {booked.child_id.lastname}
               </p>
-              <p>{booked.availability_id.date}</p>
+              <p>{formattedDate}</p>
+              <p>{booked.availability_id.nursery_id.name}</p>
+              <p>{booked.availability_id.nursery_id.address}</p>
             </div>
-          ))}
-      </div>
+          );
+        })}
     </div>
   );
 }

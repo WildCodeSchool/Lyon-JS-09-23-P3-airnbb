@@ -1,9 +1,12 @@
-.bookingContainer {
+.bookingListContainer {
   background-color: white;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll;
 }
-.btnReturnContainer {
+.headerBooking {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   width: 100%;
 }
 .btnReturn {
@@ -11,6 +14,41 @@
   border: none;
   margin-top: 2rem;
   padding: 0.5em;
+  position: absolute;
+  left: 0;
 }
-/* @media screen and (min-width: 705px) {
-} */
+.bookingCard {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 94%;
+  height: 12vh;
+  margin: 1.5rem auto;
+  padding: 0.5em;
+  background-color: #f0f3fd;
+  border-radius: 10px;
+  filter: drop-shadow(0 2px 4px hsla(0, 0%, 0%, 0.15));
+  font-size: 0.9rem;
+}
+.logoParentBooking {
+  margin-top: 2rem;
+  width: 50%;
+  aspect-ratio: 1;
+}
+
+@media screen and (min-width: 705px) {
+  .bookingListContainer {
+    margin-left: 30vh;
+  }
+  .bookingCard {
+    width: 80%;
+    margin: 1.5rem 3rem;
+    height: 10vh;
+  }
+  .logoParentBooking {
+    width: 10%;
+  }
+  .headerBooking {
+    padding-right: 10rem;
+  }
+}
