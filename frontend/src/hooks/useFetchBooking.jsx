@@ -12,8 +12,10 @@ function useFetchBooking() {
           throw new Error("Authentication token not available.");
         }
         const response = await fetch(
-          // eslint-disable-next-line no-underscore-dangle
-          `http://localhost:3310/bookingnursery?nurseryId=${nurseryContext._id}`,
+          `${import.meta.env.VITE_BACKEND_URL}/bookingnursery?nurseryId=${
+            // eslint-disable-next-line no-underscore-dangle
+            nurseryContext._id
+          }`,
           {
             headers: { Authorization: `Bearer ${nurseryContext.token}` },
           }

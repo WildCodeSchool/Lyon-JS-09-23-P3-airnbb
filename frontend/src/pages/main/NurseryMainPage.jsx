@@ -44,7 +44,7 @@ function NurseryMainPage() {
         <button type="button">Trier par mois</button>
       </div>
       <div className="bookingCardPro">
-        {booking &&
+        {booking !== null &&
           booking.map((booked) => (
             <>
               <div className="childAndparentsIcons">
