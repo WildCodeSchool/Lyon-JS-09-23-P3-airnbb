@@ -143,7 +143,11 @@ function App() {
           element={!parentContext ? <Navigate to="/login" /> : <Chat />}
         />
         <Route
-          path="/home/booking/:availability_id"
+          path="booking"
+          element={!parentContext ? <Navigate to="/login" /> : <BookingList />}
+        />
+        <Route
+          path="booking/:availability_id"
           element={!parentContext ? <Navigate to="/login" /> : <BookingForm />}
         />
       </Route>
@@ -152,7 +156,6 @@ function App() {
         path="/child"
         element={!parentContext ? <Navigate to="/login" /> : <ChildForm />}
       />
-      <Route path="/booking" element={<BookingList />} />
       <Route path="nurserypage" element={<NurseryMainPage />} />
       <Route
         path="*"

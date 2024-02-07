@@ -33,7 +33,7 @@ function Account() {
     navigate("/login");
   };
   const handleBookingSection = () => {
-    navigate("/booking");
+    navigate("/home/booking");
   };
 
   const handleChildrenSection = () => {
@@ -50,8 +50,10 @@ function Account() {
       <div className="optionContainer">
         <div className="accountOptions">
           <div className="option">
-            <HeartIcon width={40} />
-            <p className="textOptions">Mes favoris</p>
+            <button type="button" onClick={handleChildrenSection}>
+              <HeartIcon width={40} />
+              <p className="textOptions">Mes favoris</p>
+            </button>
           </div>
           <div className="option">
             <button type="button" onClick={handleChildrenSection}>
