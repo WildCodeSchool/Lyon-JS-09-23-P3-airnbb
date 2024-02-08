@@ -138,8 +138,8 @@ function Signup() {
         <button
           type="submit"
           className={
-            checkFieldsFilled(form) &&
-            handlePasswords(firstPassword, secondPassword)
+            checkFieldsFilled(form) === true &&
+            handlePasswords(firstPassword, secondPassword) === true
               ? "submitButton"
               : "deadButton"
           }
