@@ -6,7 +6,7 @@ import useFetchBookingByParentId from "../../hooks/useFetchBookingByParentId";
 
 // style
 import "./styles/BookingList.css";
-import logoChild from "../../assets/childForm.svg";
+import NotFound from "../../assets/notFound.svg";
 
 function BookingList() {
   const navigate = useNavigate();
@@ -23,14 +23,13 @@ function BookingList() {
         >
           <ChevronLeftIcon width={35} />
         </button>
-        <img
-          className="logoParentBooking"
-          src={logoChild}
-          alt="logo parent and baby"
-        />
+        {booking?.length > 0 ? (
+          <h3 className="headerTitle">Mes réservations</h3>
+        ) : (
+          <h3 className="headerTitle">Vous n'avez pas de réservation</h3>
+        )}
       </header>
-
-      {booking !== null &&
+      {booking?.length > 0 ? (
         booking.map((booked) => {
           const formattedDate = new Date(
             booked.availability_id.date
@@ -45,8 +44,16 @@ function BookingList() {
               <p>{booked.availability_id.nursery_id.address}</p>
             </div>
           );
-        })}
+        })
+      ) : (
+        <img
+          className="imgNoBookings"
+          src={NotFound}
+          alt="pas de réservation"
+        />
+      )}
     </div>
   );
 }
+
 export default BookingList;
