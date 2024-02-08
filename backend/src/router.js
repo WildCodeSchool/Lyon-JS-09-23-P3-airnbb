@@ -45,6 +45,7 @@ const {
   createBooking,
   updateBooking,
   deleteBooking,
+  getBookingByParentId,
 } = require("./controllers/bookingController");
 
 // Route to Create New Parent
@@ -118,8 +119,11 @@ router.delete("/availability/:id", deleteAvailability);
 // Route to get a list of bookings
 router.get("/booking", getAllBookings);
 
-// Route to get one booking
+// Route to get booking by nursery id
 router.get("/bookingnursery", getBookingById);
+
+// Route to get booking by Parent Id
+router.get("/bookingparentid", getBookingByParentId);
 
 // Route to create new booking
 router.post("/booking/", requireAuth, createBooking);

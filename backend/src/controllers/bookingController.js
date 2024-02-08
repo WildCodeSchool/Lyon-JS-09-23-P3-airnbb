@@ -13,7 +13,7 @@ const getAllBookings = async (req, res) => {
   }
 };
 
-/* Get single booking  */
+/* Get single booking by nursery id  */
 const getBookingById = async (req, res) => {
   try {
     const { nurseryId } = req.query;
@@ -48,6 +48,54 @@ const getBookingById = async (req, res) => {
     // Filter out the bookings where availability_id is not found
     const filteredBookings = bookings.filter(
       (booking) => booking.availability_id !== null
+    );
+
+    // Return the filtered and populated bookings
+    return res.status(200).json(filteredBookings);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+/* Get single booking by parent id */
+const getBookingByParentId = async (req, res) => {
+  try {
+    const { parentId } = req.query;
+    if (parentId === null) {
+      return res.status(400).json({ error: " parent ID is required " });
+    }
+
+    // Find Booking documents where _id matches the provided
+    const bookings = await Booking.find({})
+      .populate({
+        path: "child_id",
+        match: { parent_id: parentId },
+        select: "firstname lastname",
+        populate: {
+          path: "parent_id",
+          model: "parent",
+          select: "firstname lastname",
+        },
+      })
+      .populate({
+        path: "availability_id",
+        select: "_id date",
+
+        populate: {
+          path: "nursery_id",
+          model: "nursery",
+          select: "address name",
+        },
+      })
+      .exec();
+
+    // Filter out booking where there no availabilityid or nurseryid or childid, all = null
+    const filteredBookings = bookings.filter(
+      (booking) =>
+        booking.availability_id &&
+        booking.availability_id.nursery_id &&
+        booking.child_id
     );
 
     // Return the filtered and populated bookings
@@ -106,4 +154,5 @@ module.exports = {
   createBooking,
   updateBooking,
   deleteBooking,
+  getBookingByParentId,
 };
