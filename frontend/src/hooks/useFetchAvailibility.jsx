@@ -9,7 +9,9 @@ function useFetchAvailability() {
     const fetchAvailability = async () => {
       try {
         const response = await fetch(
-          "http://localhost:3310/availability/6596b35b24c9b242e9d2e91c",
+          `${
+            import.meta.env.VITE_BACKEND_URL
+          }/availability/6596b35b24c9b242e9d2e91c`,
           {
             headers: { Authorization: `Bearer ${parentContext.token}` },
           }

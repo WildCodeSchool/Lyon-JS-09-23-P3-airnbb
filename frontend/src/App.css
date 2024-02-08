@@ -4,6 +4,8 @@
   height: 100vh;
   margin: 0 auto;
   text-align: center;
+  font-size-adjust: 0.5;
+  line-height: calc(1ex / 0.32);
   font-family: "Nunito", sans-serif;
   position: relative;
   overflow: hidden;
@@ -13,6 +15,10 @@
     rgba(89, 84, 249, 0.9) 10%,
     rgba(227, 122, 204, 1) 100%
   );
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-tap-highlight-color: transparent;
 }
 
 * {
@@ -23,7 +29,8 @@
 
 /* input */
 input::placeholder {
-  color: white;
+  font-weight: bold;
+  color: black;
 }
 
 /* Not Found page */

@@ -19,8 +19,10 @@ function Nursery({ nursery }) {
     const fetchAvailability = async () => {
       try {
         const response = await fetch(
-          // eslint-disable-next-line no-underscore-dangle
-          `http://localhost:3310/availabilitybynursery?nurseryId=${nursery._id}`,
+          `${
+            import.meta.env.VITE_BACKEND_URL
+            // eslint-disable-next-line no-underscore-dangle
+          }/availabilitybynursery?nurseryId=${nursery._id}`,
           {
             headers: { Authorization: `Bearer ${parentContext.token}` },
           }
