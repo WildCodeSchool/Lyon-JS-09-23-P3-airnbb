@@ -53,3 +53,8 @@ export const childrenReducer = (state, action) => {
 export const formatDate = (date) => {
   return new Date(date).toISOString().substring(0, 10);
 };
+
+// check if all fields are filled
+export const checkFieldsFilled = (arrayToCheck) => {
+  return !arrayToCheck.some((value) => value === "");
+};
