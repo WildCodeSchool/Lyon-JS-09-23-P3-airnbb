@@ -1,5 +1,6 @@
 .mainPage {
   height: 100vh;
+  padding: 30px 0 83px 0;
   overflow-y: scroll;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));

@@ -124,6 +124,7 @@ router.get("/bookingnursery", getBookingById);
 
 // Route to get booking by Parent Id
 router.get("/bookingparentid", getBookingByParentId);
+
 // Route to create new booking
 router.post("/booking/", requireAuth, createBooking);
 

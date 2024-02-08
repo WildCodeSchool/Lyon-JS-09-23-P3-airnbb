@@ -13,7 +13,7 @@ const getAllBookings = async (req, res) => {
   }
 };
 
-/* Get single booking  by nursery id   */
+/* Get single booking by nursery id  */
 const getBookingById = async (req, res) => {
   try {
     const { nurseryId } = req.query;
@@ -57,8 +57,8 @@ const getBookingById = async (req, res) => {
     return res.status(500).json({ error: "Internal Server Error" });
   }
 };
-/* ********************************************************************************* */
-/* Get single booking  by parent id id   */
+
+/* Get single booking by parent id */
 const getBookingByParentId = async (req, res) => {
   try {
     const { parentId } = req.query;
@@ -105,6 +105,7 @@ const getBookingByParentId = async (req, res) => {
     return res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
 /* Create new booking */
 const createBooking = async (req, res) => {
   const { availability_id: availibilityId, child_id: childId } = req.body;

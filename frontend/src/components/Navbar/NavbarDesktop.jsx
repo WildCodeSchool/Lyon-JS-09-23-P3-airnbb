@@ -23,7 +23,7 @@ function NavbarDesktop() {
         className={({ isActive }) => (isActive ? "active" : null)}
       >
         <MagnifyingGlassIcon width={30} />
-        <p> Reherche </p>
+        <p> Recherche </p>
       </NavLink>
       <NavLink
         to="account"

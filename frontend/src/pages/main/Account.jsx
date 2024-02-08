@@ -32,13 +32,14 @@ function Account() {
     logout();
     navigate("/login");
   };
+  const handleBookingSection = () => {
+    navigate("/home/booking");
+  };
 
   const handleChildrenSection = () => {
     setSectionChildrenHidden(!sectionChildrenHidden);
   };
-  const handleClickreservationSection = () => {
-    navigate("/home/booking");
-  };
+
   return (
     <div className="parentAccount">
       <header className="accountHeader">
@@ -49,8 +50,10 @@ function Account() {
       <div className="optionContainer">
         <div className="accountOptions">
           <div className="option">
-            <HeartIcon width={40} />
-            <p className="textOptions">Mes favoris</p>
+            <button type="button" onClick={handleChildrenSection}>
+              <HeartIcon width={40} />
+              <p className="textOptions">Mes favoris</p>
+            </button>
           </div>
           <div className="option">
             <button type="button" onClick={handleChildrenSection}>
@@ -59,13 +62,9 @@ function Account() {
             </button>
           </div>
           <div className="option">
-            <CalendarDaysIcon width={40} />
-            <button
-              type="button"
-              className="textOptions"
-              onClick={handleClickreservationSection}
-            >
-              Mes réservations
+            <button type="button" onClick={handleBookingSection}>
+              <CalendarDaysIcon width={40} />
+              <p className="textOptions">Mes réservations</p>
             </button>
           </div>
         </div>
