@@ -40,7 +40,7 @@
   fill: white;
 }
 .nurseryCard .top .favorite .isFavorite {
-  fill: red;
+  fill: #ff0000;
 }
 .nurseryCard .top .title {
   display: flex;

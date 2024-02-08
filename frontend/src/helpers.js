@@ -53,3 +53,20 @@ export const childrenReducer = (state, action) => {
 export const formatDate = (date) => {
   return new Date(date).toISOString().substring(0, 10);
 };
+
+// check if all fields are filled
+export const checkFieldsFilled = (arrayToCheck) => {
+  return !arrayToCheck.some((value) => value === "");
+};
+
+// set maximal age a child can have
+export const maximalAge = () => {
+  const currentDate = new Date();
+
+  const threeYearsAgo = new Date(currentDate);
+  threeYearsAgo.setFullYear(currentDate.getFullYear() - 3);
+
+  const formattedDate = threeYearsAgo.toISOString().split("T")[0];
+
+  return formattedDate;
+};
