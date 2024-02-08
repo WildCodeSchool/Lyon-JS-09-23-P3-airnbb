@@ -17,11 +17,14 @@ function BookingForm() {
   useEffect(() => {
     const fetchParentChildren = async () => {
       try {
-        const response = await fetch("http://localhost:3310/child", {
-          headers: {
-            Authorization: `Bearer ${parentContext.token}`,
-          },
-        });
+        const response = await fetch(
+          `${import.meta.env.VITE_BACKEND_URL}/child`,
+          {
+            headers: {
+              Authorization: `Bearer ${parentContext.token}`,
+            },
+          }
+        );
         const childrenData = await response.json();
         setParentChildren(childrenData);
       } catch (error) {
@@ -37,7 +40,7 @@ function BookingForm() {
   const submitBooking = async (e) => {
     e.preventDefault();
     try {
-      await fetch("http://localhost:3310/booking", {
+      await fetch(`${import.meta.env.VITE_BACKEND_URL}/booking`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

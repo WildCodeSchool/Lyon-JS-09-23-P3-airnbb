@@ -187,14 +187,14 @@ function ChildForm({
 }
 
 ChildForm.propTypes = {
-  addChildSectionHidden: PropTypes.bool.isRequired,
-  setAddChildSectionHidden: PropTypes.func.isRequired,
+  addChildSectionHidden: PropTypes.bool,
+  setAddChildSectionHidden: PropTypes.func,
   parentContext: PropTypes.shape({
     firstname: PropTypes.string.isRequired,
     lastname: PropTypes.string.isRequired,
     token: PropTypes.string.isRequired,
     _id: PropTypes.string.isRequired,
-  }).isRequired,
+  }),
   updateChild: PropTypes.shape({
     _id: PropTypes.string,
     firstname: PropTypes.string,
@@ -204,11 +204,15 @@ ChildForm.propTypes = {
     disabled: PropTypes.bool,
     allergy: PropTypes.bool,
   }),
-  setUpdateChild: PropTypes.func.isRequired,
+  setUpdateChild: PropTypes.func,
 };
 
 ChildForm.defaultProps = {
   updateChild: undefined,
+  addChildSectionHidden: undefined,
+  setAddChildSectionHidden: undefined,
+  parentContext: undefined,
+  setUpdateChild: undefined,
 };
 
 export default ChildForm;
