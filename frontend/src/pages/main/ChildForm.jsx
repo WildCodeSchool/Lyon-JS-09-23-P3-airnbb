@@ -12,7 +12,7 @@ import useCreateChild from "../../hooks/useCreateChild";
 import useUpdateChild from "../../hooks/useUpdateChild";
 
 // helpers
-import { formatDate } from "../../helpers";
+import { formatDate, maximalAge } from "../../helpers";
 
 // assets
 import logoChild from "../../assets/childForm.svg";
@@ -81,6 +81,8 @@ function ChildForm({
     handleReset();
   }
 
+  maximalAge();
+
   return (
     <div
       className={
@@ -124,6 +126,8 @@ function ChildForm({
           value={
             updateChild.birthday ? formatDate(updateChild.birthday) : birthday
           }
+          min={maximalAge()}
+          max={new Date().toISOString().split("T")[0]}
           onChange={(e) => setBirthday(e.target.value)}
         />
 
