@@ -16,6 +16,7 @@ import useChildContext from "../../hooks/useChildContext";
 
 // style
 import "./styles/ChildList.css";
+import NotFound from "../../assets/notFound.svg";
 
 function ChildList({
   sectionChildrenHidden,
@@ -65,6 +66,14 @@ function ChildList({
           <button type="button" onClick={handleSection} aria-label="go back">
             <ChevronLeftIcon width={35} />
           </button>
+          {children?.length > 0 ? (
+            <h3 className="headerTitle">Mes enfants</h3>
+          ) : (
+            <h3 className="headerTitle">
+              Vous n'avez pas encore enregistré d'enfants
+            </h3>
+          )}
+
           <button
             type="button"
             onClick={handleAddChild}
@@ -74,7 +83,7 @@ function ChildList({
           </button>
         </div>
 
-        {children &&
+        {children?.length > 0 ? (
           children.map((child) => {
             const { _id: id } = child;
             return (
@@ -85,7 +94,10 @@ function ChildList({
                 setUpdateChild={setUpdateChild}
               />
             );
-          })}
+          })
+        ) : (
+          <img className="imgNoChildren" src={NotFound} alt="pas d'enfants'" />
+        )}
       </div>
       <ChildForm
         setAddChildSectionHidden={setAddChildSectionHidden}

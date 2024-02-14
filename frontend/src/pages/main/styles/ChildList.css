@@ -33,9 +33,25 @@
   transform: translateX(-100%);
   filter: drop-shadow(0 2px 4px hsla(0, 0%, 0%, 0.5));
 }
+.headerTitle {
+  margin: 2.8rem 0 2rem 0;
+  font-size: 1.8rem;
+}
+.imgNoChildren {
+  width: 90%;
+  aspect-ratio: 1;
+  margin: 2rem 2rem 0 0;
+}
 
 @media screen and (min-width: 705px) {
   .childrenSectionContainer .childList {
     margin-left: 30vh;
+  }
+  .headerTitle {
+    margin: 2.5rem 0 2rem 0;
+  }
+  .imgNoChildren {
+    width: 30%;
+    margin: 2rem 4rem 0 0;
   }
 }
