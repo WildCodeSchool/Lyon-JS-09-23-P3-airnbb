@@ -1,0 +1,62 @@
+.childCard {
+  display: flex;
+  align-items: center;
+  width: 90%;
+  margin: 1rem auto;
+  padding: 0.5em;
+  background-color: #f0f3fd;
+  border-radius: 10px;
+  filter: drop-shadow(0 2px 4px hsla(0, 0%, 0%, 0.15));
+}
+
+.childCard__child,
+.childCard__buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 15%;
+}
+
+.childCard__name,
+.childCard__spec {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 35%;
+}
+
+.childCard__name {
+  font-size: 1rem;
+  text-align: start;
+}
+
+.childCard__name > p {
+  width: 100%;
+}
+
+.childCard__spec {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 1rem;
+}
+
+.details {
+  width: 100%;
+  padding: 0.25em;
+  background-color: #ffc145;
+  border-radius: 10px;
+}
+
+.details.active {
+  background-color: #50d3c4;
+}
+
+.childCard__buttons {
+  font-size: 1rem;
+}
+
+#childFace {
+  filter: invert(48%) sepia(35%) saturate(1025%) hue-rotate(222deg)
+    brightness(94%) contrast(88%);
+}

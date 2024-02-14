@@ -4,6 +4,8 @@
   height: 100vh;
   margin: 0 auto;
   text-align: center;
+  font-size-adjust: 0.5;
+  line-height: calc(1ex / 0.32);
   font-family: "Nunito", sans-serif;
   position: relative;
   overflow: hidden;
@@ -13,6 +15,10 @@
     rgba(89, 84, 249, 0.9) 10%,
     rgba(227, 122, 204, 1) 100%
   );
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-tap-highlight-color: transparent;
 }
 
 * {
@@ -23,7 +29,8 @@
 
 /* input */
 input::placeholder {
-  color: white;
+  font-weight: bold;
+  color: black;
 }
 
 /* Not Found page */
@@ -35,34 +42,10 @@ input::placeholder {
   color: white;
 }
 
-.geoBar,
-.primary-navbar {
-  position: absolute;
-  height: 80px;
-  width: 375px;
-  border: 1px solid black;
-  z-index: 1;
-  background-color: white;
-}
-
-.geoBar {
-  top: 0;
-}
-
-.primary-navbar {
-  bottom: 0;
-}
-
-.homepage {
-  padding-top: 80px;
-}
-
-/* Main page */
-.mainPage {
-  height: 100vh;
-  overflow-y: scroll;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
-  gap: 2rem;
-  padding-inline: 2rem;
+@media screen and (min-width: 705px) {
+  .mainPage {
+    width: 235vh;
+    padding-inline: 17rem;
+    background-color: white;
+  }
 }

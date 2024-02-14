@@ -1,0 +1,40 @@
+.sidebarLeft {
+  width: 30vh;
+  height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  gap: 7vh;
+  font-size: 1rem;
+  font-weight: 700;
+  background: linear-gradient(
+    145deg,
+    rgba(71, 79, 255, 0.9) 0%,
+    rgba(89, 84, 249, 0.9) 10%,
+    rgba(227, 122, 204, 1) 100%
+  );
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 10vh;
+}
+
+.sidebarLeft p {
+  color: whitesmoke;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.sidebarLeft svg {
+  color: whitesmoke;
+  vertical-align: middle;
+}
+
+.heightnav {
+  height: 50%;
+}
+
+.sidebarLeft a {
+  text-decoration: none;
+}

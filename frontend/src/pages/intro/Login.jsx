@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 // react-router
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // functions
 import useLogin from "../../hooks/useLogin";
@@ -10,6 +10,8 @@ import useLogin from "../../hooks/useLogin";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
 
   const { login, error, isLoading } = useLogin();
 
@@ -23,7 +25,13 @@ function Login() {
   return (
     <main className="connect">
       <header>
-        <div>pro</div>
+        <button
+          className="switchMode"
+          type="button"
+          onClick={() => navigate("/nurseryLogin")}
+        >
+          pro
+        </button>
       </header>
       <h3>Je me connecte</h3>
       <form onSubmit={handleSubmit}>
@@ -41,10 +49,10 @@ function Login() {
           required
           onChange={(e) => setPassword(e.target.value)}
         />
-        <div className="check">
-          <input type="checkbox" />
-          Se souvenir de moi
-        </div>
+        <Link to="/signup" className="inscriptionLink">
+          Pas de compte ?&nbsp;<span> S&apos;inscrire</span>
+        </Link>
+
         <button
           type="submit"
           disabled={isLoading}
@@ -54,9 +62,6 @@ function Login() {
         </button>
         {error && <h4>{error.message}</h4>}
       </form>
-      <Link to="/signup">
-        Pas de compte ? <span>S&apos;inscrire</span>
-      </Link>
     </main>
   );
 }

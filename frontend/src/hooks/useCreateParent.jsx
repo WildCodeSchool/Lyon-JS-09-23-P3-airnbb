@@ -9,7 +9,7 @@ function useCreateParent() {
   const createParent = async (newParent) => {
     setIsLoading(true);
     setError(null);
-    const response = await fetch("http://localhost:3310/parent", {
+    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/parent`, {
       method: "POST",
       body: JSON.stringify(newParent),
       headers: {
@@ -26,8 +26,7 @@ function useCreateParent() {
     if (response.ok) {
       setIsLoading(false);
       setError(null);
-      navigate("/addchild");
-      console.info("New parent added", json);
+      navigate("/home");
     }
   };
   return { createParent, isLoading, error };

@@ -1,5 +1,8 @@
-import { useLoaderData } from "react-router-dom";
-import "./Account.css";
+// react
+import { useState } from "react";
+
+// react-router
+import { useNavigate } from "react-router-dom";
 
 // library
 import {
@@ -9,44 +12,74 @@ import {
   CalendarDaysIcon,
 } from "@heroicons/react/24/solid";
 
-export async function loader() {
-  const response = await fetch(
-    "http://localhost:3310/parent/65798b54f9784d836b35622e"
-  );
-  const json = await response.json();
-  return json;
-}
+// pages & components
+import useLogout from "../../hooks/useLogout";
+import ChildList from "./ChildList";
+
+// hooks
+import useParentContext from "../../hooks/useParentContext";
+
+// styles
+import "./styles/Account.css";
 
 function Account() {
-  const user = useLoaderData();
-  console.info(user);
+  const [sectionChildrenHidden, setSectionChildrenHidden] = useState(true);
+  const { logout } = useLogout();
+  const { parentContext } = useParentContext();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
+  const handleBookingSection = () => {
+    navigate("/home/booking");
+  };
+
+  const handleChildrenSection = () => {
+    setSectionChildrenHidden(!sectionChildrenHidden);
+  };
+
   return (
     <div className="parentAccount">
       <header className="accountHeader">
         <h3>
-          {user.firstname} {user.lastname}
+          {parentContext?.firstname} {parentContext?.lastname}
         </h3>
       </header>
       <div className="optionContainer">
         <div className="accountOptions">
           <div className="option">
-            <HeartIcon width={40} />
-            <p className="textOptions">Mes favoris</p>
+            <button type="button" onClick={handleChildrenSection}>
+              <HeartIcon width={40} />
+              <p className="textOptions">Mes favoris</p>
+            </button>
           </div>
           <div className="option">
-            <UsersIcon width={40} />
-            <p className="textOptions">Mon/Mes enfant(s)</p>
+            <button type="button" onClick={handleChildrenSection}>
+              <UsersIcon width={40} />
+              <p className="textOptions">Mon/Mes enfants</p>
+            </button>
           </div>
           <div className="option">
-            <CalendarDaysIcon width={40} />
-            <p className="textOptions">Mes réservations</p>
+            <button type="button" onClick={handleBookingSection}>
+              <CalendarDaysIcon width={40} />
+              <p className="textOptions">Mes réservations</p>
+            </button>
           </div>
         </div>
         <div className="optionLogOut">
           <ArrowRightEndOnRectangleIcon width={40} />
-          <p className="textOptions">Me déconnecter</p>
+          <button type="button" onClick={handleLogout} className="buttonLogout">
+            Me déconnecter
+          </button>
         </div>
       </div>
+      <ChildList
+        sectionChildrenHidden={sectionChildrenHidden}
+        setSectionChildrenHidden={setSectionChildrenHidden}
+        parentContext={parentContext}
+      />
     </div>
   );
 }

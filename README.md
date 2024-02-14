@@ -1,79 +1,113 @@
-## Concept
+# Airnbb 📝
 
-This template is meant to serve as a foundation for every P2/P3 following the React-Express-MySQL stack, as learned in Wild Code School.
-It's pre-configured with a set of tools which'll help students produce industry-quality and easier-to-maintain code, while staying a pedagogical tool.
+![Airnbb](./frontend/src/assets/airnbbBanner.svg)
 
-## Setup & Use
+(**In progress**, still working on it...)
 
-### Windows users
+# The application 📱
 
-Be sure to run these commands in a git terminal to avoid [issues with newline formats](https://en.wikipedia.org/wiki/Newline#Issues_with_different_newline_formats):
+Welcome to Airnbb - Connecting Parents and Nurseries!
 
-```
-git config --global core.eol lf
-git config --global core.autocrlf false
-```
+## Overview 🔬
 
-### Project Initialization
+![Airnbb](./frontend/src/assets/airnbbBannerMaquette.png)
 
-- In VSCode, install plugins **Prettier - Code formatter** and **ESLint** and configure them
-- Clone this repo, enter it
-- Run command `npm install`
-- Create environment files (`.env`) in both `backend` and `frontend`: you can copy `.env.sample` files as starters (**don't** delete them)
+Airnbb is a peer-to-peer platform designed to facilitate the connection between parents seeking childcare services and nurseries offering their expertise. Much like the popular accommodation platform Airbnb, Airnbb simplifies the process of finding and booking childcare services for parents while allowing nurseries to showcase their availabilities.
 
-### Available Commands
+## Features 💈
 
-- `db:migrate` : Run the database migration script
-- `db:seed` : Run the database seed script
-- `dev` : Starts both servers (frontend + backend) in one terminal
-- `dev-front` : Starts the React frontend server
-- `dev-back` : Starts the Express backend server
-- `lint` : Runs validation tools (will be executed on every _commit_, and refuse unclean code)
+### Parent's Perspective 👨‍👩‍👧‍👧
 
-## FAQ
+- **User Registration**: Parents can easily sign up on the website, creating an account to manage their childcare needs.
 
-### Tools
+- **Browse Nurseries**: Explore a variety of nurseries, each offering unique services and features.
 
-- _Concurrently_ : Allows for several commands to run concurrently in the same CLI
-- _Husky_ : Allows to execute specific commands that trigger on _git_ events
-- _Vite_ : Alternative to _Create-React-App_, packaging less tools for a more fluid experience
-- _ESLint_ : "Quality of code" tool, ensures chosen rules will be enforced
-- _Prettier_ : "Quality of code" tool as well, focuses on the styleguide
-- _ Airbnb Standard_ : One of the most known "standards", even though it's not officially linked to ES/JS
+- **Booking System**: Parents can book specific time slots for childcare, providing flexibility and convenience.
 
-## Deployment with Traefik
+### Nursery's Perspective 🏫
 
-> ⚠️ Prerequisites : You must have installed and configured Traefik on your VPS beforehand.
-> https://github.com/WildCodeSchool/vps-traefik-starter-kit/
+- **Nursery Registration**: Nurseries can register on the platform, providing details about their services and facilities.
 
-For deployment, you have to go to `secrets` → app `actions` on the github repo to insert via `New repository secret` :
+- **Availability Management**: Easily add and manage available time slots, along with the number of spots and overall availability.
 
-- SSH_HOST : IP address of your VPS
-- SSH_USER : SSH login to your VPS
-- SSH_PASSWORD : SSH connection password to your VPS
+- **Visibility**: Nurseries can showcase their facilities and services to attract potential clients.
 
-And a public variable from the tab `/settings/variables/actions` :
+# Launch project 🚀🚀
 
-- PROJECT_NAME : the name of the project used to create the subdomain.
+- Clone the repo, and enter it.
+- `git checkout dev`.
+- `npm i` in the root directory.
 
-> ⚠️ Warning : underscores are not allowed. They can cause trouble with the let's encrypt certificate
+- create `.env` files following the `.env.sample` files patern.
+- ask the Airnbb dev team for the credentials needed to access MongoDB collections.
 
-Use this same tab to add the other environment variables required for the project if any.
+- `npm run dev` in the root directory. Enjoy.
 
-Only the backend will be accessible. The root path `"/"` will redirect to the dist folder on your frontend. In order to allow that, please uncomment the line as explain on `backend/src/app.js` (Line 102).
-Because the backend will serve the front, the global variable VITE_BACKEND_URL will be set with an empty string.
+# Getting Started 🏃‍♂️🏃‍♀️
 
-Your url will be ` https://${PROJECT-NAME}.${subdomain}.wilders.dev/`.
+![AirnbbLogin](./frontend/src/assets/signupLoginBanner.png)
 
-### About the database
+To get started with Airnbb, follow these simple steps:
 
-The database is automaticaly deployed with the name of your repo. During the build of the projet (`docker-entry.sh`), the `node migrate.js` command is executed in the backend. If you want to seed automaticaly your database using the `seed.js` script, replace the command _build_ on you `backend/package.json` by `node migrate.js && node seed.js`.
+1. **Sign Up**: Create your account as a parent or a nursery.
 
-### About public assets (pictures, fonts...)
+2. **Explore**: Browse through the list of nurseries to find the perfect match for your childcare needs.
 
-Don't use any public folder on your frontend. This folder won't be accessible online. You may move your public assets in the `backend/public` folder. Prefer [static assets](https://vitejs.dev/guide/assets) when possible.
+3. **Book**: For parents, select a suitable time slot and book your child's spot. For nurseries, manage your availability and showcase your services.
 
-### About Logs
+4. **Connect**: Communicate with nurseries or parents through the platform to coordinate and ensure a smooth childcare experience.
 
-If you want to access the logs of your online projet (to follow the deployement or to watch any bug error), connect to your VPS (`ssh user@host`).
-Then, go on your specific project and run  `docker compose logs -t -f`.
+## Why Airnbb? 👶🏼👶🏿👶🏽👶
+
+- **Convenience**: Streamlined process for parents to find suitable childcare options and for nurseries to manage their bookings.
+
+- **Flexibility**: The booking system allows parents to choose specific time slots, providing flexibility in childcare arrangements.
+
+- **Community Connection**: Build a community of parents and nurseries, fostering a sense of trust and reliability.
+
+# More about us... 👨🏼👨🏽👨🏿👩‍🦰
+
+- Meet the dedicated and vibrant team behind Airnbb! Comprising hard workers, cosmopolitan individuals, and a touch of humor, our team is passionate about creating an innovative platform that transforms the childcare experience.
+
+- Together, our team collaborates seamlessly, combining hard work, a global mindset, and a good dose of humor to bring you the best childcare platform, Airnbb. We believe that a happy team results in a happy and successful product for our users.
+
+# Tools 🛠️ 🪛 🪚
+
+- [Vite](https://www.npmjs.com/package/vite)
+- [Express](https://www.npmjs.com/package/express)
+- [Nodemon](https://www.npmjs.com/package/nodemon)
+- [Dotenv](https://www.npmjs.com/package/dotenv)
+- [React-router-dom](https://www.npmjs.com/package/react-router-dom)
+- [MongoDB](https://www.mongodb.com/) (more about it below ..)
+- [Mongoose](https://www.npmjs.com/package/mongoose)
+- [Husky](https://www.npmjs.com/package/husky) 🐶
+- [Eslint](https://www.npmjs.com/package/eslint)
+
+## MongoDB 🌿
+
+![MongoDB](./frontend/src/assets/mongoDBBanner.png)
+
+- MongoDB is a document database with the scalability and flexibility that you want with the querying and indexing that you need.
+
+### What is the difference between SQL and NoSQL ? 🤷‍♀️
+
+- SQL databases are used to store structured data while NoSQL databases like MongoDB are used to save unstructured data. MongoDB is used to save unstructured data in JSON format. MongoDB does not support advanced analytics and joins like SQL databases support.
+
+- In comparison to the SQL server, **MongoDB is faster and more scalable.**
+
+### You want to learn more about MongoDB ? 💡
+
+- Well you should ! And we strongly recommend you follow this amazing tutorial on how to use MongoDB locally on your shell 👇.
+
+[NetNinja - MongoDB Tutorial](https://www.youtube.com/playlist?list=PL4cUxeGkcC9h77dJ-QJlwGlZlTd4ecZOA)
+
+
+## Contributing 🛟
+
+If you'd like to contribute to Airnbb, feel free to submit a pull request. We welcome your ideas and enhancements!
+
+## License 🚨
+
+This project is licensed under the [MIT License](LICENSE.md).
+
+Thank you for choosing Airnbb! We hope it makes your childcare experience seamless and enjoyable. If you have any questions or feedback, please reach out to us.

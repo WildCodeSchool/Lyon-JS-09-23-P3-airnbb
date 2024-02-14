@@ -1,11 +1,11 @@
 // react
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 // react-router
 import { Link } from "react-router-dom";
 
 // function
-import { handlePasswords } from "../../helpers";
+import { handlePasswords, checkFieldsFilled } from "../../helpers";
 
 // hooks
 import useCreateParent from "../../hooks/useCreateParent";
@@ -18,8 +18,20 @@ function Signup() {
   const [phone, setPhone] = useState("");
   const [firstPassword, setFirstPassword] = useState("");
   const [secondPassword, setSecondPassword] = useState("");
-  const [form, setForm] = useState(false);
   const [message, setMessage] = useState("");
+  // memoize the form array and update it whenever any of the listed state variables change.
+  const form = useMemo(
+    () => [
+      lastname,
+      firstname,
+      email,
+      address,
+      phone,
+      firstPassword,
+      secondPassword,
+    ],
+    [lastname, firstname, email, address, phone, firstPassword, secondPassword]
+  );
 
   const { createParent } = useCreateParent();
 
@@ -42,18 +54,16 @@ function Signup() {
     setFirstPassword("");
     setSecondPassword("");
   }
-  // regex match password syntax
-  const validPassword = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/; // (?= ) pour regarder en avant si présence du motif et .* veut dire n'importe où dans la chaîne
 
   function checkPasswordFormat(e) {
     const newPassword = e.target.value; // déclarer nouvelle variable car mise à jour d'état asynchrone dans react
     setFirstPassword(newPassword);
+    // regex match password syntax
+    const validPassword = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/; // (?= ) pour regarder en avant si présence du motif et .* veut dire n'importe où dans la chaîne
 
     if (validPassword.test(newPassword)) {
-      setForm(true);
       setMessage("");
     } else {
-      setForm(false);
       if (newPassword.length < 8) {
         setMessage("Veuillez saisir au minimum 8 caractères");
       }
@@ -122,14 +132,14 @@ function Signup() {
             Les mots de passe ne correspondent pas.
           </p>
         )}
-        <div>
-          <input type="checkbox" />
-          J&apos;accepte les conditions
-        </div>
+        <Link to="/login" className="inscriptionLink">
+          Vous avez déjà un compte ?&nbsp;<span>Se connecter</span>
+        </Link>
         <button
           type="submit"
           className={
-            form && handlePasswords(firstPassword, secondPassword)
+            checkFieldsFilled(form) === true &&
+            handlePasswords(firstPassword, secondPassword) === true
               ? "submitButton"
               : "deadButton"
           }
@@ -137,9 +147,6 @@ function Signup() {
           S&apos;inscrire
         </button>
       </form>
-      <Link to="/login">
-        Vous avez déjà un compte ? <span>Se connecter</span>
-      </Link>
     </main>
   );
 }

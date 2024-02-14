@@ -2,8 +2,9 @@ const Child = require("../models/ChildSchemaModel");
 
 /* Get all children */
 const getAllChildren = async (req, res) => {
+  const parentVerifiedId = req.parentVerified.id;
   try {
-    const documents = await Child.find().exec();
+    const documents = await Child.find({ parent_id: parentVerifiedId }).exec();
     res.status(200).json(documents);
   } catch (error) {
     console.error("Error fetching data:", error);
@@ -34,10 +35,12 @@ const updateChild = async (req, res) => {
   const { id } = req.params;
   try {
     const updatedChild = await Child.findByIdAndUpdate(id, { ...req.body });
+
     if (!updatedChild) {
       return res.status(404).json({ error: "No such child" });
     }
-    return res.status(200).json(updatedChild);
+    const newChild = await Child.findById(id);
+    return res.status(200).json(newChild);
   } catch (error) {
     return console.error("Error updating child:", error);
   }
@@ -45,15 +48,9 @@ const updateChild = async (req, res) => {
 
 /* Create new child */
 const createChild = async (req, res) => {
-  const {
-    parent_id: parentId,
-    firstname,
-    lastname,
-    birthday,
-    walking,
-    disabled,
-    allergy,
-  } = req.body;
+  const parentId = req.parentVerified.id;
+  const { firstname, lastname, birthday, walking, disabled, allergy } =
+    req.body;
 
   try {
     const child = await Child.create({
@@ -81,7 +78,7 @@ const deleteChild = async (req, res) => {
     return res.status(400).json({ error: "No such child" });
   }
 
-  return res.status(200).send("Child deleted");
+  return res.status(200).json(child);
 };
 
 module.exports = {

@@ -26,6 +26,8 @@
   border-radius: 10px 10px 0 0;
   background-size: cover;
   background-position: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-blend-mode: hue;
 }
 .nurseryCard .top .favorite {
   cursor: pointer;
@@ -38,7 +40,7 @@
   fill: white;
 }
 .nurseryCard .top .favorite .isFavorite {
-  fill: red;
+  fill: #ff0000;
 }
 .nurseryCard .top .title {
   display: flex;
@@ -51,7 +53,7 @@
   justify-content: center;
   align-items: center;
   padding: 0.25em 0.65em;
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   background-color: #f53f62;
   border-radius: 15px;
 }
@@ -79,23 +81,27 @@
 .nurseryCard .bottom .nurseryInfo p {
   margin-bottom: 1em;
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: #999;
 }
 .nurseryCard .bottom .disponibilities {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 10px;
   grid-row-gap: 10px;
   width: 100%;
 }
-.nurseryCard .bottom .disponibilities > div {
+
+.nurseryCard .bottom .disponibilities > button {
   color: white;
   background-color: #32c766;
   border-radius: 5px;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  margin: 0;
+  max-width: 20rem;
 }
+
 .nurseryCard .bottom .disponibilities .tuesday,
 .nurseryCard .bottom .disponibilities .saturday {
   background-color: #d6d6d6;
