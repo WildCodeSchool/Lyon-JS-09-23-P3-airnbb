@@ -70,7 +70,7 @@ function ChildList({
             <h3 className="headerTitle">Mes enfants</h3>
           ) : (
             <h3 className="headerTitle">
-              Vous n'avez pas encore enregistré d'enfant
+              Vous n'avez pas encore enregistré d'enfants
             </h3>
           )}
 
